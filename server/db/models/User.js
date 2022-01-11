@@ -1,3 +1,4 @@
+
 const Sequelize = require('sequelize')
 const db = require('../db')
 const jwt = require('jsonwebtoken')
@@ -36,13 +37,13 @@ User.prototype.generateToken = function() {
  * classMethods
  */
 User.authenticate = async function({ username, password }){
-    const user = await this.findOne({where: { username }})
+    const user = await this.findOne({ where: { username } })
     if (!user || !(await user.correctPassword(password))) {
       const error = Error('Incorrect username/password');
       error.status = 401;
       throw error;
     }
-    return user.generateToken();
+  return user.generateToken();
 };
 
 User.findByToken = async function(token) {

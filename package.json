@@ -4,6 +4,7 @@
   "description": "Some boilerplate code to get you started - get shakin'!",
   "main": "index.js",
   "scripts": {
+    "lint": "./node_modules/.bin/eslint",
     "build": "webpack",
     "build:dev": "npm run build -- --watch --mode=development",
     "seed": "node script/seed.js",
@@ -23,6 +24,8 @@
     "axios": "^0.21.1",
     "bcrypt": "^5.0.0",
     "compression": "^1.7.3",
+    "eslint": "^8.6.0",
+    "eslint-config-airbnb": "^19.0.4",
     "express": "^4.16.4",
     "history": "^4.9.0",
     "jsonwebtoken": "^8.5.1",
