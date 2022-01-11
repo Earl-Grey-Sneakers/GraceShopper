@@ -1,47 +1,33 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {logout} from '../store'
+import React from 'react';
+import { connect } from 'react-redux';
 
-const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>FS-App-Template</h1>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
-    </nav>
-    <hr />
-  </div>
-)
+const NavBar = (props) => {
+  const { username } = props;
+  return (
+    <div>
+      <header className="">
+        <h2 className="logo">EGSH</h2>
+        <ul>
+          <li>Link</li>
+          <li>Link</li>
+          <li>Link</li>
+          <li>Link</li>
+        </ul>
+        <script type="text/javascript">
+          {window.addEventListener('scroll', function () {
+            var header = this.document.querySelector('header');
+            header.classList.toggle('sticky', this.window.scrollY > 0);
+          })}
+        </script>
+      </header>
+    </div>
+  );
+};
 
-/**
- * CONTAINER
- */
-const mapState = state => {
+const mapStateToProps = (state) => {
   return {
-    isLoggedIn: !!state.auth.id
-  }
-}
+    username: state.auth.username,
+  };
+};
 
-const mapDispatch = dispatch => {
-  return {
-    handleClick() {
-      dispatch(logout())
-    }
-  }
-}
-
-export default connect(mapState, mapDispatch)(Navbar)
+export default connect(mapStateToProps)(NavBar);
