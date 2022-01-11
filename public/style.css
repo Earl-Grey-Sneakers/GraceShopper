@@ -19,3 +19,8 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.shoe-img {
+  max-height: 150px;
+  max-width: 200;
+}
