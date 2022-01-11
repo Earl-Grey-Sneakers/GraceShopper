@@ -1,11 +1,69 @@
 'use strict'
 
-const {db, models: {User} } = require('../server/db')
+const {db, models: {User, Style} } = require('../server/db')
 
 /**
  * seed - this function clears the database, updates tables to
  *      match the models, and populates the database.
  */
+
+const styles = [{
+  brand: 'Nike',
+  shoeName: 'Black Cement 3',
+  color: 'black',
+  size: 10,
+  imageUrl: 'placeholder.com',
+  price: 160,
+  quantity: 5,
+},
+{
+  brand: 'Nike',
+  shoeName: 'Black Cement 3',
+  color: 'black',
+  size: 8,
+  imageUrl: 'placeholder.com',
+  price: 160,
+  quantity: 15,
+},
+{
+  brand: 'Nike',
+  shoeName: 'Carmine 6',
+  color: 'red',
+  size: 11,
+  imageUrl: 'placeholder.com',
+  price: 150,
+  quantity: 8,
+},
+{
+  brand: 'Nike',
+  shoeName: 'Carmine 6',
+  color: 'red',
+  size: 10,
+  imageUrl: 'placeholder.com',
+  price: 150,
+  quantity: 8,
+},
+{
+  brand: 'Yeezy',
+  shoeName: 'Bred',
+  color: 'black',
+  size: 9,
+  imageUrl: 'placeholder.com',
+  price: 220,
+  quantity: 10,
+},
+{
+  brand: 'Yeezy',
+  shoeName: 'Triple White',
+  color: 'white',
+  size: 11,
+  imageUrl: 'placeholder.com',
+  price: 220,
+  quantity: 11,
+},
+]
+
+
 async function seed() {
   await db.sync({ force: true }) // clears db and matches models to tables
   console.log('db synced!')
@@ -15,6 +73,10 @@ async function seed() {
     User.create({ username: 'cody', password: '123' }),
     User.create({ username: 'murphy', password: '123' }),
   ])
+
+  await Promise.all(styles.map(style => {
+    return Style.create(style);
+  }));
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
