@@ -74,3 +74,8 @@ header.sticky .logo,
 header.sticky ul li {
   color: #000;
 }
+
+.shoe-img {
+  max-height: 150px;
+  max-width: 200;
+}

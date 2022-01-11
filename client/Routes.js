@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
+import AllStyles from './components/AllStyles';
 import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
 import { me } from './store';
@@ -14,14 +15,14 @@ class Routes extends Component {
   }
 
   render() {
-    const { isLoggedIn } = this.props ;
+    const { isLoggedIn } = this.props;
 
     return (
       <div>
         {isLoggedIn ? (
           <Switch>
             <Route path="/home" component={Home} />
-            <Redirect to="/home" />
+            {/* <Redirect to="/home" /> */}
           </Switch>
         ) : (
           <Switch>
@@ -30,6 +31,9 @@ class Routes extends Component {
             <Route path="/signup" component={Signup} />
           </Switch>
         )}
+        <Switch>
+          <Route path="/styles" component={AllStyles} />
+        </Switch>
       </div>
     );
   }
