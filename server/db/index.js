@@ -11,6 +11,7 @@ const User = require('./models/User')
 Order.belongsTo(User)
 User.hasMany(Order)
 Style.belongsToMany(Order, { through: 'orderItems'})
+Order.belongsToMany(Style, { through: 'orderItems'})
 Order.hasOne(OrderPayment)
 
 //will need to add more columns in through table

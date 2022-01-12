@@ -108,53 +108,23 @@ const orders = [{
 },
 ]
 
-const itemsInOrder = [{
-  styleId: 6,
-  orderId: 1
-},
-{
-  styleId: 5,
-  orderId: 1
-},
-{
-  styleId: 5,
-  orderId: 2
-},
-{
-  styleId: 6,
-  orderId: 3
-},
-{
-  styleId: 1,
-  orderId: 3
-},
-{
-  styleId: 3,
-  orderId: 3
-},
-]
-
 async function seed() {
   await db.sync({ force: true }) // clears db and matches models to tables
   console.log('db synced!')
 
-  // Creating Users
   const users = await Promise.all([
     User.create({ username: 'cody', password: '123' }),
     User.create({ username: 'murphy', password: '123' }),
   ])
 
-  const stylesCreated = await Promise.all(styles.map(style => {
+  await Promise.all(orders.map(order => {
+    let orderMade = Order.create(order);
+    return orderMade
+  }));
+
+  await Promise.all(styles.map(style => {
     return Style.create(style);
   }));
-
-  const ordersCreated = await Promise.all(orders.map(order => {
-    return Order.create(order);
-  }));
-
-  // await Promise.all(itemsInOrder.map(item => {
-  //   return orderItems.create(item);
-  // }));
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
