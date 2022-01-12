@@ -4,7 +4,6 @@ import { fetchStyles } from '../store/styles'
 import { Link } from "react-router-dom"
 
 const AllStyles = (props) => {
-    console.log(props)
     useEffect(()=>{
         props.fetchStyles()
     }, [])
