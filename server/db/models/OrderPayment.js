@@ -1,10 +1,10 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const Cart = db.define('cart', {
+const OrderPayment = db.define('orderPayment', {
     items: {
     type: Sequelize.JSON
     }
 })
 
-module.exports = Cart
+module.exports = OrderPayment

@@ -1,6 +1,6 @@
 'use strict'
 
-const {db, models: {User, Style} } = require('../server/db')
+const {db, models: {User, Style, Order} } = require('../server/db')
 
 /**
  * seed - this function clears the database, updates tables to
@@ -90,6 +90,49 @@ const styles = [{
 },
 ]
 
+const orders = [{
+  isProcessed: true,
+  purchaseDate: new Date(),
+  orderTotal: 440,
+  userId: 1
+},
+{
+  orderTotal: 220,
+  userId: 2
+},
+{
+  isProcessed: true,
+  purchaseDate: new Date(),
+  orderTotal: 530,
+  userId: 2
+},
+]
+
+const itemsInOrder = [{
+  styleId: 6,
+  orderId: 1
+},
+{
+  styleId: 5,
+  orderId: 1
+},
+{
+  styleId: 5,
+  orderId: 2
+},
+{
+  styleId: 6,
+  orderId: 3
+},
+{
+  styleId: 1,
+  orderId: 3
+},
+{
+  styleId: 3,
+  orderId: 3
+},
+]
 
 async function seed() {
   await db.sync({ force: true }) // clears db and matches models to tables
@@ -101,9 +144,17 @@ async function seed() {
     User.create({ username: 'murphy', password: '123' }),
   ])
 
-  await Promise.all(styles.map(style => {
+  const stylesCreated = await Promise.all(styles.map(style => {
     return Style.create(style);
   }));
+
+  const ordersCreated = await Promise.all(orders.map(order => {
+    return Order.create(order);
+  }));
+
+  // await Promise.all(itemsInOrder.map(item => {
+  //   return orderItems.create(item);
+  // }));
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
