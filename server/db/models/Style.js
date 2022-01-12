@@ -25,4 +25,21 @@ const Style = db.define('style', {
     }
 })
 
+Style.afterCreate(async style=>{
+    if (style.id == 5){
+    await style.addOrders(1, { through: { qty: '1' }})
+    await style.addOrders(2, { through: { qty: '1' }})
+    await style.addOrders(3, { through: { qty: '1' }})
+    }
+    if (style.id == 4){
+        await style.addOrders(1, { through: { qty: '1' }})
+    }
+    if (style.id == 1){
+        await style.addOrders(3, { through: { qty: '1' }})
+    }
+    if (style.id == 3){
+        await style.addOrders(3, { through: { qty: '1' }})
+    }
+})
+
 module.exports = Style

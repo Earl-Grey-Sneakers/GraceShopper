@@ -18,11 +18,11 @@ const Cart = () => {
 
     const itemsMap=[]
     for(let item in cart){
-        itemsMap.push(<div key={cart[item]['id']}><h3>{cart[item]['shoeName']}</h3><img className='shoe-img' src={cart[item]['imageUrl']}/></div>)
+        itemsMap.push(<div key={cart[item]['id']}><h3>{cart[item]['shoeName']}</h3><h5>{'$'}{cart[item]['price']}</h5><img className='shoe-img' src={cart[item]['imageUrl']}/></div>)
     }
 
     return (
-        <div>
+        <div className="divBelowNavbar">
             <h2>My Cart</h2>
             <div className='cart-container'>
                 {/* {cart.id ? for(item in cart){ } : <h5>Your cart is empty.</h5>} */}
@@ -30,9 +30,9 @@ const Cart = () => {
                     <div key={idx}>
                     {item}
                     <button>Remove item</button>
-                    <button>+</button>
-                    <span>Qty: 1</span>
                     <button>-</button>
+                    <span>Qty: 1</span>
+                    <button>+</button>
                     </div>
                     )
                 )}
