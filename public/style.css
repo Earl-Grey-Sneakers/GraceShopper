@@ -8,7 +8,6 @@
 }
 
 body {
-  background-color: #000;
   min-height: 200vh;
 }
 header {
@@ -21,11 +20,12 @@ header {
   align-items: center;
   transition: 0.6s;
   padding: 40px 100px;
+  z-index: 10000;
 }
 header .logo {
   position: relative;
   font-weight: 70;
-  color: #fff;
+  color: #000;
   text-decoration: none;
   font-size: 2em;
   text-transform: uppercase;
@@ -45,12 +45,12 @@ header ul li {
   position: relative;
   margin: 0 15px;
   text-decoration: none;
-  color: #fff;
+  color: #000;
 }
 
 header.sticky {
   padding: 5px 100px;
-  background-color: #fff;
+  background-color: #000;
 }
 
 a {
@@ -72,10 +72,93 @@ form div {
 }
 header.sticky .logo,
 header.sticky ul li {
-  color: #000;
+  color: #fff;
 }
 
 .shoe-img {
   max-height: 150px;
   max-width: 200;
+}
+
+/* .scrolled-down {
+  transform: translateY(-100%);
+  transition: all 0.3s ease-in-out;
+  color: #000;
+  
+}
+.scrolled-up {
+  transform: translateY(0);
+  transition: all 0.3s ease-in-out;
+} */
+
+.landingPage {
+  position: relative;
+  top: 100px;
+}
+
+.textfield {
+  top: 100px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textfield input[type='text'],
+.textfield input[type='password'] {
+  background: none;
+  border: 0;
+
+  border: 1px solid #000;
+}
+
+.formLinkText {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 44.4em;
+  bottom: 10em;
+  font-size: xx-small;
+  color: #818181;
+}
+
+.button-1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 2px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+
+  margin: 100px;
+}
+
+.button-1:active {
+  box-shadow: 0px 0px 0px 0px;
+  margin: 100px;
+  left: 39.2em;
+}
+
+#login {
+  left: 39.2em;
+}
+
+#signup {
+  left: 38.6em;
+}
+
+@media (min-width: 900px) {
+  .button-1 {
+    padding: 0.25em 0.75em;
+    right: 2000em;
+  }
 }
