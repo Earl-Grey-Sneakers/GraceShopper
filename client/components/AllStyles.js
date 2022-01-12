@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import {connect, useSelector, useDispatch} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import { fetchStyles } from '../store/styles'
 
-const AllStyles = (props) => {
+const AllStyles = () => {
     const styles = useSelector((state) => {
         return state.styles;
     }) || []
@@ -12,8 +12,6 @@ const AllStyles = (props) => {
     useEffect(()=>{
         dispatch(fetchStyles())
     }, [])
-    
-    
 
     return (
         <div>
