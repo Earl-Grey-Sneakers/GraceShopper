@@ -35,7 +35,8 @@ class Routes extends Component {
           </Switch>
         )}
         <Switch>
-          <Route path="/styles" component={AllStyles} />
+          <Route exact path="/styles" component={AllStyles} />
+          <Route path="/style/:name" component={SingleStyle} />
           <Route path="/cart" component={Cart} />
         </Switch>
       </div>

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect, useSelector, useDispatch } from 'react-redux';
 import { fetchStyles } from '../store/styles';
+import { Link } from 'react-router-dom';
 
 const AllStyles = (props) => {
   const styles =
@@ -20,7 +21,7 @@ const AllStyles = (props) => {
         {styles.map((style, idx) => (
           <div className="all-styles-single-style" key={idx}>
             <img src={style.imageUrl} className="shoe-img" />
-            <h3>{style.shoeName}</h3>
+            <Link to={`/style/${style.shoeName}`}><h3>{style.shoeName}</h3></Link>
             <h5>
               {'$'}
               {style.price}
