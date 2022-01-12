@@ -1,0 +1,28 @@
+What does this group do when two or more members disagree?
+
+- Group Vote (Majority Wins)
+  - Give members time to discuss their viewpoint on which side to take
+  - If 50/50: Debate it out
+  - If at an impasse: bring a 3rd Party
+- Internal Frustration:
+  - Reach out to team members about what issues you’re having with what you’re working on.
+  - Rubber Duck off each other
+  - Take a Break to clear your head
+- External Frustration:
+  - Take time to clear your head, and step away from your code
+  - If with another person, if comfortable, have a 1-on-1 discussing what things are being done that’s affecting one another. (Could bring in a 3rd or 4th Member to mediate the conversation)
+  - Do NOT talk about members behind their back
+- Group Async Work:
+  - Near EOD (5:30 to 5:45) meet for code reviews and pull requests.
+  - Everyone should meet near EOD to discuss what progress has been and what needs to be worked on similar to a Stand-Up.
+- Help Tickets:
+  - If nobody is available to troubleshoot
+  - If nobody knows the solution after troubleshooting for 15 minutes
+  - Process for troubleshooting:
+  - Rubber Ducking
+  - Re-writing more descriptive variables.
+- Working outside of class hours:
+  - People can work on their features outside of class hours (10AM-6PM)
+  - Respect those who are not coding outside of work hours.
+  - You can work outside of work hours but don’t have the expect people to respond right away
+- Daily Group Stand-ups at 10:45 EST.
