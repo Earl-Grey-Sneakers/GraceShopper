@@ -13,10 +13,3 @@ router.get('/', async (req, res, next) => {
         next(error)
     }
 })
-
-// attributes: [
-//     // specify an array where the first element is the SQL function and the second is the alias
-//     [Sequelize.fn('DISTINCT', Sequelize.col('shoeName')) ,'shoeName'],
-//     // specify any additional columns, e.g. country_code
-//     // 'country_code'
-// ]

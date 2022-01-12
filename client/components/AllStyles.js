@@ -1,13 +1,19 @@
 import React, { useEffect } from 'react'
-import {connect} from 'react-redux'
+import {connect, useSelector, useDispatch} from 'react-redux'
 import { fetchStyles } from '../store/styles'
 
 const AllStyles = (props) => {
+    const styles = useSelector((state) => {
+        return state.styles;
+    }) || []
+
+    const dispatch = useDispatch()
+
     useEffect(()=>{
-        props.fetchStyles()
+        dispatch(fetchStyles())
     }, [])
     
-    const styles = props.styles || []
+    
 
     return (
         <div>
@@ -24,16 +30,4 @@ const AllStyles = (props) => {
     )
 }
 
-const mapToState = (state) => {
-    return {
-        styles: state.styles
-    }
-}
-
-const mapToDispatch = (dispatch) => {
-    return {
-        fetchStyles: () => dispatch(fetchStyles())
-    }
-}
-
-export default connect(mapToState,mapToDispatch)(AllStyles)
+export default AllStyles
