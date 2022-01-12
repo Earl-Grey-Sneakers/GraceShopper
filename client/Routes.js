@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
 import AllStyles from './components/AllStyles';
 import { Login, Signup } from './components/AuthForm';
-import { SingleStyle } from './components/SingleItemPage';
+import SingleStyle from './components/SingleStyle';
 import Home from './components/Home';
 import {me} from './store'
 
@@ -30,12 +30,13 @@ class Routes extends Component {
             <Route exact path='/' exact component={ Login } />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route exact path="/tba" component={SingleStyle} />
+           
           </Switch>
         )
         }
         <Switch>
-        <Route path="/styles" component={AllStyles} />
+        <Route path="/styles" component={AllStyles} /> 
+        <Route path="/styles/:id" component={SingleStyle} />
         </Switch>
       </div>
     )

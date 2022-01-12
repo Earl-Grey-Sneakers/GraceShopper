@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react'
 import {connect} from 'react-redux'
 import { fetchStyles } from '../store/styles'
+import { Link } from "react-router-dom"
 
 const AllStyles = (props) => {
+    console.log(props)
     useEffect(()=>{
         props.fetchStyles()
     }, [])
     
     const styles = props.styles || []
+    
 
     return (
         <div>
