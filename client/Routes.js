@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
+import Cart from './components/Cart';
 import AllStyles from './components/AllStyles';
 import { Login, Signup } from './components/AuthForm';
 import SingleStyle from './components/SingleStyle';
@@ -34,8 +35,8 @@ class Routes extends Component {
           </Switch>
         )}
         <Switch>
-          <Route exact path="/styles" component={AllStyles} />
-          <Route path="/styles/:name" component={SingleStyle} />
+          <Route path="/styles" component={AllStyles} />
+          <Route path="/cart" component={Cart} />
         </Switch>
       </div>
     );

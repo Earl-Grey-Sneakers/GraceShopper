@@ -1,34 +1,35 @@
-import React, { useEffect } from 'react'
-import {connect, useSelector, useDispatch} from 'react-redux'
-import { fetchStyles } from '../store/styles'
-import { Link } from "react-router-dom"
+import React, { useEffect } from 'react';
+import { connect, useSelector, useDispatch } from 'react-redux';
+import { fetchStyles } from '../store/styles';
 
 const AllStyles = (props) => {
-    const styles = useSelector((state) => {
-        return state.styles;
-    }) || []
+  const styles =
+    useSelector((state) => {
+      return state.styles;
+    }) || [];
 
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-    useEffect(()=>{
-        dispatch(fetchStyles())
-    }, [])
-    
-    
+  useEffect(() => {
+    dispatch(fetchStyles());
+  }, []);
 
-    return (
-        <div>
-            <div className='all-styles-container'>
-                {styles.map((style,idx) => (
-                    <div className='all-styles-single-style' key={idx}>
-                        <img src={style.imageUrl} className='shoe-img'/>
-                        <Link to={`/styles/${style.shoeName}`}><h3>{style.shoeName}</h3></Link>
-                        <h5>{'$'}{style.price}</h5>
-                    </div>
-                ))}
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className="divBelowNavbar">
+      <div className="all-styles-container">
+        {styles.map((style, idx) => (
+          <div className="all-styles-single-style" key={idx}>
+            <img src={style.imageUrl} className="shoe-img" />
+            <h3>{style.shoeName}</h3>
+            <h5>
+              {'$'}
+              {style.price}
+            </h5>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
-export default AllStyles
+export default AllStyles;
