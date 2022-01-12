@@ -1,47 +1,83 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {logout} from '../store'
+import React from 'react';
+import { connect, useSelector } from 'react-redux';
 
-const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>FS-App-Template</h1>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
-    </nav>
-    <hr />
-  </div>
-)
+const NavBar = () => {
+  const { username } = useSelector((state) => {
+    return state.auth;
+  });
+  return (
+    // <nav class="autohide navbar navbar-expand-lg navbar-dark bg-primary">
+    //   <div class="container-fluid">
+    //     <a class="navbar-brand" href="#">
+    //       Brand
+    //     </a>
+    //     <button
+    //       class="navbar-toggler"
+    //       type="button"
+    //       data-bs-toggle="collapse"
+    //       data-bs-target="#main_nav"
+    //     >
+    //       <span class="navbar-toggler-icon"></span>
+    //     </button>
+    //     <div class="collapse navbar-collapse" id="main_nav">
+    //       <ul class="navbar-nav ms-auto">
+    //         <li class="nav-item">
+    //           <a class="nav-link" href="#">
+    //             Menu item
+    //           </a>
+    //         </li>
+    //         <li class="nav-item">
+    //           <a class="nav-link" href="#">
+    //             Menu item
+    //           </a>
+    //         </li>
+    //         <li class="nav-item">
+    //           <a class="nav-link" href="#">
+    //             Menu item
+    //           </a>
+    //         </li>
+    //       </ul>
+    //     </div>
+    //   </div>
+    //   <script type="text/javascript">
+    //     {document.addEventListener('DOMContentLoaded', function () {
+    //       el_autohide = document.querySelector('.autohide');
+    //       // add padding-top to bady (if necessary)
+    //       navbar_height = document.querySelector('.navbar').offsetHeight;
+    //       document.body.style.paddingTop = navbar_height + 'px';
+    //       if (el_autohide) {
+    //         var last_scroll_top = 0;
+    //         window.addEventListener('scroll', function () {
+    //           let scroll_top = window.scrollY;
+    //           if (scroll_top < last_scroll_top) {
+    //             el_autohide.classList.remove('scrolled-down');
+    //             el_autohide.classList.add('scrolled-up');
+    //           } else {
+    //             el_autohide.classList.remove('scrolled-up');
+    //             el_autohide.classList.add('scrolled-down');
+    //           }
+    //           last_scroll_top = scroll_top;
+    //         });
+    //         // window.addEventListener
+    //       }
+    //       // if
+    //     })}
+    //   </script>
+    // </nav>
 
-/**
- * CONTAINER
- */
-const mapState = state => {
-  return {
-    isLoggedIn: !!state.auth.id
-  }
-}
+    <header className="">
+      <h2 className="logo">EGSH</h2>
+      <ul>
+        <li>{username ? <div>Welcome, {username}</div> : <div>Welcome, Guest</div>}</li>
+      </ul>
+      <script type="text/javascript">
+        {window.addEventListener('scroll', function () {
+          var header = this.document.querySelector('header');
+          header.classList.toggle('sticky', window.scrollY > 0);
+        })}
+      </script>
+    </header>
+  );
+};
 
-const mapDispatch = dispatch => {
-  return {
-    handleClick() {
-      dispatch(logout())
-    }
-  }
-}
-
-export default connect(mapState, mapDispatch)(Navbar)
+export default NavBar;

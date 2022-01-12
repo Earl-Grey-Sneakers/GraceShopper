@@ -1,11 +1,19 @@
-import React, { Component, useEffect } from "react";
-import {connect} from "react-redux"
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { _fetchSingleStyle } from "../store/singleStyle";
 const SingleStyle = (props) => {
     console.log(props)
+    const name = props.match.params.name
+    console.log(name)
+    const singleStyle = useSelector((state) => {
+        console.log(state)
+        return state.singleStyle
+    }) || []
+    const dispatch = useDispatch()
+
     useEffect(() => {
-        props.fetchSingleStyle()
+       dispatch(_fetchSingleStyle(name))
     }, [])
     return (
         <div className ="single-style-container">
@@ -15,16 +23,4 @@ const SingleStyle = (props) => {
     )
 }
 
-const mapState = (state) => {
-    console.log("The state", state)
-    return {
-        singleStyle: state.singleStyle
-    }
-}
-
-const mapDispatch = (dispatch) => {
-    return {
-        fetchSingleStyle: (id) =>(dispatch(_fetchSingleStyle(id)))
-    }
-}
-export default connect(mapState, mapDispatch)(SingleStyle)
+export default SingleStyle

@@ -1,14 +1,19 @@
 import React, { useEffect } from 'react'
-import {connect} from 'react-redux'
+import {connect, useSelector, useDispatch} from 'react-redux'
 import { fetchStyles } from '../store/styles'
 import { Link } from "react-router-dom"
 
 const AllStyles = (props) => {
+    const styles = useSelector((state) => {
+        return state.styles;
+    }) || []
+
+    const dispatch = useDispatch()
+
     useEffect(()=>{
-        props.fetchStyles()
+        dispatch(fetchStyles())
     }, [])
     
-    const styles = props.styles || []
     
 
     return (
@@ -17,7 +22,7 @@ const AllStyles = (props) => {
                 {styles.map((style,idx) => (
                     <div className='all-styles-single-style' key={idx}>
                         <img src={style.imageUrl} className='shoe-img'/>
-                        <h3>{style.shoeName}</h3>
+                        <Link to={`/styles/${style.shoeName}`}><h3>{style.shoeName}</h3></Link>
                         <h5>{'$'}{style.price}</h5>
                     </div>
                 ))}
@@ -26,16 +31,4 @@ const AllStyles = (props) => {
     )
 }
 
-const mapToState = (state) => {
-    return {
-        styles: state.styles
-    }
-}
-
-const mapToDispatch = (dispatch) => {
-    return {
-        fetchStyles: () => dispatch(fetchStyles())
-    }
-}
-
-export default connect(mapToState,mapToDispatch)(AllStyles)
+export default AllStyles
