@@ -26,7 +26,15 @@ const Cart = () => {
             <h2>My Cart</h2>
             <div className='cart-container'>
                 {/* {cart.id ? for(item in cart){ } : <h5>Your cart is empty.</h5>} */}
-                {itemsMap.map(item => (item)
+                {itemsMap.map((item,idx) => (
+                    <div key={idx}>
+                    {item}
+                    <button>Remove item</button>
+                    <button>+</button>
+                    <span>Qty: 1</span>
+                    <button>-</button>
+                    </div>
+                    )
                 )}
             </div>
         </div>
