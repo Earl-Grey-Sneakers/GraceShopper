@@ -1,8 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 
-const NavBar = (props) => {
-  const { username } = props;
+const NavBar = () => {
+  const { username } = useSelector((state) => {
+    return state.auth;
+  });
   return (
     // <nav class="autohide navbar navbar-expand-lg navbar-dark bg-primary">
     //   <div class="container-fluid">
@@ -62,30 +64,20 @@ const NavBar = (props) => {
     //     })}
     //   </script>
     // </nav>
-    <div>
-      <header className="">
-        <h2 className="logo">EGSH</h2>
-        <ul>
-          <li>Link</li>
-          <li>Link</li>
-          <li>Link</li>
-          <li>Link</li>
-        </ul>
-        <script type="text/javascript">
-          {window.addEventListener('scroll', function () {
-            var header = this.document.querySelector('header');
-            header.classList.toggle('sticky', window.scrollY > 0);
-          })}
-        </script>
-      </header>
-    </div>
+
+    <header className="">
+      <h2 className="logo">EGSH</h2>
+      <ul>
+        <li>{username ? <div>Welcome, {username}</div> : <div>Welcome, Guest</div>}</li>
+      </ul>
+      <script type="text/javascript">
+        {window.addEventListener('scroll', function () {
+          var header = this.document.querySelector('header');
+          header.classList.toggle('sticky', window.scrollY > 0);
+        })}
+      </script>
+    </header>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    username: state.auth.username,
-  };
-};
-
-export default connect(mapStateToProps)(NavBar);
+export default NavBar;
