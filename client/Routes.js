@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
+import Cart from './components/Cart';
 import AllStyles from './components/AllStyles';
 import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
@@ -33,6 +34,7 @@ class Routes extends Component {
         )}
         <Switch>
           <Route path="/styles" component={AllStyles} />
+          <Route path="/cart" component={Cart} />
         </Switch>
       </div>
     );
