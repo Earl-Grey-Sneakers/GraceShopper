@@ -239,3 +239,7 @@ footer {
   opacity: 0.4;
   font-weight: 200;
 }
+
+.divBelowNavbar {
+  padding-top: 100px;
+}
