@@ -1,22 +1,22 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { fetchSingleUser } from "../store/userAccount";
-import { bindActionCreators } from "redux";
+import userAccount, { fetchSingleUser } from "../store/userAccount";
 
 const UserAccount = () => {
-    const state = useSelector( (state) => state )
-    const dispatch = useDispatch()
-    console.log(state, 'state')
 
-    let data = useEffect(() => {
+    let { userAccount } = useSelector(state => state)
+    const dispatch = useDispatch()
+    useEffect(() => {
         dispatch(fetchSingleUser())
-    }, [])
-    
-    console.log(data, 'data')
+    }, [] )
+
+    const { id, username, email } = userAccount[0] || {}
 
     return (
-        <div className="divBelowNavbar">
-            <p>Welcome to your Account Page, </p>
+        <div>
+            <p>Welcome to your Account Page, {username} </p>
+            <p>email: {email}</p>
+            <p>Account Number: {id}</p>
 
         </div>
         
@@ -24,7 +24,7 @@ const UserAccount = () => {
 }
 
 
-
+// 
 
 
 //if logged in (gateKeeping needed to make) and is not admin then obtain userdata with matching userID
