@@ -27,7 +27,7 @@ const AllStyles = () => {
         {styles.map((style, idx) => (
           <div className="all-styles-single-style" key={idx}>
             <img src={style.imageUrl} className="shoe-img" />
-            <Link to={`/style/${style.shoeName}`}>
+            <Link to={`/styles/${style.shoeName}`}>
               <h3>{style.shoeName}</h3>
             </Link>
 
