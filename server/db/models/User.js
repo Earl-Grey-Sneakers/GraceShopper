@@ -5,7 +5,10 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
 
 const SALT_ROUNDS = 5;
-const JWT="shhh"
+
+//TODO: HIDE SECRET KEYS IN EITHER A.env file OR secret.js file 
+// if nodeenv is not production require key from file
+const JWT="shhh" 
 
 const User = db.define('user', {
   username: {
@@ -38,6 +41,7 @@ User.prototype.correctPassword = function(candidatePwd) {
   return bcrypt.compare(candidatePwd, this.password);
 }
 
+//TODO: UPDATE PAYLOAD TO INCLUDE USER INFORMATION
 User.prototype.generateToken = function() {
   return jwt.sign({id: this.id}, JWT)
 }
