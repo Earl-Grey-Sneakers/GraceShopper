@@ -70,7 +70,7 @@ const NavBar = () => {
       <ul>
         <li>{username ? <div>Welcome, {username}</div> : <div>Welcome, Guest</div>}</li>
         <li>
-          <i class="gg-shopping-bag"></i>
+          <i className="gg-shopping-bag"></i>
         </li>
       </ul>
       <script type="text/javascript">

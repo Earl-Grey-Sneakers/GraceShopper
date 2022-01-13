@@ -1,4 +1,4 @@
-import Axios from 'axios';
+import axios from 'axios';
 
 const ADD_TO_CART = 'ADD_TO_CART';
 
@@ -9,12 +9,12 @@ export const addedToCart = (item) => {
   };
 };
 
-export const addToCart = (itemId) => {
+export const addToCart = (itemId, userId) => {
   return async (dispatch) => {
     try {
-      const { data: item } = await Axios.put(`/api/cart`);
-      console.log('added');
-      dispatch(addedToCart(item));
+      const { data } = await axios.put(`/api/carts`, { itemId, userId });
+
+      dispatch(addedToCart(data));
     } catch (error) {
       console.log(error);
     }
@@ -24,7 +24,7 @@ export const addToCart = (itemId) => {
 export default function cartReducer(state = [], action) {
   switch (action.type) {
     case ADD_TO_CART:
-      return [...state, action.student];
+      return [...state, action.item];
     default:
       return state;
   }
