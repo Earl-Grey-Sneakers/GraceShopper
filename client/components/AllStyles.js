@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchStyles } from '../store/styles';
-import { addToCart } from '../store/cart';
+
 import { Link } from 'react-router-dom';
 
 const AllStyles = () => {
@@ -15,11 +15,6 @@ const AllStyles = () => {
   useEffect(() => {
     dispatch(fetchStyles());
   }, []);
-
-  const cartClicked = (id) => {
-    console.log('added');
-    addToCart(id);
-  };
 
   return (
     <div className="divBelowNavbar">
