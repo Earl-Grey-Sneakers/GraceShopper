@@ -30,6 +30,7 @@ const AllStyles = () => {
             <Link to={`/style/${style.shoeName}`}>
               <h3>{style.shoeName}</h3>
             </Link>
+
             <h5>
               {'$'}
               {style.price}
