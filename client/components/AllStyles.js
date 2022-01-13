@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchStyles } from '../store/styles';
+import { addToCart } from '../store/cart';
 
 const AllStyles = () => {
   const styles =
@@ -14,6 +15,11 @@ const AllStyles = () => {
     dispatch(fetchStyles());
   }, []);
 
+  const cartClicked = (id) => {
+    console.log('added');
+    addToCart(id);
+  };
+
   return (
     <div className="divBelowNavbar">
       <div className="all-styles-container">
@@ -25,7 +31,7 @@ const AllStyles = () => {
               {'$'}
               {style.price}
             </h5>
-            <button>Add To Cart</button>
+            <button onClick={() => cartClicked(style.id)}>Add To Cart</button>
           </div>
         ))}
       </div>

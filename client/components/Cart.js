@@ -23,6 +23,10 @@ const Cart = () => {
     itemsMap.push(
       <div key={cart[item]['id']}>
         <h3>{cart[item]['shoeName']}</h3>
+        <h5>
+          {'$'}
+          {cart[item]['price']}
+        </h5>
         <img className="shoe-img" src={cart[item]['imageUrl']} />
       </div>
     );
@@ -37,9 +41,9 @@ const Cart = () => {
           <div key={idx}>
             {item}
             <button>Remove item</button>
-            <button>+</button>
-            <span>Qty: 1</span>
             <button>-</button>
+            <span>Qty: 1</span>
+            <button>+</button>
           </div>
         ))}
       </div>
