@@ -4,6 +4,7 @@ import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Cart from './components/Cart';
 import AllStyles from './components/AllStyles';
 import { Login, Signup } from './components/AuthForm';
+import SingleStyle from './components/SingleStyle';
 import Home from './components/Home';
 import { me } from './store';
 
@@ -30,10 +31,12 @@ class Routes extends Component {
             <Route path="/" exact component={Login} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+           
           </Switch>
         )}
         <Switch>
-          <Route path="/styles" component={AllStyles} />
+          <Route exact path="/styles" component={AllStyles} />
+          <Route path="/styles/:name" component={SingleStyle} />
           <Route path="/cart" component={Cart} />
         </Switch>
       </div>

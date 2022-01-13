@@ -84,6 +84,10 @@ header ul li:hover i {
   max-width: 200;
 }
 
+.single-shoe img {
+  max-height: 400px;
+  max-width: 500px;
+}
 /* .scrolled-down {
   transform: translateY(-100%);
   transition: all 0.3s ease-in-out;
