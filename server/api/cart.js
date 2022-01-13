@@ -1,4 +1,5 @@
 const router = require('express').Router();
+
 const {
   models: { Order },
 } = require('../db');
@@ -31,6 +32,21 @@ router.put('/', async (req, res, next) => {
   }
 });
 
+router.put('/:userId', async (req, res, next) => {
+  try {
+    const order = await Order.findOne({
+      where: {
+        userId: req.params.userId,
+        isProcessed: false,
+      },
+    });
+    const processedOrder = await order.update(req.body);
+    res.send(processedOrder);
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get('/:userId', async (req, res, next) => {
   try {
     const cart = await Order.findOne({
@@ -39,16 +55,37 @@ router.get('/:userId', async (req, res, next) => {
         isProcessed: false,
       },
       include: {
-        model: Style
-      }
-    })
-    if (!cart){
-      res.status(200)
+        model: Style,
+      },
+    });
+    if (!cart) {
+      res.status(200);
     }
-    res.send(cart)
+    res.send(cart);
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
+
+router.delete('/:userId/:itemId', async (req, res, next) => {
+  try {
+    const cart = await Order.findOne({
+      where: {
+        userId: req.params.userId,
+        isProcessed: false,
+      },
+      include: {
+        model: Style,
+        where: {
+          id: req.params.itemId,
+        },
+      },
+    });
+    const removedItem = await cart.removeStyle(req.params.itemId);
+    res.json(removedItem);
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = router;

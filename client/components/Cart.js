@@ -1,7 +1,7 @@
 import React from 'react';
-import { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { fetchCart } from '../store/cart'
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchCart, removeCartItem } from '../store/cart';
 
 // const cart = {
 //   1: {
@@ -21,20 +21,20 @@ import { fetchCart } from '../store/cart'
 //};
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState([])
+  const [cartItems, setCartItems] = useState([]);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const { cart, auth } = useSelector((state) => {
-    return state
+    return state;
   });
 
   const userId = auth.id || Infinity;
 
   useEffect(() => {
-    dispatch(fetchCart(userId))
-    setCartItems(cart)
-  },[cart.length])
+    dispatch(fetchCart(userId));
+    setCartItems(cart);
+  }, [cart.length]);
 
   // const itemsMap = [];
   // for (let item in cart) {
@@ -59,15 +59,19 @@ const Cart = () => {
           <div key={item.id}>
             <div>
               <h3>{item['shoeName']}</h3>
-              <h5>{'$'}{item['price']}</h5>
+              <h5>
+                {'$'}
+                {item['price']}
+              </h5>
               <img className="shoe-img" src={item['imageUrl']} />
             </div>
-            <button>Remove item</button>
+            <button onClick={() => dispatch(removeCartItem(item.id, userId))}>Remove item</button>
             <button>-</button>
             <span>Qty: 1</span>
             <button>+</button>
           </div>
         ))}
+        <button>Checkout</button>
       </div>
     </div>
   );
