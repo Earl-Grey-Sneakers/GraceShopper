@@ -7,6 +7,7 @@ import { Login, Signup } from './components/AuthForm';
 import SingleStyle from './components/SingleStyle';
 import Home from './components/Home';
 import { me } from './store';
+import UserAccount from './components/UserAccount';
 
 /**
  * COMPONENT
@@ -35,6 +36,7 @@ class Routes extends Component {
           </Switch>
         )}
         <Switch>
+          <Route exact path="/account" component={UserAccount} />
           <Route exact path="/styles" component={AllStyles} />
           <Route path="/styles/:name" component={SingleStyle} />
           <Route path="/cart" component={Cart} />
