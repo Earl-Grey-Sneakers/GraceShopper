@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { _fetchSingleStyle } from "../store/singleStyle";
+
 const SingleStyle = (props) => {
-    console.log(props)
     const name = props.match.params.name
-    console.log(name)
+
     const singleStyle = useSelector((state) => {
         return state.singleStyleReducer
     }) || []
