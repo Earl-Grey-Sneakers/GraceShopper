@@ -30,7 +30,6 @@ const AllStyles = () => {
               {'$'}
               {style.price}
             </h5>
-            <button onClick={() => cartClicked(style.id)}>Add To Cart</button>
           </div>
         ))}
       </div>
