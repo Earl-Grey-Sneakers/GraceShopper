@@ -5,11 +5,13 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import auth from './auth'
 import styles from './styles'
 import singleStyleReducer from './singleStyle'
+import userAccount from './userAccount'
 
 const reducer = combineReducers({
    auth,
    styles,
-   singleStyleReducer
+   singleStyleReducer,
+   userAccount,
   })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
