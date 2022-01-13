@@ -33,9 +33,8 @@ const SingleStyle = (props) => {
         <h3>{quantity}</h3>
 
         <h3>Size:</h3>
-
         {singleStyle.map((element) => (
-          <div>
+          <div key={element.id}>
             <p onClick={() => setId(`${element.id}`)}>{element.size}</p>
           </div>
         ))}

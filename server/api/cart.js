@@ -31,4 +31,24 @@ router.put('/', async (req, res, next) => {
   }
 });
 
+router.get('/:userId', async (req, res, next) => {
+  try {
+    const cart = await Order.findOne({
+      where: {
+        userId: req.params.userId,
+        isProcessed: false,
+      },
+      include: {
+        model: Style
+      }
+    })
+    if (!cart){
+      res.status(200)
+    }
+    res.send(cart)
+  } catch (error) {
+    next(error)
+  }
+})
+
 module.exports = router;

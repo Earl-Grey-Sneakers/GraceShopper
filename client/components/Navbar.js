@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
   const { username } = useSelector((state) => {
@@ -66,11 +67,11 @@ const NavBar = () => {
     // </nav>
 
     <header className="">
-      <h2 className="logo">EGSH</h2>
+      <Link to='/styles' ><h2 className="logo">EGSH</h2></Link>
       <ul>
         <li>{username ? <div>Welcome, {username}</div> : <div>Welcome, Guest</div>}</li>
         <li>
-          <i className="gg-shopping-bag"></i>
+          <Link to='/cart' ><i className="gg-shopping-bag"></i></Link>
         </li>
       </ul>
       <script type="text/javascript">
