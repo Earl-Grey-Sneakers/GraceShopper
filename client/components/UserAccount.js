@@ -1,23 +1,24 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import userAccount, { fetchSingleUser } from "../store/userAccount";
+import userAccount, { fetchAllUsers } from "../store/userAccount";
 
 const UserAccount = () => {
+
 
     let { userAccount } = useSelector(state => state)
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(fetchSingleUser())
+        dispatch(fetchAllUsers())
     }, [] )
 
     const { id, username, email } = userAccount[0] || {}
 
     return (
-        <div>
-            <p>Welcome to your Account Page, {username} </p>
-            <p>email: {email}</p>
-            <p>Account Number: {id}</p>
-
+        <div className="divBelowNavbar">
+            <h1>Account Overview</h1>
+            <h3>Welcome to your Account Page, {username} </h3>
+            <h3>Email Address: {email}</h3>
+            <h4>Account Number: {id}</h4>
         </div>
         
     )
