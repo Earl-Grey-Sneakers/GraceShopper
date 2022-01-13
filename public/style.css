@@ -75,6 +75,10 @@ header.sticky ul li {
   color: #fff;
 }
 
+header ul li:hover i {
+  color: gray;
+}
+
 .shoe-img {
   max-height: 150px;
   max-width: 200;
@@ -164,13 +168,14 @@ header.sticky ul li {
 }
 
 footer {
-  position: absolute;
-  top: 900px;
+  position: relative;
+  bottom: 0;
+  margin-top: 30px;
   background-color: #111;
   color: #fff;
   height: auto;
   width: 100vw;
-  padding-top: 40px;
+  padding-top: 15px;
 }
 
 .footer-content {
