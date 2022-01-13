@@ -15,7 +15,6 @@ router.get('/', async (req, res, next) => {
     }
 })
 router.get('/:name', async (req, res, next) => {
-    console.log(req.params)
     try {
         const style = await Style.findAll({
             where: {

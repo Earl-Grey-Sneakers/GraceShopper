@@ -13,7 +13,6 @@ export const _fetchSingleStyle = (name) => {
     return async (dispatch) => {
         try {
             const {data: singleStyle} = await axios.get(`/api/styles/${name}`)
-            console.log(singleStyle)
             dispatch(setSingleStyle(singleStyle))
         } catch (error) {
             console.error(error)
