@@ -25,6 +25,7 @@ export const fetchSingleUser = () => {
     }
 }
 
+//REDUCER 
 export default (state = [], action) => {
     switch(action.type) {
         case GET_SINGLE_USER:
@@ -33,6 +34,3 @@ export default (state = [], action) => {
             return state
     }
 }
-
-
-//REDUCER
