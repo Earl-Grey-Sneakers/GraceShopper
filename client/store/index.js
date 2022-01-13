@@ -13,7 +13,7 @@ const reducer = combineReducers({
   styles,
   singleStyleReducer,
   cart,
-  userA
+  userAccount
 });
 
 const middleware = composeWithDevTools(
