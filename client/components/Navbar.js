@@ -69,6 +69,9 @@ const NavBar = () => {
       <h2 className="logo">EGSH</h2>
       <ul>
         <li>{username ? <div>Welcome, {username}</div> : <div>Welcome, Guest</div>}</li>
+        <li>
+          <i class="gg-shopping-bag"></i>
+        </li>
       </ul>
       <script type="text/javascript">
         {window.addEventListener('scroll', function () {
