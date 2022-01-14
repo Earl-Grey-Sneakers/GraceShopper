@@ -38,10 +38,11 @@ router.put('/', async (req, res, next) => {
     if (!exists) {
       await cart.addStyle(style, { through: { quantity: 1 } });
     }
-    // else {
-    //   style.orderItems.quantity+=1
-    //   await style.orderItems.save()
-    // }
+    else {
+      // style.orderItems.quantity+=1
+      // await style.orderItems.save()
+      await cart.increment({'orderTotal':220}, {where : {id:cart.id}})
+    }
     res.send(cart);
   } catch (error) {
     next(error);

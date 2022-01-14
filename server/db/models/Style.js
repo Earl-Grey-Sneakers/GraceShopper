@@ -26,7 +26,6 @@ const Style = db.define('style', {
 });
 
 Style.afterCreate(async (style) => {
-  console.log(Object.getPrototypeOf(style));
   if (style.id == 5) {
     await style.addOrder(1, { through: { quantity: 1 } });
     await style.addOrder(2, { through: { quantity: 1 } });

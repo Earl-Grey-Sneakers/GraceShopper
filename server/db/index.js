@@ -34,7 +34,11 @@ const orderItems = db.define('orderItems', {
     }
   },
   totalPrice: {
-    type: Sequelize.FLOAT
+    type: Sequelize.FLOAT,
+    defaultValue: 0,
+    validate: {
+      min: 0
+    }
   }
 });
 Style.belongsToMany(Order, { through: 'orderItems' });
