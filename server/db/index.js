@@ -45,10 +45,6 @@ Style.belongsToMany(Order, { through: 'orderItems' });
 Order.belongsToMany(Style, { through: 'orderItems' });
 Order.hasOne(OrderPayment);
 
-//will need to add more columns in through table
-//but only once an order is made.
-//Guide: https://stackoverflow.com/questions/48957191/how-do-i-orm-additional-columns-on-a-join-table-in-sequelize
-
 module.exports = {
   db,
   models: {
@@ -56,5 +52,6 @@ module.exports = {
     Style,
     OrderPayment,
     Order,
+    orderItems,
   },
 };

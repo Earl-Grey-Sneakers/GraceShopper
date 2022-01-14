@@ -273,3 +273,11 @@ footer {
 .logout:hover {
   cursor: pointer;
 }
+
+.cart-container {
+  margin-left: 25px;
+}
+
+.single-style-container {
+  margin-left: 25px;
+}
