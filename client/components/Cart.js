@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchCart, removeCartItem } from '../store/cart';
+
+import { fetchCart, removeCartItem, checkout } from '../store/cart';
 
 // const cart = {
 //   1: {
@@ -25,16 +26,16 @@ const Cart = () => {
 
   const dispatch = useDispatch();
 
-  const { cart, auth } = useSelector((state) => {
+  const { order, auth } = useSelector((state) => {
     return state;
   });
-
+  console.log('cart inside component', order);
   const userId = auth.id || Infinity;
 
   useEffect(() => {
     dispatch(fetchCart(userId));
-    setCartItems(cart);
-  }, [cart.length]);
+    setCartItems(order);
+  }, [order.length]);
 
   // const itemsMap = [];
   // for (let item in cart) {
@@ -71,7 +72,9 @@ const Cart = () => {
             <button>+</button>
           </div>
         ))}
-        <button>Checkout</button>
+        <button onClick={() => dispatch(checkout({ ...order, isProcessed: true }, userId))}>
+          Checkout
+        </button>
       </div>
     </div>
   );

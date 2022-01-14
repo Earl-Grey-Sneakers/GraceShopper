@@ -3,7 +3,6 @@ import axios from 'axios';
 const ADD_TO_CART = 'ADD_TO_CART';
 const GOT_CART = 'GOT_CART';
 const CLEAR_CART = 'CLEAR_CART';
-const REMOVE_ITEM = 'REMOVE_ITEM';
 const CHECKOUT = 'CHECKOUT';
 
 const addedToCart = (item) => {
@@ -13,23 +12,16 @@ const addedToCart = (item) => {
   };
 };
 
-const fetchedCart = (cart) => {
+const fetchedCart = (order) => {
   return {
     type: GOT_CART,
-    cart,
+    order,
   };
 };
 
 export const clearCart = () => {
   return {
     type: CLEAR_CART,
-  };
-};
-
-export const removedCartItem = (itemId) => {
-  return {
-    type: REMOVE_ITEM,
-    itemId,
   };
 };
 
@@ -67,8 +59,9 @@ export const fetchCart = (userId) => {
 export const removeCartItem = (itemId, userId) => {
   return async (dispatch) => {
     try {
-      const { data: item } = await axios.delete(`/api/cart/${userId}/${itemId}`);
-      dispatch(removedCartItem(item));
+      await axios.delete(`/api/cart/${userId}/${itemId}`);
+
+      dispatch(fetchCart(userId));
     } catch (error) {
       console.log(error);
     }
@@ -78,6 +71,7 @@ export const removeCartItem = (itemId, userId) => {
 export const checkout = (order, userId) => {
   return async (dispatch) => {
     try {
+      console.log(order);
       const { data: processedOrder } = await axios.put(`/api/${userId}`, order);
       dispatch(checkedOut(processedOrder));
     } catch (error) {
@@ -91,11 +85,9 @@ export default function cartReducer(state = [], action) {
     case ADD_TO_CART:
       return [...state, action.item];
     case GOT_CART:
-      return action.cart;
+      return action.order;
     case CLEAR_CART:
       return [];
-    case REMOVE_ITEM:
-      return state.filter((item) => item.id !== action.itemId);
     case CHECKOUT:
       return state.map((order) =>
         order.id === action.processedOrder.id ? action.processedOrder : order
