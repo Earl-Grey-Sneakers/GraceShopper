@@ -51,7 +51,8 @@ router.put('/', async (req, res, next) => {
 router.put('/:cartId', async (req, res, next) => {
   try {
     const order = await Order.findByPk(req.params.cartId);
-    const processedOrder = await order.update({ isProcessed: true });
+    await order.update({ isProcessed: true });
+    await order.update({ purchaseDate: new Date() });
     res.sendStatus(200);
   } catch (error) {
     next(error);
