@@ -4,7 +4,7 @@ const {
   models: { Order },
 } = require('../db');
 const {
-  models: { Style },
+  models: { Style, orderItems },
 } = require('../db');
 
 router.put('/', async (req, res, next) => {
@@ -14,34 +14,33 @@ router.put('/', async (req, res, next) => {
         userId: req.body.userId,
         isProcessed: false,
       },
+      include: {
+        model: Style,
+      }
     });
     if (created) {
       cart = await Order.findOne({
         where: {
           userId: req.body.userId,
         },
+        include: {
+          model: Style,
+        }
       });
     }
 
     const style = await Style.findByPk(req.body.itemId);
     const exists = await cart.hasStyle(style);
-    // cart.hasStyle( style )
-    // .then( (exists) => {
-    //    if ( !exists ) {
-    //         return cart.addStyle( style, { quantity : 1 } )
-    //    } else {
-    //         style.orderItems.quantity += 1;
-    //         return style.orderItems.save();
-    //    }
-    // } )
 
     if (!exists) {
-      await cart.addStyle(style, { through: { quantity: 1 } });
+      await cart.addStyle(style, { through: { quantity: 1, totalPrice:style.price } });
+      await cart.increment({'orderTotal':style.price}, {where : {id:cart.id}})
     }
-    // else {
-    //   style.orderItems.quantity+=1
-    //   await style.orderItems.save()
-    // }
+    else {
+      await orderItems.increment('quantity', {where: {orderId:cart.id,styleId:req.body.itemId}})
+      await orderItems.increment({'totalPrice':style.price}, {where: {orderId:cart.id,styleId:req.body.itemId}})
+      await cart.increment({'orderTotal':style.price}, {where : {id:cart.id}})
+    }
     res.send(cart);
   } catch (error) {
     next(error);
