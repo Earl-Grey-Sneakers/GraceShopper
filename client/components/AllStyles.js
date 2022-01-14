@@ -18,9 +18,9 @@ const AllStyles = () => {
 
   return (
     <div className="divBelowNavbar">
-      <div className="all-styles-container">
+      <div className="wrapper">
         {styles.map((style, idx) => (
-          <div className="all-styles-single-style" key={idx}>
+          <div className="card" key={idx}>
             <img src={style.imageUrl} className="shoe-img" />
             <Link to={`/styles/${style.shoeName}`}>
               <h3>{style.shoeName}</h3>
