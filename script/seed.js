@@ -103,14 +103,56 @@ const orders = [{
 },
 ]
 
+const usersDummy = [{
+  username: 'Gulam',
+  password: '123',
+  isAdmin: true,
+  email: 'gulam@fsa.com',
+},
+{
+  username: 'Danny',
+  password: '123',
+  isAdmin: true,
+  email: 'danny@fsa.com',
+},
+{
+  username: 'Smit',
+  password: '',
+  isAdmin: true,
+  email: 'smit@fsa.com',
+},
+{
+  username: 'Brendon',
+  password: '123',
+  isAdmin: true,
+  email: 'brendon@fsa.com',
+},
+{
+  username: 'cody',
+  password: '123',
+  isAdmin: false,
+  email: 'cody@fsa.com',
+},
+ {
+  username: 'murphy',
+  password: '123',
+  isAdmin: false,
+  email: 'murphy@fsa.com',
+}
+,]
+
 async function seed() {
   await db.sync({ force: true }) // clears db and matches models to tables
   console.log('db synced!')
 
-  const users = await Promise.all([
-    User.create({ username: 'cody', password: '123' }),
-    User.create({ username: 'murphy', password: '123' }),
-  ])
+  // const users = await Promise.all([
+  //   User.create({ username: 'cody', password: '123' }),
+  //   User.create({ username: 'murphy', password: '123' }),
+  // ])
+
+  await Promise.all(usersDummy.map(user => {
+    return User.create(user);
+  }));
 
   await Promise.all(orders.map(order => {
     return Order.create(order);
@@ -120,13 +162,14 @@ async function seed() {
     return Style.create(style);
   }));
 
-  console.log(`seeded ${users.length} users`)
+  console.log(`seeded ${usersDummy.length} users`)
   console.log(`seeded successfully`)
   return {
-    users: {
-      cody: users[0],
-      murphy: users[1]
-    }
+    // Not entire sure what this object is for
+    // users: {
+    //   cody: users[0],
+    //   murphy: users[1]
+    // }
   }
 }
 
