@@ -20,7 +20,6 @@ export const addToCart = (itemId, userId) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.put(`/api/cart`, { itemId, userId });
-      console.log(data)
       fetchCart(userId);
     } catch (error) {
       console.log(error);
