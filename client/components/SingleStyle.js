@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { _fetchSingleStyle } from '../store/singleStyle';
-import { addToCart } from '../store/cart';
+import { findOrMakeCart } from '../store/cart';
 
 const SingleStyle = (props) => {
   const name = props.match.params.name;
 
-  const [id, setId] = useState(Infinity);
+  const [itemId, setId] = useState(Infinity);
 
   const { singleStyleReducer, auth } = useSelector((state) => {
     return state;
@@ -16,7 +15,7 @@ const SingleStyle = (props) => {
   const userId = auth.id || Infinity;
   const singleStyle = singleStyleReducer || [];
   const dispatch = useDispatch();
-  const { brand, shoeName, imageUrl, quantity } = singleStyle[0] || [];
+  const { brand, shoeName, imageUrl } = singleStyle[0] || [];
 
   useEffect(() => {
     dispatch(_fetchSingleStyle(name));
@@ -40,7 +39,10 @@ const SingleStyle = (props) => {
           </div>
         ))}
         <span>
-          <button className="button-30" onClick={() => dispatch(addToCart(id, userId))}>
+          <button className="button-30" onClick={() => {
+            dispatch(findOrMakeCart(itemId, userId))
+            setId(Infinity)
+          }}>
             Add To Cart
           </button>
         </span>

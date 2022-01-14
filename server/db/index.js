@@ -12,17 +12,17 @@ const User = require('./models/User');
 Order.belongsTo(User);
 User.hasMany(Order);
 const orderItems = db.define('orderItems', {
-  styleId: {
-    type: Sequelize.INTEGER,
-    references: {
-      model: Style,
-      key: 'id'
-    }
-  },
   orderId: {
     type: Sequelize.INTEGER,
     references: {
       model: Order, // 'Actors' would also work
+      key: 'id'
+    }
+  },
+  styleId: {
+    type: Sequelize.INTEGER,
+    references: {
+      model: Style,
       key: 'id'
     }
   },

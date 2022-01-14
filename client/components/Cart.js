@@ -1,9 +1,8 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchCart } from '../store/cart';
 import { Link } from 'react-router-dom';
-import { removeCartItem, checkout } from '../store/cart';
+import { removeCartItem, checkout, fetchCart, updateQuantities } from '../store/cart';
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -24,6 +23,7 @@ const Cart = () => {
   return (
     <div className="divBelowNavbar">
       <h2>My Cart</h2>
+      <h3>Your Total: {'$'}{cart.orderTotal}</h3>
       <div className="wrapper">
         {cartItems.length != 0 ? (
           cartItems.map((item) => (
@@ -41,13 +41,13 @@ const Cart = () => {
               </div>
               <button
                 className="button-24"
-                onClick={() => dispatch(removeCartItem(item.id, userId))}
+                onClick={() => dispatch(removeCartItem(item.id, userId, cart.id))}
               >
                 Remove item
               </button>
-              <button>-</button>
-              <span>Qty: 1</span>
-              <button>+</button>
+              <button onClick={() => dispatch(updateQuantities(cart.id,item.id,userId,'dec'))}>-</button>
+              <span>Qty: {item.orderItems.quantity}</span>
+              <button onClick={() => dispatch(updateQuantities(cart.id,item.id,userId,'inc'))}>+</button>
             </div>
           ))
         ) : (
