@@ -23,7 +23,7 @@ const SingleStyle = (props) => {
   }, []);
 
   return (
-    <div className="single-style-container">
+    <div className="divBelowNavbar">
       <div className="style-description">
         <div className="single-shoe">
           <img src={imageUrl} />
