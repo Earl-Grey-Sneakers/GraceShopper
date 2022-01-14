@@ -1,15 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+
+html {
+  height: 100%;
+  width: 100%;
+}
+body {
+  min-height: 100%
+}
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  margin: 0;
 }
 
-body {
-  min-height: 200vh;
-}
 header {
   position: fixed;
   top: 0;
@@ -172,14 +176,19 @@ header ul li:hover i {
 }
 
 footer {
-  position: relative;
+  /* position: relative;
   bottom: 0;
   margin-top: 30px;
   background-color: #111;
   color: #fff;
   height: auto;
-  width: 100vw;
+  padding-top: 15px; */
+  background-color: #111;
+  color: #fff;
+  /* margin-bottom: 0px; */
   padding-top: 15px;
+  position: relative;
+  bottom: 1px;
 }
 
 .footer-content {

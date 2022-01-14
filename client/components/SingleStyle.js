@@ -30,7 +30,7 @@ const SingleStyle = (props) => {
         </div>
         <h1>{shoeName}</h1>
         <h2>{brand}</h2>
-        <h3>{quantity}</h3>
+        <h3>Quantity: {quantity}</h3>
 
         <h3>Size:</h3>
 
