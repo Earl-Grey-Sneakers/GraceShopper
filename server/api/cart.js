@@ -12,20 +12,36 @@ router.put('/', async (req, res, next) => {
       where: {
         userId: req.body.userId,
         isProcessed: false,
-      },
+      }
     });
     if (created) {
-      const cart = await Order.findOne({
+      cart = await Order.findOne({
         where: {
           userId: req.body.userId,
-        },
+        }
       });
     }
-
-    await cart.addStyles(req.body.itemId);
+    
     const style = await Style.findByPk(req.body.itemId);
+    const exists = await cart.hasStyle(style);
+    // cart.hasStyle( style )
+    // .then( (exists) => {
+    //    if ( !exists ) { 
+    //         return cart.addStyle( style, { quantity : 1 } ) 
+    //    } else {
+    //         style.orderItems.quantity += 1;
+    //         return style.orderItems.save();
+    //    }
+    // } )
 
-    res.send(style);
+    if (!exists){
+      await cart.addStyle(style, {through: {quantity: 1}});
+    }
+    // else {
+    //   style.orderItems.quantity+=1
+    //   await style.orderItems.save()
+    // }
+    res.send(cart);
   } catch (error) {
     next(error);
   }
