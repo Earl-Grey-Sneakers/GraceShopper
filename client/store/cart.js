@@ -6,7 +6,7 @@ const CLEAR_CART = 'CLEAR_CART';
 const fetchedCart = (cart) => {
   return {
     type: GOT_CART,
-    order,
+    cart,
   };
 };
 
@@ -16,18 +16,10 @@ export const clearCart = () => {
   };
 };
 
-export const checkedOut = (processedOrder) => {
-  return {
-    type: CHECKOUT,
-    processedOrder,
-  };
-};
-
 export const addToCart = (itemId, userId) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.put(`/api/cart`, { itemId, userId });
-      console.log(data);
+      await axios.put(`/api/cart`, { itemId, userId });
       fetchCart(userId);
     } catch (error) {
       console.log(error);
@@ -38,10 +30,8 @@ export const addToCart = (itemId, userId) => {
 export const fetchCart = (userId) => {
   return async (dispatch) => {
     try {
-      if (Number.isFinite(userId)) {
-        const { data } = await axios.get(`/api/cart/${userId}`);
-        dispatch(fetchedCart(data.styles));
-      }
+      const { data } = await axios.get(`/api/cart/${userId}`);
+      dispatch(fetchedCart(data));
     } catch (error) {
       console.log(error);
     }
@@ -60,28 +50,27 @@ export const removeCartItem = (itemId, userId) => {
   };
 };
 
-export const checkout = (order, userId) => {
+export const checkout = (cartId) => {
   return async (dispatch) => {
     try {
-      console.log(order);
-      const { data: processedOrder } = await axios.put(`/api/${userId}`, order);
-      dispatch(checkedOut(processedOrder));
+      await axios.put(`/api/cart/${cartId}`);
+      dispatch(clearCart());
     } catch (error) {
       console.log(error);
     }
   };
 };
 
-export default function cartReducer(state = [], action) {
+export default function cartReducer(state = {}, action) {
   switch (action.type) {
     case GOT_CART:
-      return action.order;
+      return action.cart;
     case CLEAR_CART:
-      return [];
-    case CHECKOUT:
-      return state.map((order) =>
-        order.id === action.processedOrder.id ? action.processedOrder : order
-      );
+      return {};
+    // case CHECKOUT:
+    //   return state.map((order) =>
+    //     order.id === action.processedOrder.id ? action.processedOrder : order
+    //   );
     default:
       return state;
   }

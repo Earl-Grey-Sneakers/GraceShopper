@@ -13,30 +13,30 @@ router.put('/', async (req, res, next) => {
       where: {
         userId: req.body.userId,
         isProcessed: false,
-      }
+      },
     });
     if (created) {
       cart = await Order.findOne({
         where: {
           userId: req.body.userId,
-        }
+        },
       });
     }
-    
+
     const style = await Style.findByPk(req.body.itemId);
     const exists = await cart.hasStyle(style);
     // cart.hasStyle( style )
     // .then( (exists) => {
-    //    if ( !exists ) { 
-    //         return cart.addStyle( style, { quantity : 1 } ) 
+    //    if ( !exists ) {
+    //         return cart.addStyle( style, { quantity : 1 } )
     //    } else {
     //         style.orderItems.quantity += 1;
     //         return style.orderItems.save();
     //    }
     // } )
 
-    if (!exists){
-      await cart.addStyle(style, {through: {quantity: 1}});
+    if (!exists) {
+      await cart.addStyle(style, { through: { quantity: 1 } });
     }
     // else {
     //   style.orderItems.quantity+=1
@@ -48,16 +48,11 @@ router.put('/', async (req, res, next) => {
   }
 });
 
-router.put('/:userId', async (req, res, next) => {
+router.put('/:cartId', async (req, res, next) => {
   try {
-    const order = await Order.findOne({
-      where: {
-        userId: req.params.userId,
-        isProcessed: false,
-      },
-    });
-    const processedOrder = await order.update(req.body);
-    res.send(processedOrder);
+    const order = await Order.findByPk(req.params.cartId);
+    const processedOrder = await order.update({ isProcessed: true });
+    res.sendStatus(200);
   } catch (error) {
     next(error);
   }

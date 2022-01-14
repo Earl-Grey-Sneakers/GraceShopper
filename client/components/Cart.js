@@ -3,14 +3,15 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCart } from '../store/cart';
 import { Link } from 'react-router-dom';
+import { removeCartItem, checkout } from '../store/cart';
 
 const Cart = () => {
   const dispatch = useDispatch();
 
-  const { order, auth } = useSelector((state) => {
+  const { cart, auth } = useSelector((state) => {
     return state;
   });
-  console.log('cart inside component', order);
+
   const userId = auth.id || Infinity;
   const cartItems = cart.styles || [];
 
@@ -47,9 +48,7 @@ const Cart = () => {
         ) : (
           <h4>Your Cart is Empty!</h4>
         )}
-        <button onClick={() => dispatch(checkout({ ...order, isProcessed: true }, userId))}>
-          Checkout
-        </button>
+        <button onClick={() => dispatch(checkout(cart.id))}>Checkout</button>
       </div>
     </div>
   );
