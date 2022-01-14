@@ -7,9 +7,6 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-body {
-  min-height: 200vh;
-}
 header {
   position: fixed;
   top: 0;
