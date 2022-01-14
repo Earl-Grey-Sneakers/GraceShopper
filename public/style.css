@@ -250,10 +250,26 @@ footer {
   padding-top: 100px;
 }
 
-.cart-container {
-  margin-left: 25px;
+.wrapper {
+  margin-top: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5px;
 }
 
-.single-style-container {
-  margin-left: 25px;
+.card {
+  border-radius: 5px;
+  overflow: hidden;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.logout {
+  right: 10px;
+}
+
+.logout:hover {
+  cursor: pointer;
 }

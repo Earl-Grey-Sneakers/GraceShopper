@@ -3,25 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../store';
 
-const LandingPage = ({ handleClick, isLoggedIn }) => (
-  <div className="landingPage">
-    {isLoggedIn ? (
-      <div>
-        {/* The navbar will show these links after you log in */}
-        <Link to="/home">Home</Link>
-        <p onClick={handleClick}>
-          Logout
-        </p>
-      </div>
-    ) : (
-      <div>
-        {/* The navbar will show these links before you log in */}
-        {/* <Link to="/login">Login</Link>
-        <Link to="/signup">Sign Up</Link> */}
-      </div>
-    )}
-  </div>
-);
+const LandingPage = ({ handleClick, isLoggedIn }) => <div className="landingPage"></div>;
 
 /**
  * CONTAINER
