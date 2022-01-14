@@ -24,10 +24,10 @@ const Cart = () => {
   return (
     <div className="divBelowNavbar">
       <h2>My Cart</h2>
-      <div className="cart-container">
+      <div className="wrapper">
         {cartItems.length != 0 ? (
           cartItems.map((item) => (
-            <div key={item.id}>
+            <div key={item.id} className="card">
               <div>
                 <h3>{item['shoeName']}</h3>
                 <h5>
@@ -39,7 +39,12 @@ const Cart = () => {
                 </Link>
                 <h5>Size:{item.size}</h5>
               </div>
-              <button onClick={() => dispatch(removeCartItem(item.id, userId))}>Remove item</button>
+              <button
+                className="button-24"
+                onClick={() => dispatch(removeCartItem(item.id, userId))}
+              >
+                Remove item
+              </button>
               <button>-</button>
               <span>Qty: 1</span>
               <button>+</button>
@@ -48,8 +53,10 @@ const Cart = () => {
         ) : (
           <h4>Your Cart is Empty!</h4>
         )}
-        <button onClick={() => dispatch(checkout(cart.id))}>Checkout</button>
       </div>
+      <button className="button-30" id="checkout-btn" onClick={() => dispatch(checkout(cart.id))}>
+        Checkout
+      </button>
     </div>
   );
 };
