@@ -6,7 +6,7 @@ const styles = [{
   brand: 'Nike',
   shoeName: 'Black Cement 3',
   color: 'black',
-  size: 10,
+  size: 8,
   imageUrl: 'https://images.stockx.com/images/Air-Jordan-3-Retro-Black-Cement-2018-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&q=90&dpr=2&trim=color&updated_at=1609356781',
   price: 160,
   quantity: 5,
@@ -15,7 +15,7 @@ const styles = [{
   brand: 'Nike',
   shoeName: 'Black Cement 3',
   color: 'black',
-  size: 8,
+  size: 10,
   imageUrl: 'https://images.stockx.com/images/Air-Jordan-3-Retro-Black-Cement-2018-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&q=90&dpr=2&trim=color&updated_at=1609356781',
   price: 160,
   quantity: 15,
@@ -24,7 +24,7 @@ const styles = [{
   brand: 'Nike',
   shoeName: 'Carmine 6',
   color: 'red',
-  size: 11,
+  size: 10,
   imageUrl: 'https://images.stockx.com/images/Air-Jordan-6-Retro-Carmine-2020-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&q=90&dpr=2&trim=color&updated_at=1612286105',
   price: 150,
   quantity: 8,
@@ -33,7 +33,7 @@ const styles = [{
   brand: 'Nike',
   shoeName: 'Carmine 6',
   color: 'red',
-  size: 10,
+  size: 11,
   imageUrl: 'https://images.stockx.com/images/Air-Jordan-6-Retro-Carmine-2020-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&q=90&dpr=2&trim=color&updated_at=1612286105',
   price: 150,
   quantity: 8,
@@ -207,17 +207,14 @@ const styles = [{
 const orders = [{
   isProcessed: true,
   purchaseDate: new Date(),
-  orderTotal: 440,
   userId: 1
 },
 {
-  orderTotal: 220,
   userId: 2
 },
 {
   isProcessed: true,
   purchaseDate: new Date(),
-  orderTotal: 530,
   userId: 2
 },
 ]
@@ -264,11 +261,6 @@ async function seed() {
   await db.sync({ force: true }) // clears db and matches models to tables
   console.log('db synced!')
 
-  // const users = await Promise.all([
-  //   User.create({ username: 'cody', password: '123' }),
-  //   User.create({ username: 'murphy', password: '123' }),
-  // ])
-
   await Promise.all(usersDummy.map(user => {
     return User.create(user);
   }));
@@ -311,14 +303,8 @@ async function runSeed() {
   }
 }
 
-/*
-  Execute the `seed` function, IF we ran this module directly (`node seed`).
-  `Async` functions always return a promise, so we can use `catch` to handle
-  any errors that might occur inside of `seed`.
-*/
 if (module === require.main) {
   runSeed()
 }
 
-// we export the seed function for testing purposes (see `./seed.spec.js`)
 module.exports = seed
