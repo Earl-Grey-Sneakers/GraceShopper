@@ -2,11 +2,6 @@
 
 const {db, models: {User, Style, Order} } = require('../server/db')
 
-/**
- * seed - this function clears the database, updates tables to
- *      match the models, and populates the database.
- */
-
 const styles = [{
   brand: 'Nike',
   shoeName: 'Black Cement 3',
@@ -160,8 +155,7 @@ async function seed() {
   }));
 
   await Promise.all(orders.map(order => {
-    let orderMade = Order.create(order);
-    return orderMade
+    return Order.create(order);
   }));
 
   await Promise.all(styles.map(style => {
