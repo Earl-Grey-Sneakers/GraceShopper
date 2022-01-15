@@ -8,8 +8,8 @@ module.exports = router;
 router.get('/', async (req, res, next) => {
   try {
     const styles = await Style.findAll({
-      attributes: ['shoeName', 'price', 'imageUrl'],
-      group: ['shoeName', 'price', 'imageUrl'],
+      attributes: ['shoeName', 'price', 'imageUrl','brand','color'],
+      group: ['shoeName', 'price', 'imageUrl','brand','color'],
     });
     res.send(styles);
   } catch (error) {
