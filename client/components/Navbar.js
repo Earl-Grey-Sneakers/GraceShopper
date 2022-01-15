@@ -20,6 +20,12 @@ const NavBar = () => {
             <i className="gg-shopping-bag"></i>
           </Link>
         </li>
+        <li>
+          <Link to="/inventory">Inventory</Link>
+        </li>
+        <li>
+          <Link to="/allusers">Users</Link>
+        </li>
         {id ? (
           <li onClick={() => dispatch(logout())} className="logout">
             Logout

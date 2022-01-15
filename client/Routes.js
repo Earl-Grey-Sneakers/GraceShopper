@@ -7,7 +7,9 @@ import { Login, Signup } from './components/AuthForm';
 import SingleStyle from './components/SingleStyle';
 import Home from './components/Home';
 import { me } from './store';
-import UserAccount from './components/UserAccount';
+import UserAccount from './components/AllUsers';
+import Inventory from './components/Inventory';
+import AllUsers from './components/AllUsers';
 
 /**
  * COMPONENT
@@ -25,14 +27,14 @@ class Routes extends Component {
         {isLoggedIn ? (
           <Switch>
             <Route path="/home" component={Home} />
+
             {/* <Redirect to="/home" /> */}
           </Switch>
         ) : (
           <Switch>
-            <Route path="/" exact component={Login} />
+            <Route path="/" exact component={AllStyles} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-           
           </Switch>
         )}
         <Switch>
@@ -40,6 +42,8 @@ class Routes extends Component {
           <Route exact path="/styles" component={AllStyles} />
           <Route path="/styles/:name" component={SingleStyle} />
           <Route path="/cart" component={Cart} />
+          <Route exact path="/inventory" component={Inventory} />
+          <Route exact path="/allusers" component={AllUsers} />
         </Switch>
       </div>
     );
