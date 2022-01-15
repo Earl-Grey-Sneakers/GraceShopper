@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchStyles } from '../store/styles';
+import { deleteStyles, fetchStyles } from '../store/styles';
 
 import { Link } from 'react-router-dom';
 
@@ -25,11 +25,13 @@ const Inventory = () => {
             <Link to={`/styles/${style.shoeName}`}>
               <h3>{style.shoeName}</h3>
             </Link>
+            <p>{style.size}</p>
 
             <h5>
               {'$'}
               {style.price}
             </h5>
+            <button onClick={() => dispatch(deleteStyles(style.id))}>delete</button>
           </div>
         ))}
       </div>

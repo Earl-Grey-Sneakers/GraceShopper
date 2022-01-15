@@ -13,6 +13,7 @@ router.get('/', async (req, res, next) => {
     next(error);
   }
 });
+
 router.get('/:name', async (req, res, next) => {
   try {
     const style = await Style.findAll({
@@ -23,6 +24,16 @@ router.get('/:name', async (req, res, next) => {
       },
     });
     res.status(200).json(style);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete('/:itemId', async (req, res, next) => {
+  try {
+    const deletedStyle = await Style.findByPk(req.params.itemId);
+    deletedStyle.destroy();
+    res.sendStatus(200);
   } catch (error) {
     next(error);
   }
