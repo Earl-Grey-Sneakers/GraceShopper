@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { Op } = require('sequelize')
 
 const {
   models: { Order },
@@ -42,13 +43,12 @@ router.put('/', async (req, res, next) => {
       await orderItems.increment({'totalPrice':style.price}, {where: {orderId:req.body.cartId, styleId:req.body.itemId}})
       await cart.increment({'orderTotal':style.price}, {where : {id:req.body.cartId}})
     } else if (req.body.op==='dec'){
-      await orderItems.decrement('quantity', {where: {orderId:req.body.cartId, styleId:req.body.itemId}})
+      await orderItems.decrement('quantity', {where: {orderId:req.body.cartId, styleId:req.body.itemId, quantity: {[Op.gt]:0}}})
       await orderItems.decrement({'totalPrice':style.price}, {where: {orderId:req.body.cartId, styleId:req.body.itemId}})
       await cart.decrement({'orderTotal':style.price}, {where : {id:req.body.cartId}})
     } else if (req.body.op==='remove'){
       await cart.decrement({'orderTotal':total}, {where : {id:req.body.cartId}})
     }
-
     res.sendStatus(200)
   } catch (error) {
     next(error)
@@ -75,6 +75,7 @@ router.get('/:userId', async (req, res, next) => {
       },
       include: {
         model: Style,
+        attributes: ['id', 'brand', 'shoeName', 'color', 'size', 'imageUrl', 'price'],
       },
     });
     if (!cart) {
