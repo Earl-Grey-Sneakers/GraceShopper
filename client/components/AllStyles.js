@@ -21,11 +21,10 @@ const AllStyles = () => {
       <div className="wrapper">
         {styles.map((style, idx) => (
           <div className="card" key={idx}>
-            <img src={style.imageUrl} className="shoe-img" />
             <Link to={`/styles/${style.shoeName}`}>
+              <img src={style.imageUrl} className="shoe-img" />
               <h3>{style.shoeName}</h3>
             </Link>
-
             <h5>
               {'$'}
               {style.price}

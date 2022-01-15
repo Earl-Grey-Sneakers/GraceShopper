@@ -24,6 +24,7 @@ router.get('/:name', async (req, res, next) => {
           [Sequelize.Op.eq]: req.params.name,
         },
       },
+      attributes: ['id', 'brand', 'shoeName', 'color', 'size', 'imageUrl', 'price'],
     });
     res.status(200).json(style);
   } catch (error) {
