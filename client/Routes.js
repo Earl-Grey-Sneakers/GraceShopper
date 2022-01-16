@@ -10,6 +10,7 @@ import { me } from './store';
 import UserAccount from './components/AllUsers';
 import Inventory from './components/Inventory';
 import AllUsers from './components/AllUsers';
+import EditStyles from './components/EditStyles';
 
 /**
  * COMPONENT
@@ -40,7 +41,8 @@ class Routes extends Component {
         <Switch>
           <Route exact path="/account" component={UserAccount} />
           <Route exact path="/styles" component={AllStyles} />
-          <Route path="/styles/:name" component={SingleStyle} />
+          <Route exact path="/styles/edit/:id" component={EditStyles} />
+          <Route exact path="/styles/:name" component={SingleStyle} />
           <Route path="/cart" component={Cart} />
           <Route exact path="/inventory" component={Inventory} />
           <Route exact path="/allusers" component={AllUsers} />

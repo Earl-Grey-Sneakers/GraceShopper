@@ -16,14 +16,18 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:name', async (req, res, next) => {
   try {
-    const style = await Style.findAll({
-      where: {
-        shoeName: {
-          [Sequelize.Op.eq]: req.params.name,
-        },
-      },
-    });
+    const style = await Style.findByPk(req.params.name);
     res.status(200).json(style);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.put('/:itemId', async (req, res, next) => {
+  try {
+    const style = await Style.findByPk(req.params.itemId);
+    await style.update(req.body);
+    res.sendStatus(200);
   } catch (error) {
     next(error);
   }
