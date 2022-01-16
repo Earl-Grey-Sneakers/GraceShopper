@@ -11,11 +11,6 @@ const NavBar = () => {
 
   const id = auth.id || Infinity
   const username = auth.username || ''
-  // useEffect(() => {
-  // }, [id])
-
-  console.log(id)
-  console.log(username)
 
   const dispatch = useDispatch();
   return (
