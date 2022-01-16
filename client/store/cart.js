@@ -16,21 +16,24 @@ export const clearCart = () => {
   };
 };
 
-export const findOrMakeCart = (itemId, userId) => {
+export const findOrMakeCart = (itemId, userId, UUID) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post(`/api/cart`, { itemId, userId });
-      dispatch(updateQuantities(data.id,itemId,userId,'inc'))
+      const { data } = await axios.post(`/api/cart`, { itemId, userId, UUID });
+      if (userId==Infinity){
+        localStorage.setItem('UUID', data.UUID)
+      }
+      dispatch(updateQuantities(data.id, data.UUID, userId, itemId, 'inc'))
     } catch (error) {
       console.log(error);
     }
   };
 };
 
-export const fetchCart = (userId) => {
+export const fetchCart = (userId,UUID) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`/api/cart/${userId}`);
+      const { data } = await axios.get(`/api/cart/${userId}/${UUID}`);
       dispatch(fetchedCart(data));
     } catch (error) {
       console.log(error);
@@ -38,23 +41,22 @@ export const fetchCart = (userId) => {
   };
 };
 
-export const removeCartItem = (itemId, userId, cartId) => {
+export const removeCartItem = (cartId, itemId, userId, UUID) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.delete(`/api/cart/${userId}/${itemId}`);
+      const { data } = await axios.delete(`/api/cart/${itemId}/${UUID}`);
       const quantityToRemove = data.styles[0].orderItems.quantity
-      dispatch(updateQuantities(cartId, itemId, userId, 'remove', quantityToRemove))
-      dispatch(fetchCart(userId));
+      dispatch(updateQuantities(cartId, UUID, userId, itemId, 'remove', quantityToRemove))
     } catch (error) {
       console.log(error);
     }
   };
 };
 
-export const checkout = (cartId) => {
+export const checkout = (UUID) => {
   return async (dispatch) => {
     try {
-      await axios.put(`/api/cart/${cartId}`);
+      await axios.put(`/api/cart/${UUID}`);
       dispatch(clearCart());
     } catch (error) {
       console.log(error);
@@ -62,11 +64,11 @@ export const checkout = (cartId) => {
   };
 };
 
-export const updateQuantities = (cartId, itemId, userId, op, multi=1) => {
+export const updateQuantities = (cartId, UUID, userId, itemId, op, multi=1) => {
   return async (dispatch) => {
     try {
-      await axios.put(`/api/cart`, {cartId, itemId, op, multi})
-      dispatch(fetchCart(userId));
+      await axios.put(`/api/cart`, {cartId, UUID, itemId, op, multi})
+      dispatch(fetchCart(userId,UUID));
     } catch (error) {
       console.log(error)
     }

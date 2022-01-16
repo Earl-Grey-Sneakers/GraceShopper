@@ -1,6 +1,6 @@
 import axios from 'axios';
 import history from '../history';
-import { clearCart } from './cart';
+import { clearCart, fetchCart } from './cart';
 
 const TOKEN = 'token';
 
@@ -25,6 +25,7 @@ export const me = () => async (dispatch) => {
         authorization: token,
       },
     });
+    dispatch(fetchCart(res.data.id,'empty'))
     return dispatch(setAuth(res.data));
   }
 };

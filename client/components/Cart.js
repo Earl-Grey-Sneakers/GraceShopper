@@ -11,13 +11,15 @@ const Cart = () => {
     return state;
   });
 
+  let UUID = cart.UUID || 'empty'
   const userId = auth.id || Infinity;
+  if (userId==Infinity && UUID=='empty'){
+    UUID = localStorage.getItem('UUID')
+  }
   const cartItems = cart.styles || [];
 
   useEffect(() => {
-    if (userId != Infinity) {
-      dispatch(fetchCart(userId));
-    }
+      dispatch(fetchCart(userId,UUID));
   }, [userId]);
 
   return (
@@ -42,23 +44,27 @@ const Cart = () => {
                 </div>
                 <button
                   className="button-24"
-                  onClick={() => dispatch(removeCartItem(item.id, userId, cart.id))}
+                  onClick={() => dispatch(removeCartItem(cart.id, item.id, userId, UUID))}
                 >
                   Remove item
                 </button>
                 <button onClick={() => {
                   if(item.orderItems.quantity>1){
-                    dispatch(updateQuantities(cart.id,item.id,userId,'dec'))
+                    dispatch(updateQuantities(cart.id, UUID, userId, item.id, 'dec'))
                   } else {
-                    dispatch(removeCartItem(item.id, userId, cart.id))
+                    dispatch(removeCartItem(cart.id, item.id, userId, UUID))
                   }
                   }}>-</button>
                 <span>Qty: {item.orderItems.quantity}</span>
-                <button onClick={() => dispatch(updateQuantities(cart.id,item.id,userId,'inc'))}>+</button>
+                <button onClick={() => dispatch(updateQuantities(cart.id, UUID, userId, item.id, 'inc'))}>+</button>
               </div>
             ))}
           </div>
-          <button className="button-30" id="checkout-btn" onClick={() => dispatch(checkout(cart.id))}>
+          <button className="button-30" id="checkout-btn" onClick={() => {
+            if(userId!==Infinity){
+            dispatch(checkout(UUID))
+            }
+            }}>
           Checkout
           </button>
         </div>

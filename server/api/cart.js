@@ -10,10 +10,11 @@ const {
 
 router.post('/', async (req, res, next) => {
   try {
+    if (req.body.UUID=='empty') {
     let [cart, created] = await Order.findOrCreate({
       where: {
-        userId: req.body.userId,
         isProcessed: false,
+        userId: req.body.userId
       },
       include: {
         model: Style,
@@ -28,6 +29,26 @@ router.post('/', async (req, res, next) => {
       await cart.save()
     }
     res.send(cart);
+  } else {
+    let [cart, created] = await Order.findOrCreate({
+      where: {
+        isProcessed: false,
+        UUID: req.body.UUID
+      },
+      include: {
+        model: Style,
+      }
+    });
+
+    const style = await Style.findByPk(req.body.itemId);
+    const exists = await cart.hasStyle(style);
+
+    if (!exists) {
+      await cart.addStyle(style);
+      await cart.save()
+    }
+    res.send(cart);
+  }
   } catch (error) {
     next(error);
   }
@@ -36,7 +57,7 @@ router.post('/', async (req, res, next) => {
 router.put('/', async (req, res, next) => {
   try {
     const style = await Style.findByPk(req.body.itemId);
-    const cart = await Order.findByPk(req.body.cartId);
+    const cart = await Order.findOne({where:{UUID:req.body.UUID}});
     const total = style.price*req.body.multi
     if(req.body.op==='inc') {
       await orderItems.increment('quantity', {where: {orderId:req.body.cartId, styleId:req.body.itemId}})
@@ -55,9 +76,9 @@ router.put('/', async (req, res, next) => {
   }
 })
 
-router.put('/:cartId', async (req, res, next) => {
+router.put('/:UUID', async (req, res, next) => {
   try {
-    const order = await Order.findByPk(req.params.cartId);
+    const order = await Order.findOne({where:{UUID:req.params.UUID}});
     await order.update({ isProcessed: true });
     await order.update({ purchaseDate: new Date() });
     res.sendStatus(200);
@@ -66,18 +87,32 @@ router.put('/:cartId', async (req, res, next) => {
   }
 });
 
-router.get('/:userId', async (req, res, next) => {
+router.get('/:userId/:UUID', async (req, res, next) => {
   try {
-    const cart = await Order.findOne({
-      where: {
-        userId: req.params.userId,
-        isProcessed: false,
-      },
-      include: {
-        model: Style,
-        attributes: ['id', 'brand', 'shoeName', 'color', 'size', 'imageUrl', 'price'],
-      },
-    });
+    let cart;
+    if(req.params.UUID!=='empty'){
+      cart = await Order.findOne({
+        where: {
+          UUID: req.params.UUID,
+          isProcessed: false,
+        },
+        include: {
+          model: Style,
+          attributes: ['id', 'brand', 'shoeName', 'color', 'size', 'imageUrl', 'price'],
+        },
+      });
+    } else {
+      cart = await Order.findOne({
+        where: {
+          userId: req.params.userId,
+          isProcessed: false,
+        },
+        include: {
+          model: Style,
+          attributes: ['id', 'brand', 'shoeName', 'color', 'size', 'imageUrl', 'price'],
+        },
+      });
+    }
     if (!cart) {
       res.status(200);
     }
@@ -87,11 +122,11 @@ router.get('/:userId', async (req, res, next) => {
   }
 });
 
-router.delete('/:userId/:itemId', async (req, res, next) => {
+router.delete('/:itemId/:UUID', async (req, res, next) => {
   try {
     const cart = await Order.findOne({
       where: {
-        userId: req.params.userId,
+        UUID: req.params.UUID,
         isProcessed: false,
       },
       include: {
