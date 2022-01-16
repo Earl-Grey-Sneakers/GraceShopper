@@ -11,6 +11,7 @@ import UserAccount from './components/AllUsers';
 import Inventory from './components/Inventory';
 import AllUsers from './components/AllUsers';
 import EditStyles from './components/EditStyles';
+import AddStyle from './components/AddStyle';
 
 /**
  * COMPONENT
@@ -42,6 +43,7 @@ class Routes extends Component {
           <Route exact path="/account" component={UserAccount} />
           <Route exact path="/styles" component={AllStyles} />
           <Route exact path="/styles/edit/:id" component={EditStyles} />
+          <Route exact path="/add" component={AddStyle} />
           <Route exact path="/styles/:name" component={SingleStyle} />
           <Route path="/cart" component={Cart} />
           <Route exact path="/inventory" component={Inventory} />

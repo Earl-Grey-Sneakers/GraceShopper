@@ -35,6 +35,9 @@ const Inventory = () => {
           </div>
         ))}
       </div>
+      <Link to="/add">
+        <button>Add Styles</button>
+      </Link>
     </div>
   );
 };

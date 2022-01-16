@@ -21,6 +21,17 @@ export const fetchStyles = () => {
   };
 };
 
+export const addStyle = (style) => {
+  return async (dispatch) => {
+    try {
+      await axios.post('/api/styles', style);
+      dispatch(fetchStyles());
+    } catch (error) {
+      console.log('uh oh something went wrong adding products.', error);
+    }
+  };
+};
+
 export const deleteStyles = (itemId) => {
   return async (dispatch) => {
     try {
