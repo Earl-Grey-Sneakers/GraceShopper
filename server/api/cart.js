@@ -10,15 +10,12 @@ const {
 
 router.post('/', async (req, res, next) => {
   try {
-    if (req.body.UUID=='empty') {
+    if (req.body.UUID==='empty') {
     let [cart, created] = await Order.findOrCreate({
       where: {
         isProcessed: false,
         userId: req.body.userId
       },
-      include: {
-        model: Style,
-      }
     });
 
     const style = await Style.findByPk(req.body.itemId);
@@ -28,16 +25,14 @@ router.post('/', async (req, res, next) => {
       await cart.addStyle(style);
       await cart.save()
     }
-    res.send(cart);
+    const resp = {id, UUID} = cart
+    res.send(resp);
   } else {
     let [cart, created] = await Order.findOrCreate({
       where: {
         isProcessed: false,
         UUID: req.body.UUID
       },
-      include: {
-        model: Style,
-      }
     });
 
     const style = await Style.findByPk(req.body.itemId);
@@ -47,7 +42,8 @@ router.post('/', async (req, res, next) => {
       await cart.addStyle(style);
       await cart.save()
     }
-    res.send(cart);
+    const resp = {id, UUID} = cart
+    res.send(resp);
   }
   } catch (error) {
     next(error);

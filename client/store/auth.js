@@ -1,6 +1,6 @@
 import axios from 'axios';
 import history from '../history';
-import { clearCart, fetchCart } from './cart';
+import { fetchCart } from './cart';
 
 const TOKEN = 'token';
 
@@ -41,10 +41,9 @@ export const authenticate = (username, password, method) => async (dispatch) => 
   }
 };
 
-export const logout = async (dispatch) => {
+export const logout = () => {
   window.localStorage.removeItem(TOKEN);
-  history.push('/login');
-  dispatch(clearCart())
+  history.push('/styles');
   return {
     type: SET_AUTH,
     auth: {},
