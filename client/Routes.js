@@ -14,10 +14,11 @@ import AddStyle from './components/AddStyle';
 import AccountOverview from './components/UserPage';
 import HomePage from './components/HomePage';
 import CheckoutForm from './components/CheckoutPage';
+import Confirmation from './components/Confirmation';
 
 class Routes extends Component {
   componentDidMount() {
-    this.props.loadInitialData()
+    this.props.loadInitialData();
   }
 
   render() {
@@ -36,18 +37,19 @@ class Routes extends Component {
           <Route exact path="/inventory" component={Inventory} />
           <Route exact path="/allusers" component={AllUsers} />
           <Route exact path="/checkout" component={CheckoutForm} />
+          <Route exact path="/confirmation" component={Confirmation} />
         </Switch>
       </div>
     );
   }
 }
 
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
     loadInitialData() {
-      dispatch(me())
-    }
-  }
-}
+      dispatch(me());
+    },
+  };
+};
 
 export default withRouter(connect(null, mapDispatch)(Routes));
