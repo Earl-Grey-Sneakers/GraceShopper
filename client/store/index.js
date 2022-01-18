@@ -16,7 +16,6 @@ const reducer = combineReducers({
   adminReducer,
   cart,
   userAccount,
-  adminReducer
 });
 
 const middleware = composeWithDevTools(
