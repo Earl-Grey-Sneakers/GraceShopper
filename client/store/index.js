@@ -7,11 +7,13 @@ import styles from './styles';
 import singleStyleReducer from './singleStyle';
 import cart from './cart';
 import userAccount from './userAccount';
+import adminReducer from './admin';
 
 const reducer = combineReducers({
   auth,
   styles,
   singleStyleReducer,
+  adminReducer,
   cart,
   userAccount,
 });

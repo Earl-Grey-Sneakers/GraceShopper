@@ -20,7 +20,7 @@ export const findOrMakeCart = (itemId, userId, UUID) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.post(`/api/cart`, { itemId, userId, UUID });
-      if (userId==Infinity){
+      if (userId==0){
         localStorage.setItem('UUID', data.UUID)
       }
       dispatch(updateQuantities(data.id, data.UUID, userId, itemId, 'inc'))
