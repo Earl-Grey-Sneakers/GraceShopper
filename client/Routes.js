@@ -11,8 +11,9 @@ import Inventory from './components/Inventory';
 import AllUsers from './components/AllUsers';
 import EditStyles from './components/EditStyles';
 import AddStyle from './components/AddStyle';
-import AccountOverview from './components/UserPage'
+import AccountOverview from './components/UserPage';
 import HomePage from './components/HomePage';
+import CheckoutForm from './components/CheckoutPage';
 
 class Routes extends Component {
   render() {
@@ -30,6 +31,7 @@ class Routes extends Component {
           <Route path="/cart" component={Cart} />
           <Route exact path="/inventory" component={Inventory} />
           <Route exact path="/allusers" component={AllUsers} />
+          <Route exact path="/checkout" component={CheckoutForm} />
         </Switch>
       </div>
     );
