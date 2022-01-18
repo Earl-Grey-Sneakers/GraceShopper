@@ -13,6 +13,7 @@ import EditStyles from './components/EditStyles';
 import AddStyle from './components/AddStyle';
 import AccountOverview from './components/UserPage'
 import HomePage from './components/HomePage';
+import Confirmation from './components/Confirmation'
 
 class Routes extends Component {
   render() {
@@ -30,6 +31,7 @@ class Routes extends Component {
           <Route path="/cart" component={Cart} />
           <Route exact path="/inventory" component={Inventory} />
           <Route exact path="/allusers" component={AllUsers} />
+          <Route exact path="/confirmation" component={Confirmation} />
         </Switch>
       </div>
     );

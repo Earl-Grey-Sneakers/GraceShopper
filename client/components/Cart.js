@@ -60,13 +60,15 @@ const Cart = () => {
               </div>
             ))}
           </div>
-          <button className="button-30" id="checkout-btn" onClick={() => {
-            if(userId!==Infinity){
-            dispatch(checkout(UUID))
-            }
+          <Link to='/confirmation'>
+            <button className="button-30" id="checkout-btn" onClick={() => {
+              if(userId!==Infinity){
+                dispatch(checkout(UUID))
+              }
             }}>
-          Checkout
-          </button>
+            Checkout
+            </button>
+          </Link>
         </div>
         ) : (
         <div className="wrapper">
