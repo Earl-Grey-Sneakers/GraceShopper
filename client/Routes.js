@@ -11,10 +11,16 @@ import Inventory from './components/Inventory';
 import AllUsers from './components/AllUsers';
 import EditStyles from './components/EditStyles';
 import AddStyle from './components/AddStyle';
-import AccountOverview from './components/UserPage'
+import AccountOverview from './components/UserPage';
 import HomePage from './components/HomePage';
+import CheckoutForm from './components/CheckoutPage';
+import Confirmation from './components/Confirmation'
 
 class Routes extends Component {
+  componentDidMount() {
+    this.props.loadInitialData()
+  }
+
   render() {
     return (
       <div>
@@ -30,10 +36,20 @@ class Routes extends Component {
           <Route path="/cart" component={Cart} />
           <Route exact path="/inventory" component={Inventory} />
           <Route exact path="/allusers" component={AllUsers} />
+          <Route exact path="/checkout" component={CheckoutForm} />
+          <Route exact path="/confirmation" component={Confirmation} />
         </Switch>
       </div>
     );
   }
 }
 
-export default withRouter(connect(null, null)(Routes));
+const mapDispatch = dispatch => {
+  return {
+    loadInitialData() {
+      dispatch(me())
+    }
+  }
+}
+
+export default withRouter(connect(null, mapDispatch)(Routes));
