@@ -22,15 +22,7 @@ const NavBar = () => {
         <li>
           <Link to="styles">Shop</Link>
         </li>
-        <li>
-          {/* {username !== '' ? (
-            <div>
-              <Link to="/account">Account</Link>
-            </div>
-          ) : (
-            <div>Account</div>
-          )} */}
-        </li>
+
         <li>
           <Link to="/cart">
             <i className="gg-shopping-bag"></i>
