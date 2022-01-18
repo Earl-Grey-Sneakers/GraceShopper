@@ -8,6 +8,7 @@ const {
   models: { Style, orderItems },
 } = require('../db');
 
+//Find or create cart
 router.post('/', async (req, res, next) => {
   try {
     if (req.body.UUID==='empty' && req.body.userId===0) {
@@ -58,6 +59,7 @@ router.post('/', async (req, res, next) => {
   }
 });
 
+//Update quantities of items
 router.put('/', async (req, res, next) => {
   try {
     const style = await Style.findByPk(req.body.itemId);
@@ -80,6 +82,7 @@ router.put('/', async (req, res, next) => {
   }
 })
 
+//checkout cart
 router.put('/:UUID', async (req, res, next) => {
   try {
     const order = await Order.findOne({where:{UUID:req.params.UUID}});
@@ -91,6 +94,7 @@ router.put('/:UUID', async (req, res, next) => {
   }
 });
 
+//fetch the entire cart
 router.get('/:userId/:UUID', async (req, res, next) => {
   try {
     let cart = false;
@@ -126,6 +130,7 @@ router.get('/:userId/:UUID', async (req, res, next) => {
   }
 });
 
+//delete item from cart
 router.delete('/:itemId/:UUID', async (req, res, next) => {
   try {
     const cart = await Order.findOne({
@@ -146,5 +151,20 @@ router.delete('/:itemId/:UUID', async (req, res, next) => {
     next(error);
   }
 });
+
+//attach userId to guest cart
+router.put('/attach/:userId', async (req, res, next) => {
+  try {
+    const cart = await Order.findOne({
+      where:{
+        UUID: req.body.UUID
+      }
+    })
+    await cart.update({userId:req.params.userId})
+    res.status(200)
+  } catch (error) {
+    next(error)
+  }
+})
 
 module.exports = router;
