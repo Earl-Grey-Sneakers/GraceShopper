@@ -1,6 +1,6 @@
 import axios from 'axios';
 import history from '../history';
-import { fetchCart } from './cart';
+import { attachCartOnSignUp, fetchCart } from './cart';
 
 const TOKEN = 'token';
 
@@ -34,7 +34,9 @@ export const authenticate = (username, password, method) => async (dispatch) => 
   try {
     const res = await axios.post(`/auth/${method}`, { username, password });
     window.localStorage.setItem(TOKEN, res.data.token);
-    console.log(res)
+    if(localStorage.UUID!==undefined && method==='signup'){
+      dispatch(attachCartOnSignUp(res.data.id,localStorage.UUID))
+    }
     dispatch(me());
     localStorage.removeItem('UUID')
     history.push('/');
