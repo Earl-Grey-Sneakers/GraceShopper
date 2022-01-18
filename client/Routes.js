@@ -13,6 +13,7 @@ import EditStyles from './components/EditStyles';
 import AddStyle from './components/AddStyle';
 import AccountOverview from './components/UserPage';
 import HomePage from './components/HomePage';
+import AdminUser from './components/Admin';
 import CheckoutForm from './components/CheckoutPage';
 import Confirmation from './components/Confirmation'
 
@@ -28,6 +29,7 @@ class Routes extends Component {
           <Route exact path="/" component={HomePage} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
+          <Route exact path="/admin" component={AdminUser} />
           <Route exact path="/account" component={AccountOverview} />
           <Route exact path="/styles" component={AllStyles} />
           <Route exact path="/styles/edit/:id" component={EditStyles} />

@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+
+html {
+  height: 100%;
+  width: 100%;
+}
+body {
+  min-height: 100%;
+}
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +21,7 @@
 }
 
 header {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -176,12 +184,9 @@ header ul li:hover i {
 
 footer {
   position: relative;
-  bottom: 0;
-  margin-top: 30px;
+  bottom: 1px;
   background-color: #111;
   color: #fff;
-  height: auto;
-  width: 100vw;
   padding-top: 15px;
 }
 
@@ -254,7 +259,6 @@ footer {
 
 .divBelowNavbar {
   padding-top: 100px;
-  margin-top: 100px;
 }
 
 .wrapper {
@@ -421,64 +425,58 @@ footer {
   touch-action: manipulation;
 }
 
-.brands {
-  display: flex;
-  align-items: flex-end;
-  place-content: space-around;
+.overviewTable table {
+  display: table;
+  border-collapse: separate;
+  box-sizing: border-box;
+  text-indent: initial;
+  border-spacing:m 2px;
+  margin: auto;
+
 }
 
-.circle {
-  width: 90px;
-  height: 90px;
-  line-height: 90px;
-  font-size: 12px;
-  border-radius: 50%;
-  color: #fff;
-  text-align: center;
-  background: rgb(201, 87, 87)
+.overviewTable table th, td{
+  border: 1px solid black;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+  align-items: center;
 }
 
-.featuredShoe {
-  text-align: center;
-}
-
-.featured-shoe-text {
-  font-weight: bolder;
-  font-family:Arial, Helvetica, sans-serif;
-}
-
-#featured-shoe {
-  max-width: 600px;
-  max-height: 450px;
-}
-
-hr {
-  width: 85%;
-  height: 5px;
-  margin-right: auto;
-  margin-left: auto;
-  background-color: black;
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
-
-.random-shoes {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.random-sneaker {
-  max-width: 250px;
-  max-height: 150px;
-}
-
-.onFeet {
+ul.Nav {
+  width: 60%;
+  margin: 0 auto 2rem;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  border: 1px solid;
+  border-radius: 2rem;
 }
 
-.on-feet-pic {
-  max-height: 300px;
-  max-width: 375px;
+ul.Nav li {
+  width: 50%;
+  padding: 1rem;
+  list-style: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.7s;
+  border-bottom-left-radius: 2rem;
+  border-top-left-radius: 2rem;
+}
+ul.Nav li:nth-child(2) {
+  border-radius: 0;
+}
+ul.Nav li:nth-child(3) {
+  border-radius: 0;
+  border-bottom-right-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+
+ul.Nav li:hover {
+  background: rgba(0, 0, 0, 0.15);
+  text-decoration-color: blanchedalmond;
+}
+ul.Nav li.active {
+  background:rgba(0, 0, 0, 0.3);
+  text-decoration-color: blanchedalmond;
 }

@@ -1,8 +1,7 @@
-import { useState } from 'react';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import React from 'react';
 import { fetchStyle, updateStyle } from '../store/admin';
-
+import {Link} from 'react-router-dom'
 class EditStyles extends React.Component {
   constructor(props) {
     super(props);
@@ -72,7 +71,7 @@ const mapStateToProps = (state) => {
   return {
     style: state.adminReducer,
   };
-};
+}
 
 const mapDispatchToProps = (dispatch, { history }) => {
   return {
