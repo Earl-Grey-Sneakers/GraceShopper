@@ -26,7 +26,7 @@ export const updateStyle = (item, history) => {
     try {
       console.log(item);
       await axios.put(`/api/styles/${item.id}`, item);
-      dispatch(fetchStyles());
+      dispatch(_fetchSingleStyle(item.id));
       history.push('/inventory');
     } catch (error) {
       console.log('Error occured in updating single style.', error);

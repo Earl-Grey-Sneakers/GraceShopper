@@ -30,16 +30,16 @@ class AddStyle extends React.Component {
     return (
       <div className="divBelowNavbar">
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="name">Name:</label>
-          <input name="name" value={shoeName} onChange={this.handleChange} />
+          <label htmlFor="shoeName">Name:</label>
+          <input name="shoeName" value={shoeName} onChange={this.handleChange} />
           <label htmlFor="size">Size:</label>
           <input name="size" value={size} onChange={this.handleChange} />
 
           <label htmlFor="price">Price:</label>
           <input name="price" value={price} onChange={this.handleChange} />
 
-          <label htmlFor="quantitiy">Quantitiy:</label>
-          <input name="quantitiy" value={quantity} onChange={this.handleChange} />
+          <label htmlFor="quantity">Quantity:</label>
+          <input name="quantity" value={quantity} onChange={this.handleChange} />
 
           <button type="submit">Submit</button>
         </form>

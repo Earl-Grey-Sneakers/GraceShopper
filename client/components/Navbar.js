@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { logout } from '../store';
 
 const NavBar = () => {
-  const { username, id } = useSelector((state) => {
+  const { username, id, isAdmin } = useSelector((state) => {
     return state.auth;
   });
   const dispatch = useDispatch();
@@ -20,12 +20,19 @@ const NavBar = () => {
             <i className="gg-shopping-bag"></i>
           </Link>
         </li>
-        <li>
-          <Link to="/inventory">Inventory</Link>
-        </li>
-        <li>
-          <Link to="/allusers">Users</Link>
-        </li>
+        {isAdmin ? (
+          <div>
+            <li>
+              <Link to="/inventory">Inventory</Link>
+            </li>
+            <li>
+              <Link to="/allusers">Users</Link>
+            </li>{' '}
+          </div>
+        ) : (
+          <li></li>
+        )}
+
         {id ? (
           <li onClick={() => dispatch(logout())} className="logout">
             Logout

@@ -14,7 +14,7 @@ const Inventory = () => {
 
   useEffect(() => {
     dispatch(fetchStyles());
-  }, []);
+  }, [styles.length]);
 
   return (
     <div className="divBelowNavbar">
