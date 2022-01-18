@@ -15,11 +15,21 @@ const NavBar = () => {
   const dispatch = useDispatch();
   return (
     <header className="">
-      <Link to="/styles">
+      <Link to="/">
         <h2 className="logo">EGSH</h2>
       </Link>
       <ul>
-        <li>{username !== '' ? <div>Welcome, {username}!</div> : <div>Welcome, Guest!</div>}</li>
+        <li>
+          <Link to='styles'>
+          Shop
+          </Link>
+        </li>
+        <li>{username !== '' ? <div>
+          <Link to='/account'>
+            Account
+          </Link>
+          </div> : <div>Account</div>}
+        </li>
         <li>
           <Link to="/cart">
             <i className="gg-shopping-bag"></i>
@@ -32,13 +42,14 @@ const NavBar = () => {
             </li>
             <li>
               <Link to="/allusers">Users</Link>
-            </li>{' '}
+            </li>
           </div>
         ) : (
-          <li></li>
+          <div></div>
         )}
 
-        {id!==Infinity ? (
+
+        {id !== Infinity ? (
           <li
             onClick={() => {
               dispatch(logout());
