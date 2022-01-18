@@ -15,11 +15,11 @@ import AccountOverview from './components/UserPage';
 import HomePage from './components/HomePage';
 import AdminUser from './components/Admin';
 import CheckoutForm from './components/CheckoutPage';
-import Confirmation from './components/Confirmation'
+import Confirmation from './components/Confirmation';
 
 class Routes extends Component {
   componentDidMount() {
-    this.props.loadInitialData()
+    this.props.loadInitialData();
   }
 
   render() {
@@ -46,12 +46,12 @@ class Routes extends Component {
   }
 }
 
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
     loadInitialData() {
-      dispatch(me())
-    }
-  }
-}
+      dispatch(me());
+    },
+  };
+};
 
 export default withRouter(connect(null, mapDispatch)(Routes));
