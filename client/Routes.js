@@ -11,7 +11,7 @@ import Inventory from './components/Inventory';
 import AllUsers from './components/AllUsers';
 import EditStyles from './components/EditStyles';
 import AddStyle from './components/AddStyle';
-import UserAccount from './store/userAccount';
+import AccountOverview from './components/UserPage'
 import HomePage from './components/HomePage';
 
 class Routes extends Component {
@@ -22,7 +22,7 @@ class Routes extends Component {
           <Route exact path="/" component={HomePage} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
-          <Route exact path="/account" component={UserAccount} />
+          <Route exact path="/account" component={AccountOverview} />
           <Route exact path="/styles" component={AllStyles} />
           <Route exact path="/styles/edit/:id" component={EditStyles} />
           <Route exact path="/add" component={AddStyle} />
