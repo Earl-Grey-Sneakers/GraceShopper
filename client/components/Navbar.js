@@ -1,12 +1,17 @@
-import React from 'react';
-import { connect, useSelector, useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../store';
+import { clearCart } from '../store/cart';
 
 const NavBar = () => {
-  const { username, id, isAdmin } = useSelector((state) => {
-    return state.auth;
+  const { auth } = useSelector((state) => {
+    return state;
   });
+
+  const id = auth.id || Infinity;
+  const username = auth.username || '';
+
   const dispatch = useDispatch();
   return (
     <header className="">
@@ -14,13 +19,13 @@ const NavBar = () => {
         <h2 className="logo">EGSH</h2>
       </Link>
       <ul>
-        <li>{username ? <div>Welcome, {username}</div> : <div>Welcome, Guest</div>}</li>
+        <li>{username !== '' ? <div>Welcome, {username}!</div> : <div>Welcome, Guest!</div>}</li>
         <li>
           <Link to="/cart">
             <i className="gg-shopping-bag"></i>
           </Link>
         </li>
-        {isAdmin ? (
+        {auth.isAdmin ? (
           <div>
             <li>
               <Link to="/inventory">Inventory</Link>
@@ -33,8 +38,14 @@ const NavBar = () => {
           <li></li>
         )}
 
-        {id ? (
-          <li onClick={() => dispatch(logout())} className="logout">
+        {id !== Infinity ? (
+          <li
+            onClick={() => {
+              dispatch(logout());
+              dispatch(clearCart());
+            }}
+            className="logout"
+          >
             Logout
           </li>
         ) : (
