@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { fetchStyles } from './styles';
+
 const FETCH_STYLE = 'FETCH_STYLE';
 const GOT_STYLES = 'GOT_STYLES';
 
@@ -9,18 +11,30 @@ const fetchedStyle = (style) => {
   };
 };
 
-const fetchedStyles = (styles) => {
+const fetchedInventory = (styles) => {
   return {
     type: GOT_STYLES,
     styles,
   };
 };
 
-export const fetchStyles = () => {
+export const addStyle = (style, history) => {
+  return async (dispatch) => {
+    try {
+      await axios.post('/api/admin', style);
+      dispatch(fetchStyles());
+      history.push('/inventory');
+    } catch (error) {
+      console.log('uh oh something went wrong adding products.', error);
+    }
+  };
+};
+
+export const fetchInvetory = () => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get('/api/admin');
-      dispatch(gotStyles(data));
+      dispatch(fetchedInventory(data));
     } catch (error) {
       console.log('uh oh something went wrong fetching products.', error);
     }
@@ -31,7 +45,7 @@ export const fetchStyle = (id) => {
   return async (dispatch) => {
     try {
       const { data: style } = await axios.get(`/api/admin/${id}`);
-      dispatch(setSingleStyle(style));
+      dispatch(fetchedStyle(style));
     } catch (error) {
       console.error(error);
     }
@@ -46,6 +60,17 @@ export const updateStyle = (item, history) => {
       history.push('/inventory');
     } catch (error) {
       console.log('Error occured in updating single style.', error);
+    }
+  };
+};
+
+export const deleteStyle = (itemId) => {
+  return async (dispatch) => {
+    try {
+      await axios.delete(`api/styles/${itemId}`);
+      dispatch(fetchStyles());
+    } catch (error) {
+      console.log('uh oh something went wrong deleting products.', error);
     }
   };
 };

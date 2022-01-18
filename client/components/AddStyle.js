@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addStyle } from '../store/styles';
+import { addStyle } from '../store/admin';
 
 class AddStyle extends React.Component {
   constructor(props) {
@@ -48,9 +48,9 @@ class AddStyle extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, { history }) => {
   return {
-    addStyle: (style) => dispatch(addStyle(style)),
+    addStyle: (style) => dispatch(addStyle(style, history)),
   };
 };
 

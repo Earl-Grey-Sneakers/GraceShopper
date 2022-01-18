@@ -70,7 +70,7 @@ class EditStyles extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    style: state.singleStyleReducer,
+    style: state.adminReducer,
   };
 };
 

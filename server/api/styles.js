@@ -33,26 +33,6 @@ router.get('/:name', async (req, res, next) => {
   }
 });
 
-router.put('/:itemId', async (req, res, next) => {
-  try {
-    const style = await Style.findByPk(req.params.itemId);
-    await style.update(req.body);
-    res.sendStatus(200);
-  } catch (error) {
-    next(error);
-  }
-});
-
-router.post('/', async (req, res, next) => {
-  try {
-    const style = await Style.create(req.body);
-    console.log(style);
-    res.send(style);
-  } catch (error) {
-    next(error);
-  }
-});
-
 router.delete('/:itemId', async (req, res, next) => {
   try {
     const deletedStyle = await Style.findByPk(req.params.itemId);
