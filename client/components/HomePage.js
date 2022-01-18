@@ -37,9 +37,24 @@ const HomePage = () => {
                 <hr />
             </div>
             <div className="brands">
-               <div className="circle">Nike</div>
-               <div className="circle">Yeezy</div>
-               <div className="circle">New Balance</div>
+                <Link to={{
+                    pathname: '/styles',
+                    state: {brand: 'Nike'}
+                }}>
+                    <div className="circle">Nike</div>
+                </Link>
+                <Link to={{
+                    pathname: '/styles',
+                    state: {brand: 'Yeezy'}
+                }}>
+                    <div className="circle">Yeezy</div>
+                </Link>
+                <Link to={{
+                    pathname: '/styles',
+                    state: {brand: 'New Balance'}
+                }}>
+                    <div className="circle">New Balance</div>
+                </Link>
             </div>
             <hr />
             <div className="random-shoes">
