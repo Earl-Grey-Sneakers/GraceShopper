@@ -34,6 +34,7 @@ export const authenticate = (username, password, method) => async (dispatch) => 
   try {
     const res = await axios.post(`/auth/${method}`, { username, password });
     window.localStorage.setItem(TOKEN, res.data.token);
+    console.log(res)
     dispatch(me());
     localStorage.removeItem('UUID')
     history.push('/');
