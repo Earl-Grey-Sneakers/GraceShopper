@@ -60,7 +60,7 @@ class EditStyles extends React.Component {
           <label htmlFor="quantity">Quantitiy:</label>
           <input name="quantity" value={quantity} onChange={this.handleChange} />
 
-          <Link to={"/admin"}><button type="submit">Submit</button></Link>
+          <button type="submit">Submit</button>
         </form>
       </div>
     );
@@ -71,7 +71,7 @@ const mapStateToProps = (state) => {
   return {
     style: state.adminReducer,
   };
-};
+}
 
 const mapDispatchToProps = (dispatch, { history }) => {
   return {

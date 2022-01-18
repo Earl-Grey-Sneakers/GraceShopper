@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchAllUsers } from "../store/userAccount";
 import { fetchInventory } from "../store/admin";
 import { Link } from "react-router-dom";
+import { deleteStyle } from "../store/admin";
 export const OrderTable = () => {
     return (
         <tr>
@@ -10,9 +11,6 @@ export const OrderTable = () => {
             <td>Email Address</td>
             <td>Order History</td>
         </tr>
-       
-
-        
     )
 }
 
@@ -21,16 +19,16 @@ export const ItemTable = () => {
       useSelector((state) => {
         return state.styles;
       }) || [];
-  
+      console.log("The Inventory", inventory)
     const dispatch = useDispatch();
   
     useEffect(() => {
       dispatch(fetchInventory());
-    }, []);
-    console.log(inventory);
+    }, [inventory.length]);
     return (
       <>
         <tr>
+          <td>Brand</td>  
           <td>Name</td>
           <td>Price</td>
           <td>Size</td>
@@ -40,12 +38,14 @@ export const ItemTable = () => {
         {inventory.map((item, idx) => (
           <>
             <tr key={idx}>
+              <td>{item.brand}</td>
               <td>{item.shoeName}</td>
               <td>{item.price}</td>
               <td>{item.size}</td>
               <td>{item.color}</td>
               <td>{item.quantity}</td>
-              <Link to={`/styles/edit/${item.id}`}><button>Edit</button></Link>
+              <Link to={`/styles/edit/${item.id}`}>Edit</Link>
+              <button onClick={() => dispatch(deleteStyle(item.id))}>delete</button>
             </tr>
           </>
         ))}

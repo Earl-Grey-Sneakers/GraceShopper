@@ -24,7 +24,7 @@ const Inventory = () => {
           <div className="card" key={idx}>
             <img src={style.imageUrl} className="shoe-img" />
               <h3>{style.shoeName}</h3>
-            <p>{style.size}</p>
+              <p>{style.size}</p>
 
             <h5>
               {'$'}

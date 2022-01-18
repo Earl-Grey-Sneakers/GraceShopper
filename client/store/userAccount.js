@@ -26,6 +26,7 @@ export const fetchAllUsers = () => {
     }
 }
 
+
 //REDUCER
 export default (state = [], action) => {
     switch(action.type) {
