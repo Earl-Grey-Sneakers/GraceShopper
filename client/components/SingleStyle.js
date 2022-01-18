@@ -9,12 +9,17 @@ const SingleStyle = (props) => {
 
   const [itemId, setId] = useState(Infinity);
 
-  const { singleStyleReducer, auth } = useSelector((state) => {
+  const { singleStyleReducer, auth, cart } = useSelector((state) => {
     return state;
   });
-  const userId = auth.id || Infinity;
-  const singleStyle = singleStyleReducer || [];
   const dispatch = useDispatch();
+
+  const userId = auth.id || Infinity;
+  let UUID = cart.UUID || 'empty'
+  if (userId==Infinity && UUID=='empty'){
+    UUID = localStorage.getItem('UUID')
+  }
+  const singleStyle = singleStyleReducer || [];
   const { brand, shoeName, imageUrl } = singleStyle[0] || [];
 
   useEffect(() => {
@@ -40,8 +45,10 @@ const SingleStyle = (props) => {
         ))}
         <span>
           <button className="button-30" onClick={() => {
-            dispatch(findOrMakeCart(itemId, userId))
+            if(itemId!==Infinity){
+            dispatch(findOrMakeCart(itemId, userId, UUID))
             setId(Infinity)
+            }
           }}>
             Add To Cart
           </button>
