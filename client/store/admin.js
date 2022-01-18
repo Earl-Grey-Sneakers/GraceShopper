@@ -30,7 +30,7 @@ export const addStyle = (style, history) => {
   };
 };
 
-export const fetchInvetory = () => {
+export const fetchInventory = () => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get('/api/admin');

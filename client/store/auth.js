@@ -38,7 +38,7 @@ export const authenticate = (username, password, method) => async (dispatch) => 
     dispatch(me());
     localStorage.removeItem('UUID');
     localStorage.removeItem('loglevel:webpack-dev-server');
-    history.push('/');
+    history.push('/styles');
   } catch (authError) {
     return dispatch(setAuth({ error: authError }));
   }
@@ -46,7 +46,7 @@ export const authenticate = (username, password, method) => async (dispatch) => 
 
 export const logout = () => {
   window.localStorage.removeItem(TOKEN);
-  history.push('/');
+  history.push('/styles');
   return {
     type: SET_AUTH,
     auth: {},
