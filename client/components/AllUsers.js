@@ -17,10 +17,10 @@ const AllUsers = () => {
       {users.map((user) => {
         return (
           <div key={user.id}>
-            <h1>Account Overview</h1>
             <h3>username, {user.username} </h3>
             <h3>Email Address: {user.email}</h3>
             <h4>Account Number: {user.id}</h4>
+            <hr></hr>
           </div>
         );
       })}
