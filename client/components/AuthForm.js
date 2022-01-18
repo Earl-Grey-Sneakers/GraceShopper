@@ -22,11 +22,6 @@ const AuthForm = (props) => {
           <button type="submit" className="button-1" id={name}>
             {displayName}
           </button>
-          {/* <button type="submit" className="button-54">
-            {if(displayName === 'Login') {
-              Sign Up
-            }}
-          </button> */}
           {name === 'login' ? (
             <div className="formLinkText">
               <p>New Member?</p>

@@ -48,8 +48,8 @@ const NavBar = () => {
           <div></div>
         )}
 
-        {id !== Infinity ? (
 
+        {id !== Infinity ? (
           <li
             onClick={() => {
               dispatch(logout());
