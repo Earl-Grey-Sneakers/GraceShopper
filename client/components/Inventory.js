@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchInvetory } from '../store/admin';
+import { fetchInventory } from '../store/admin';
 import { deleteStyle } from '../store/admin';
 
 import { Link } from 'react-router-dom';
@@ -14,7 +14,7 @@ const Inventory = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchInvetory());
+    dispatch(fetchInventory());
   }, [styles.length]);
 
   return (
@@ -23,9 +23,7 @@ const Inventory = () => {
         {styles.map((style, idx) => (
           <div className="card" key={idx}>
             <img src={style.imageUrl} className="shoe-img" />
-            <Link to={`/styles/edit/${style.id}`}>
               <h3>{style.shoeName}</h3>
-            </Link>
             <p>{style.size}</p>
 
             <h5>

@@ -9,16 +9,21 @@ const {
 } = require('../db');
 
 router.post('/', async (req, res, next) => {
-  try { 
-    console.log("Inside backend",JSON.stringify(req.body.UUID))
-    if (req.body.UUID==='empty') {
-     
-    let [cart, created] = await Order.findOrCreate({
-      where: {
-        isProcessed: false,
-        userId: req.body.userId
-      },
-    });
+  try {
+    if (req.body.UUID==='empty' && req.body.userId===0) {
+    let cart = await Order.create();
+
+    const style = await Style.findByPk(req.body.itemId);
+    const exists = await cart.hasStyle(style);
+
+    if (!exists) {
+      await cart.addStyle(style);
+      await cart.save()
+    }
+    const resp = {id, UUID} = cart
+    res.send(resp);
+  } else if (req.body.UUID==='empty') {
+    let cart = await Order.create({userId:req.body.userId});
 
     const style = await Style.findByPk(req.body.itemId);
     const exists = await cart.hasStyle(style);
@@ -30,7 +35,7 @@ router.post('/', async (req, res, next) => {
     const resp = {id, UUID} = cart
     res.send(resp);
   } else {
-    let [cart, created] = await Order.findOrCreate({
+    let cart = await Order.findOne({
       where: {
         isProcessed: false,
         UUID: req.body.UUID
@@ -88,7 +93,7 @@ router.put('/:UUID', async (req, res, next) => {
 
 router.get('/:userId/:UUID', async (req, res, next) => {
   try {
-    let cart;
+    let cart = false;
     if(req.params.UUID!=='empty'){
       cart = await Order.findOne({
         where: {
@@ -100,7 +105,7 @@ router.get('/:userId/:UUID', async (req, res, next) => {
           attributes: ['id', 'brand', 'shoeName', 'color', 'size', 'imageUrl', 'price'],
         },
       });
-    } else {
+    } else if (req.params.userId!==0){
       cart = await Order.findOne({
         where: {
           userId: req.params.userId,
@@ -110,9 +115,9 @@ router.get('/:userId/:UUID', async (req, res, next) => {
           model: Style,
           attributes: ['id', 'brand', 'shoeName', 'color', 'size', 'imageUrl', 'price'],
         },
-      });
+      })
     }
-    if (!cart) {
+    if (cart===false) {
       res.status(200);
     }
     res.send(cart);

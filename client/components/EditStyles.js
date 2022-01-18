@@ -1,8 +1,7 @@
-import { useState } from 'react';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import React from 'react';
 import { fetchStyle, updateStyle } from '../store/admin';
-
+import {Link} from 'react-router-dom'
 class EditStyles extends React.Component {
   constructor(props) {
     super(props);
@@ -61,7 +60,7 @@ class EditStyles extends React.Component {
           <label htmlFor="quantity">Quantitiy:</label>
           <input name="quantity" value={quantity} onChange={this.handleChange} />
 
-          <button type="submit">Submit</button>
+          <Link to={"/admin"}><button type="submit">Submit</button></Link>
         </form>
       </div>
     );
