@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { connect, useSelector } from 'react-redux';
 import React from 'react';
-import { updateStyle, _fetchSingleStyle } from '../store/singleStyle';
+import { fetchStyle, updateStyle } from '../store/admin';
 
 class EditStyles extends React.Component {
   constructor(props) {
@@ -77,7 +77,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, { history }) => {
   return {
     updateStyle: (style) => dispatch(updateStyle(style, history)),
-    fetchStyle: (id) => dispatch(_fetchSingleStyle(id)),
+    fetchStyle: (id) => dispatch(fetchStyle(id)),
   };
 };
 

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { fetchStyles } from './styles';
 
 const FETCH_SINGLE_STYLE = 'FETCH_SINGLE_STYLE';
 
@@ -21,20 +20,7 @@ export const _fetchSingleStyle = (name) => {
   };
 };
 
-export const updateStyle = (item, history) => {
-  return async (dispatch) => {
-    try {
-      console.log(item);
-      await axios.put(`/api/styles/${item.id}`, item);
-      dispatch(_fetchSingleStyle(item.id));
-      history.push('/inventory');
-    } catch (error) {
-      console.log('Error occured in updating single style.', error);
-    }
-  };
-};
-
-export default function singleStyleReducer(state = {}, action) {
+export default function singleStyleReducer(state = [], action) {
   switch (action.type) {
     case FETCH_SINGLE_STYLE:
       return action.singleStyle;
