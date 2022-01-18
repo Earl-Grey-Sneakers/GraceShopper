@@ -13,6 +13,7 @@ const reducer = combineReducers({
   auth,
   styles,
   singleStyleReducer,
+  adminReducer,
   cart,
   userAccount,
   adminReducer

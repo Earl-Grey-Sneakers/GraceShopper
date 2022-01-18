@@ -9,8 +9,8 @@ const NavBar = () => {
     return state;
   });
 
-  const id = auth.id || Infinity
-  const username = auth.username || ''
+  const id = auth.id || Infinity;
+  const username = auth.username || '';
 
   const dispatch = useDispatch();
   return (
@@ -19,17 +19,33 @@ const NavBar = () => {
         <h2 className="logo">EGSH</h2>
       </Link>
       <ul>
-        <li>{username!=='' ? <div>Welcome, {username}!</div> : <div>Welcome!</div>}</li>
+        <li>{username !== '' ? <div>Welcome, {username}!</div> : <div>Welcome, Guest!</div>}</li>
         <li>
           <Link to="/cart">
             <i className="gg-shopping-bag"></i>
           </Link>
         </li>
-        {id!==Infinity ? (
-          <li onClick={() => {
-            dispatch(logout())
-            dispatch(clearCart())
-            }} className="logout">
+        {auth.isAdmin ? (
+          <div>
+            <li>
+              <Link to="/inventory">Inventory</Link>
+            </li>
+            <li>
+              <Link to="/allusers">Users</Link>
+            </li>{' '}
+          </div>
+        ) : (
+          <li></li>
+        )}
+
+        {id !== Infinity ? (
+          <li
+            onClick={() => {
+              dispatch(logout());
+              dispatch(clearCart());
+            }}
+            className="logout"
+          >
             Logout
           </li>
         ) : (
