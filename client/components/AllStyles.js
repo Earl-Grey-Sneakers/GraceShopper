@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchStyles } from '../store/styles';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const AllStyles = () => {
+  const location = useLocation()
   const [brand, setBrand] = useState('All')
   const [color, setColor] = useState('All')
 
@@ -17,14 +18,18 @@ const AllStyles = () => {
 
   useEffect(() => {
     dispatch(fetchStyles());
+    if(location.state){
+      setBrand(location.state.brand)
+    }
   }, []);
+
 
   return (
     <div className="divBelowNavbar">
       <form>
         <label>Filter Brand:</label>
         <select onChange={(event)=>setBrand(event.target.value)}>
-        <option value="All">All</option>
+          <option value="All">All</option>
           <option value="Nike">Nike</option>
           <option value="Yeezy">Yeezy</option>
           <option value="New Balance">New Balance</option>
