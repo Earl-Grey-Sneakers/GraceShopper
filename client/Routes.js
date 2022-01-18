@@ -16,6 +16,10 @@ import HomePage from './components/HomePage';
 import CheckoutForm from './components/CheckoutPage';
 
 class Routes extends Component {
+  componentDidMount() {
+    this.props.loadInitialData()
+  }
+
   render() {
     return (
       <div>
@@ -38,4 +42,12 @@ class Routes extends Component {
   }
 }
 
-export default withRouter(connect(null, null)(Routes));
+const mapDispatch = dispatch => {
+  return {
+    loadInitialData() {
+      dispatch(me())
+    }
+  }
+}
+
+export default withRouter(connect(null, mapDispatch)(Routes));

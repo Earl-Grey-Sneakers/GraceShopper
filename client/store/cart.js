@@ -53,6 +53,17 @@ export const removeCartItem = (cartId, itemId, userId, UUID) => {
   };
 };
 
+export const attachCartOnSignUp = (userId,UUID) => {
+  return async (dispatch) => {
+    try {
+      await axios.put(`/api/cart/attach/${userId}`, {UUID})
+      dispatch(fetchCart(userId,UUID));
+    } catch (error) {
+      console.log('uh oh something went wrong attaching guest cart to new User.')
+    }
+  }
+}
+
 export const checkout = (UUID) => {
   return async (dispatch) => {
     try {
