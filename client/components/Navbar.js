@@ -20,16 +20,9 @@ const NavBar = () => {
       </Link>
       <ul>
         <li>
-          <Link to='styles'>
-          Shop
-          </Link>
+          <Link to="styles">Shop</Link>
         </li>
-        <li>{username !== '' ? <div>
-          <Link to='/account'>
-            Account
-          </Link>
-          </div> : <div>Account</div>}
-        </li>
+
         <li>
           <Link to="/cart">
             <i className="gg-shopping-bag"></i>
@@ -48,17 +41,21 @@ const NavBar = () => {
           <div></div>
         )}
 
-
         {id !== Infinity ? (
-          <li
-            onClick={() => {
-              dispatch(logout());
-              dispatch(clearCart());
-            }}
-            className="logout"
-          >
-            Logout
-          </li>
+          <ul>
+            <li
+              onClick={() => {
+                dispatch(logout());
+                dispatch(clearCart());
+              }}
+              className="logout"
+            >
+              Logout
+            </li>
+            <li>
+              <Link to="/account">Account</Link>
+            </li>
+          </ul>
         ) : (
           <li>
             <Link to="/login">Login</Link>

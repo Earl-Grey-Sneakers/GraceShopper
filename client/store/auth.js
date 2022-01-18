@@ -25,7 +25,7 @@ export const me = () => async (dispatch) => {
         authorization: token,
       },
     });
-    dispatch(fetchCart(res.data.id,'empty'))
+    dispatch(fetchCart(res.data.id, 'empty'));
     return dispatch(setAuth(res.data));
   }
 };
@@ -36,7 +36,8 @@ export const authenticate = (username, password, method) => async (dispatch) => 
     window.localStorage.setItem(TOKEN, res.data.token);
     console.log(res)
     dispatch(me());
-    localStorage.removeItem('UUID')
+    localStorage.removeItem('UUID');
+    localStorage.removeItem('loglevel:webpack-dev-server');
     history.push('/');
   } catch (authError) {
     return dispatch(setAuth({ error: authError }));
