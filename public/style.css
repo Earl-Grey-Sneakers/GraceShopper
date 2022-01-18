@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+
+html {
+  height: 100%;
+  width: 100%;
+}
+body {
+  min-height: 100%;
+}
 * {
   margin: 0;
   padding: 0;
@@ -176,12 +184,9 @@ header ul li:hover i {
 
 footer {
   position: relative;
-  bottom: 0;
-  margin-top: 30px;
+  bottom: 1px;
   background-color: #111;
   color: #fff;
-  height: auto;
-  width: 100vw;
   padding-top: 15px;
 }
 
@@ -418,4 +423,52 @@ footer {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+}
+
+.overview table {
+  display: table;
+  border-collapse: separate;
+  box-sizing: border-box;
+  text-indent: initial;
+  border-spacing:m 2px;
+
+}
+
+.overviewTable table th, td{
+  border: 1px solid black;
+  width: 50%
+}
+
+ul.Nav {
+  width: 60%;
+  margin: 0 auto 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid;
+  border-radius: 2rem;
+}
+
+ul.Nav li {
+  width: 50%;
+  padding: 1rem;
+  list-style: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.7s;
+  border-bottom-left-radius: 2rem;
+  border-top-left-radius: 2rem;
+}
+
+ul.Nav li:nth-child(2) {
+  border-radius: 0;
+  border-bottom-right-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+
+ul.Nav li:hover {
+  background: rgba(197, 0, 0, 0.15);
+}
+ul.Nav li.active {
+  background:rgba(0, 0, 0, 0.3)
 }

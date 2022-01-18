@@ -8,6 +8,7 @@ import SingleStyle from './components/SingleStyle';
 import Home from './components/Home';
 import { me } from './store';
 import UserAccount from './components/UserAccount';
+import AdminUser from './components/AdminAccount';
 
 /**
  * COMPONENT
@@ -37,6 +38,7 @@ class Routes extends Component {
         )}
         <Switch>
           <Route exact path="/account" component={UserAccount} />
+          <Route exact path="/admin" component={AdminUser} />
           <Route exact path="/styles" component={AllStyles} />
           <Route path="/styles/:name" component={SingleStyle} />
           <Route path="/cart" component={Cart} />
