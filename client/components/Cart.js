@@ -12,8 +12,8 @@ const Cart = () => {
   });
 
   let UUID = cart.UUID || 'empty'
-  const userId = auth.id || Infinity;
-  if (userId==Infinity && UUID=='empty'){
+  const userId = auth.id || 0;
+  if (userId===0 && UUID==='empty' && localStorage.length===1){
     UUID = localStorage.getItem('UUID')
   }
   const cartItems = cart.styles || [];

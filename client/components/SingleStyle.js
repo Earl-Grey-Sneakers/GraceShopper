@@ -14,9 +14,9 @@ const SingleStyle = (props) => {
   });
   const dispatch = useDispatch();
 
-  const userId = auth.id || Infinity;
+  const userId = auth.id || 0;
   let UUID = cart.UUID || 'empty'
-  if (userId==Infinity && UUID=='empty'){
+  if (userId==0 && UUID=='empty' && localStorage.length===1){
     UUID = localStorage.getItem('UUID')
   }
   const singleStyle = singleStyleReducer || [];
@@ -25,6 +25,8 @@ const SingleStyle = (props) => {
   useEffect(() => {
     dispatch(_fetchSingleStyle(name));
   }, []);
+
+  console.log(localStorage)
 
   return (
     <div className="divBelowNavbar">
