@@ -11,12 +11,15 @@ import Inventory from './components/Inventory';
 import AllUsers from './components/AllUsers';
 import EditStyles from './components/EditStyles';
 import AddStyle from './components/AddStyle';
-import AccountOverview from './components/UserPage'
+import AccountOverview from './components/UserPage';
 import HomePage from './components/HomePage';
+import AdminUser from './components/Admin';
+import CheckoutForm from './components/CheckoutPage';
+import Confirmation from './components/Confirmation';
 
 class Routes extends Component {
   componentDidMount() {
-    this.props.loadInitialData()
+    this.props.loadInitialData();
   }
 
   render() {
@@ -26,6 +29,7 @@ class Routes extends Component {
           <Route exact path="/" component={HomePage} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
+          <Route exact path="/admin" component={AdminUser} />
           <Route exact path="/account" component={AccountOverview} />
           <Route exact path="/styles" component={AllStyles} />
           <Route exact path="/styles/edit/:id" component={EditStyles} />
@@ -34,18 +38,20 @@ class Routes extends Component {
           <Route path="/cart" component={Cart} />
           <Route exact path="/inventory" component={Inventory} />
           <Route exact path="/allusers" component={AllUsers} />
+          <Route exact path="/checkout" component={CheckoutForm} />
+          <Route exact path="/confirmation" component={Confirmation} />
         </Switch>
       </div>
     );
   }
 }
 
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
     loadInitialData() {
-      dispatch(me())
-    }
-  }
-}
+      dispatch(me());
+    },
+  };
+};
 
 export default withRouter(connect(null, mapDispatch)(Routes));

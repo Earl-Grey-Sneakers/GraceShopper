@@ -2,7 +2,6 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <div>
       <footer>
         <div className="footer-content">
           <h3>Earl Gray Sneaker Hut</h3>
@@ -41,7 +40,6 @@ const Footer = () => {
           </p>
         </div>
       </footer>
-    </div>
   );
 };
 

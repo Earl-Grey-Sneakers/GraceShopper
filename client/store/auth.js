@@ -25,7 +25,7 @@ export const me = () => async (dispatch) => {
         authorization: token,
       },
     });
-    dispatch(fetchCart(res.data.id,'empty'))
+    dispatch(fetchCart(res.data.id, 'empty'));
     return dispatch(setAuth(res.data));
   }
 };
@@ -38,8 +38,9 @@ export const authenticate = (username, password, method) => async (dispatch) => 
       dispatch(attachCartOnSignUp(res.data.id,localStorage.UUID))
     }
     dispatch(me());
-    localStorage.removeItem('UUID')
-    history.push('/');
+    localStorage.removeItem('UUID');
+    localStorage.removeItem('loglevel:webpack-dev-server');
+    history.push('/styles');
   } catch (authError) {
     return dispatch(setAuth({ error: authError }));
   }
@@ -47,7 +48,7 @@ export const authenticate = (username, password, method) => async (dispatch) => 
 
 export const logout = () => {
   window.localStorage.removeItem(TOKEN);
-  history.push('/');
+  history.push('/styles');
   return {
     type: SET_AUTH,
     auth: {},

@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+html {
+  height:100%;
+  width: 100%;
+}
+
+body {
+  min-height: 100%;
+}
 
 * {
   margin: 0;
@@ -13,7 +21,7 @@
 }
 
 header {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -252,11 +260,6 @@ footer {
   font-weight: 200;
 }
 
-.divBelowNavbar {
-  padding-top: 100px;
-  margin-top: 100px;
-}
-
 .wrapper {
   margin-top: 20px;
   max-width: 1200px;
@@ -481,4 +484,60 @@ hr {
 .on-feet-pic {
   max-height: 300px;
   max-width: 375px;
+}
+
+.overviewTable table {
+  display: table;
+  border-collapse: separate;
+  box-sizing: border-box;
+  text-indent: initial;
+  border-spacing:m 2px;
+  margin: auto;
+
+}
+
+.overviewTable table th, td{
+  border: 1px solid black;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+  align-items: center;
+}
+
+ul.Nav {
+  width: 60%;
+  margin: 0 auto 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid;
+  border-radius: 2rem;
+}
+
+ul.Nav li {
+  width: 50%;
+  padding: 1rem;
+  list-style: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.7s;
+  border-bottom-left-radius: 2rem;
+  border-top-left-radius: 2rem;
+}
+ul.Nav li:nth-child(2) {
+  border-radius: 0;
+}
+ul.Nav li:nth-child(3) {
+  border-radius: 0;
+  border-bottom-right-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+
+ul.Nav li:hover {
+  background: rgba(0, 0, 0, 0.15);
+  text-decoration-color: blanchedalmond;
+}
+ul.Nav li.active {
+  background:rgba(0, 0, 0, 0.3);
+  text-decoration-color: blanchedalmond;
 }
