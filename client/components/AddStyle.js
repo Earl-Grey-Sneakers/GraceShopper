@@ -6,6 +6,7 @@ class AddStyle extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      brand:'',
       shoeName: '',
       size: 0,
       price: 0,
@@ -26,10 +27,12 @@ class AddStyle extends React.Component {
     this.props.addStyle({ ...this.state });
   }
   render() {
-    const { shoeName, size, price, quantity } = this.state;
+    const { brand, shoeName, size, price, quantity } = this.state;
     return (
       <div className="divBelowNavbar">
         <form onSubmit={this.handleSubmit}>
+          <label htmlFor='brand'>Brand:</label>
+          <input name="brand" value={brand} onChange={this.handleChange} />
           <label htmlFor="shoeName">Name:</label>
           <input name="shoeName" value={shoeName} onChange={this.handleChange} />
           <label htmlFor="size">Size:</label>

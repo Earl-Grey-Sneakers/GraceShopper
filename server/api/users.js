@@ -13,7 +13,6 @@ module.exports = router;
 //     next(err);
 //   }
 // });
-
 router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({

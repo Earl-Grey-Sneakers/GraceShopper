@@ -10,7 +10,6 @@ const AllUsers = () => {
   }, []);
 
   const users = userAccount || {};
-  console.log('-----users------', users);
 
   return (
     <div className="divBelowNavbar">

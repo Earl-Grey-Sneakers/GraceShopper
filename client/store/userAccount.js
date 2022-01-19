@@ -18,7 +18,6 @@ export const fetchAllUsers = () => {
     return async (dispatch) => {
         try {
             const { data } = await axios.get('/api/users')
-            console.log(data, 'data')
             dispatch(gotAllUsers(data))
         } catch (error) {
             console.error('unable to fetch user', error)

@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { fetchStyle, updateStyle } from '../store/admin';
-import {Link} from 'react-router-dom'
 class EditStyles extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +17,6 @@ class EditStyles extends React.Component {
 
   componentDidMount() {
     this.props.fetchStyle(this.props.match.params.id);
-    console.log('fetched: ', this.props);
   }
   
   componentDidUpdate(previous) {

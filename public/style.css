@@ -88,10 +88,10 @@ header.sticky ul li .navLink {
   color: #fff;
 }
 
-header ul li:hover ,
+header ul li:hover,
 header .logo:hover,
 header .navLink:hover,
-header.sticky .navLink:hover{
+header.sticky .navLink:hover {
   color: gray;
 }
 
@@ -104,7 +104,6 @@ header.sticky .navLink:hover{
   max-height: 400px;
   max-width: 500px;
 }
-
 
 .landingPage {
   position: relative;
@@ -567,4 +566,6 @@ ul.Nav li.active {
 }
 
 header.sticky .navLink,
-header
+header .extendDiv {
+  height: 400px;
+}
