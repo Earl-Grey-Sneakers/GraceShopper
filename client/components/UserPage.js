@@ -9,7 +9,6 @@ const UserPage = () => {
         return state.auth;
       });
       
-    console.log(username, 'username', id, 'id')
 
 
     return (

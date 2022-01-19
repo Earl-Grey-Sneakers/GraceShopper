@@ -36,7 +36,6 @@ router.put('/:itemId', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const style = await Style.create(req.body);
-    console.log(style);
     res.send(style);
   } catch (error) {
     next(error);
