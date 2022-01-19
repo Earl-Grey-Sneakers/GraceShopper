@@ -72,21 +72,26 @@ const Cart = () => {
             ))}
           </div>
           {auth.id ? (
-            <Link to="/confirmation">
               <button
                 className="button-30"
                 id="checkout-btn"
                 onClick={() => {
-                  if (userId !== Infinity) {
+                  if (userId !== 0) {
                     dispatch(checkout(UUID));
                   }
                 }}
               >
                 Checkout
               </button>
-            </Link>
           ) : (
-            <div>You need to sign in!!</div>
+            <Link to='signup'>
+            <button
+                className="button-30"
+                id="checkout-btn"
+              >
+                Sign up
+              </button>
+            </Link>
           )}
         </div>
       ) : (

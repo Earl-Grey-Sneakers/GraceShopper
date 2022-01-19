@@ -1,4 +1,5 @@
 import axios from 'axios';
+import history from '../history';
 
 const GOT_CART = 'GOT_CART';
 const CLEAR_CART = 'CLEAR_CART';
@@ -68,6 +69,7 @@ export const checkout = (UUID) => {
   return async (dispatch) => {
     try {
       await axios.put(`/api/cart/${UUID}`);
+      history.push('/confirmation')
       dispatch(clearCart());
     } catch (error) {
       console.log(error);

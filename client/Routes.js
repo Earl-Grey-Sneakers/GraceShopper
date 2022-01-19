@@ -40,7 +40,7 @@ class Routes extends Component {
           <Route exact path="/allusers" component={AllUsers} />
           {/* <Route exact path="/checkout" component={CheckoutForm} /> */}
           <Route exact path="/confirmation" component={Confirmation} />
-        </Switch>
+        </Switch>git 
       </div>
     );
   }
