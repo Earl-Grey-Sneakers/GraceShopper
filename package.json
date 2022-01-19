@@ -25,6 +25,7 @@
     "@stripe/stripe-js": "^1.22.0",
     "axios": "^0.21.1",
     "bcrypt": "^5.0.0",
+    "bootstrap-icons": "^1.7.2",
     "compression": "^1.7.3",
     "eslint": "^8.6.0",
     "eslint-config-airbnb": "^19.0.4",

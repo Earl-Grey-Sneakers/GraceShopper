@@ -5,12 +5,25 @@ import { logout } from '../store';
 import { clearCart } from '../store/cart';
 
 const NavBar = () => {
-  const { auth } = useSelector((state) => {
+  const { cart, auth } = useSelector((state) => {
     return state;
   });
 
   const id = auth.id || Infinity;
   const username = auth.username || '';
+  let cartItems = 0;
+
+  const cartStyles = cart.styles || 0;
+  if (cartStyles) {
+    let total = 0;
+
+    const totalQuantity = cartStyles.map((items) => {
+      total += items.orderItems.quantity;
+      return total;
+    });
+
+    cartItems = totalQuantity[totalQuantity.length - 1];
+  }
 
   const dispatch = useDispatch();
   return (
@@ -20,18 +33,23 @@ const NavBar = () => {
       </Link>
       <ul>
         <li>
-          <Link to="/styles">Shop</Link>
+          <Link to="/styles" className="navLink">
+            Shop
+          </Link>
         </li>
 
         <li>
           <Link to="/cart">
-            <i className="gg-shopping-bag"></i>
+            <i className="bi bi-bag"></i>
+            {cartItems ? <button className="cart-view">{cartItems}</button> : ''}
           </Link>
         </li>
         {auth.isAdmin ? (
           <div>
             <li>
-              <Link to="/admin">Manage</Link>
+              <Link to="/admin" className="navLink">
+                Manage
+              </Link>
             </li>
           </div>
         ) : (
@@ -41,20 +59,25 @@ const NavBar = () => {
         {id !== Infinity ? (
           <ul>
             <li>
-              <Link to="/account">Account</Link>
+              <Link to="/account" className="navLink">
+                Account
+              </Link>
             </li>
             <li
               onClick={() => {
                 dispatch(logout());
                 dispatch(clearCart());
               }}
-              className="logout">
+              className="logout"
+            >
               Logout
             </li>
           </ul>
         ) : (
           <li>
-            <Link to="/login">Login</Link>
+            <Link to="/login" className="navLink">
+              Login
+            </Link>
           </li>
         )}
       </ul>
