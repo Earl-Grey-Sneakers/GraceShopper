@@ -19,10 +19,10 @@ const UserPage = () => {
                 <h3>Welcome to your Account Page, {username} </h3>
                 <h3>Email Address: {email}</h3>
             </div>
-            <Link>
             <div className="latestOrder">
                 <table>
-                        Most Recent Order
+                       Recent Orders:
+            <Link>
                     <td>
                         <tr>
                             <tr>Order #:</tr>
@@ -52,10 +52,11 @@ const UserPage = () => {
                             </td>
                         </tr>
                     </td>
+            </Link>
                 </table>
             </div>
+
             <Link>
-            </Link>
                 View Order History
             </Link>
         </div>
