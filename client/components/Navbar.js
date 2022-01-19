@@ -31,10 +31,7 @@ const NavBar = () => {
         {auth.isAdmin ? (
           <div>
             <li>
-              <Link to="/inventory">Inventory</Link>
-            </li>
-            <li>
-              <Link to="/allusers">Users</Link>
+              <Link to="/admin">Manage</Link>
             </li>
           </div>
         ) : (
@@ -43,6 +40,9 @@ const NavBar = () => {
 
         {id !== Infinity ? (
           <ul>
+            <li>
+              <Link to="/account">Account</Link>
+            </li>
             <li
               onClick={() => {
                 dispatch(logout());
@@ -52,9 +52,7 @@ const NavBar = () => {
             >
               Logout
             </li>
-            <li>
-              <Link to="/account">Account</Link>
-            </li>
+            
           </ul>
         ) : (
           <li>

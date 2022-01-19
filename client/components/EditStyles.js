@@ -20,14 +20,14 @@ class EditStyles extends React.Component {
     this.props.fetchStyle(this.props.match.params.id);
     console.log('fetched: ', this.props);
   }
-
-  componentDidUpdate() {
-    if (this.state.shoeName === '') {
+  
+  componentDidUpdate(previous) {
+    if (previous.style.id !== this.props.style.id) {
       this.setState({
-        shoeName: this.props.style.shoeName,
-        size: this.props.style.size,
-        price: this.props.style.price,
-        quantity: this.props.style.quantity,
+        shoeName: this.props.style.shoeName || '',
+        size: this.props.style.size || '',
+        price: this.props.style.price || '',
+        quantity: this.props.style.quantity || '',
       });
     }
   }
@@ -42,8 +42,9 @@ class EditStyles extends React.Component {
     event.preventDefault();
     this.props.updateStyle({ ...this.props.style, ...this.state });
   };
-
+  
   render() {
+
     const { shoeName, size, price, quantity } = this.state;
     console.log('----------state-----------', this.state);
     return (

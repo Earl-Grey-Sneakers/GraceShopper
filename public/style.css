@@ -188,6 +188,7 @@ footer {
   background-color: #111;
   color: #fff;
   padding-top: 15px;
+  
 }
 
 .footer-content {
@@ -255,10 +256,6 @@ footer {
   text-transform: uppercase;
   opacity: 0.4;
   font-weight: 200;
-}
-
-.divBelowNavbar {
-  padding-top: 100px;
 }
 
 .wrapper {
