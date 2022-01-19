@@ -13,8 +13,15 @@ const isUser = async (req, res, next) => {
     }
 }
 
-//isAdmin]
+const isAdmin = async (req, res, next) => {
+    if(!req.user.isAdmin){
+        return res.status(403).send('Nope!')
+    } else {
+        next()
+    }
+}
 
 module.exports = {
-   isUser
+   isUser,
+   isAdmin
 }

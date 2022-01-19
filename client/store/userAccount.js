@@ -19,15 +19,14 @@ export const fetchAllUsers = () => {
     return async (dispatch) => {
         try {
             const token = window.localStorage.getItem(TOKEN);
-              
-            //   console.log('fetch all users', res)
-            const { data } = await axios.get('/api/users',  {
+            if(token){
+            const { data } = await axios.get('/api/users', {
                 headers: {
-                  authorization: token,
+                    authorization: token,
                 },
-              })
-            console.log(data, 'data')
+                })
             dispatch(gotAllUsers(data))
+            }
         } catch (error) {
             console.error('unable to fetch user', error)
         }
