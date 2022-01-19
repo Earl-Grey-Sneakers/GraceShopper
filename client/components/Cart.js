@@ -95,7 +95,7 @@ const Cart = () => {
           )}
         </div>
       ) : (
-        <div className="wrapper">
+        <div className="wrapper extendDiv">
           <h3>Your Cart is Empty!</h3>
         </div>
       )}
