@@ -5,12 +5,14 @@ import { logout } from '../store';
 import { clearCart } from '../store/cart';
 
 const NavBar = () => {
-  const { auth } = useSelector((state) => {
+  const { cart, auth } = useSelector((state) => {
     return state;
   });
 
   const id = auth.id || Infinity;
   const username = auth.username || '';
+
+  const cartItems = cart.styles || 0;
 
   const dispatch = useDispatch();
   return (
@@ -25,7 +27,9 @@ const NavBar = () => {
 
         <li>
           <Link to="/cart">
-            <i className="gg-shopping-bag"></i>
+            <i className="gg-shopping-bag">
+              <button>{cartItems.length}</button>
+            </i>
           </Link>
         </li>
         {auth.isAdmin ? (
