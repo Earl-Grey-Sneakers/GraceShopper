@@ -33,20 +33,23 @@ const NavBar = () => {
       </Link>
       <ul>
         <li>
-          <Link to="/styles">Shop</Link>
+          <Link to="/styles" className="navLink">
+            Shop
+          </Link>
         </li>
 
         <li>
           <Link to="/cart">
-            <i className="gg-shopping-bag">
-              <button>{cartItems}</button>
-            </i>
+            <i className="bi bi-bag"></i>
+            {cartItems ? <button className="cart-view">{cartItems}</button> : ''}
           </Link>
         </li>
         {auth.isAdmin ? (
           <div>
             <li>
-              <Link to="/admin">Manage</Link>
+              <Link to="/admin" className="navLink">
+                Manage
+              </Link>
             </li>
           </div>
         ) : (
@@ -56,7 +59,9 @@ const NavBar = () => {
         {id !== Infinity ? (
           <ul>
             <li>
-              <Link to="/account">Account</Link>
+              <Link to="/account" className="navLink">
+                Account
+              </Link>
             </li>
             <li
               onClick={() => {
@@ -70,7 +75,9 @@ const NavBar = () => {
           </ul>
         ) : (
           <li>
-            <Link to="/login">Login</Link>
+            <Link to="/login" className="navLink">
+              Login
+            </Link>
           </li>
         )}
       </ul>

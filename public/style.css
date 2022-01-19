@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 html {
-  height:100%;
+  height: 100%;
   width: 100%;
 }
 
@@ -82,11 +82,16 @@ form div {
 }
 header.sticky .logo,
 header.sticky ul li,
-header.sticky ul li .gg-shopping-cart {
+header.sticky ul li .bi,
+header.sticky ul li .cart-view,
+header.sticky ul li .navLink {
   color: #fff;
 }
 
-header ul li:hover i {
+header ul li:hover ,
+header .logo:hover,
+header .navLink:hover,
+header.sticky .navLink:hover{
   color: gray;
 }
 
@@ -99,16 +104,7 @@ header ul li:hover i {
   max-height: 400px;
   max-width: 500px;
 }
-/* .scrolled-down {
-  transform: translateY(-100%);
-  transition: all 0.3s ease-in-out;
-  color: #000;
-  
-}
-.scrolled-up {
-  transform: translateY(0);
-  transition: all 0.3s ease-in-out;
-} */
+
 
 .landingPage {
   position: relative;
@@ -191,7 +187,6 @@ footer {
   height: auto;
   width: 100vw;
   padding-top: 15px;
-  
 }
 
 .footer-content {
@@ -439,7 +434,7 @@ footer {
   border-radius: 50%;
   color: #fff;
   text-align: center;
-  background: rgb(201, 87, 87)
+  background: rgb(201, 87, 87);
 }
 
 .featuredShoe {
@@ -448,7 +443,7 @@ footer {
 
 .featured-shoe-text {
   font-weight: bolder;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #featured-shoe {
@@ -492,12 +487,12 @@ hr {
   border-collapse: separate;
   box-sizing: border-box;
   text-indent: initial;
-  border-spacing:m 2px;
+  border-spacing: m 2px;
   margin: auto;
-
 }
 
-.overviewTable table th, td{
+.overviewTable table th,
+td {
   border: 1px solid black;
   top: 50%;
   left: 50%;
@@ -539,6 +534,37 @@ ul.Nav li:hover {
   text-decoration-color: blanchedalmond;
 }
 ul.Nav li.active {
-  background:rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.3);
   text-decoration-color: blanchedalmond;
 }
+
+.cart-view {
+  position: relative;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  font-size: 8px;
+  cursor: pointer;
+  background-color: #fff;
+  border-style: none;
+  right: 10px;
+  bottom: 1px;
+  background-color: transparent;
+}
+
+.bi {
+  position: relative;
+
+  text-decoration: none;
+  color: #000;
+}
+
+.navLink {
+  color: #000;
+}
+
+.navLink:hover {
+  color: gray;
+}
+
+header.sticky .navLink,
+header
