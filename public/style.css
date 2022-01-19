@@ -565,7 +565,6 @@ ul.Nav li.active {
   color: gray;
 }
 
-header.sticky .navLink,
-header .extendDiv {
+.extendDiv {
   height: 400px;
 }
