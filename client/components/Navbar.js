@@ -31,10 +31,7 @@ const NavBar = () => {
         {auth.isAdmin ? (
           <div>
             <li>
-              <Link to="/inventory">Inventory</Link>
-            </li>
-            <li>
-              <Link to="/allusers">Users</Link>
+              <Link to="/admin">Manage</Link>
             </li>
           </div>
         ) : (
