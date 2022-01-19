@@ -11,8 +11,19 @@ const NavBar = () => {
 
   const id = auth.id || Infinity;
   const username = auth.username || '';
+  let cartItems = 0;
 
-  const cartItems = cart.styles || 0;
+  const cartStyles = cart.styles || 0;
+  if (cartStyles) {
+    let total = 0;
+
+    const totalQuantity = cartStyles.map((items) => {
+      total += items.orderItems.quantity;
+      return total;
+    });
+
+    cartItems = totalQuantity[totalQuantity.length - 1];
+  }
 
   const dispatch = useDispatch();
   return (
@@ -28,7 +39,7 @@ const NavBar = () => {
         <li>
           <Link to="/cart">
             <i className="gg-shopping-bag">
-              <button>{cartItems.length}</button>
+              <button>{cartItems}</button>
             </i>
           </Link>
         </li>
@@ -52,7 +63,8 @@ const NavBar = () => {
                 dispatch(logout());
                 dispatch(clearCart());
               }}
-              className="logout">
+              className="logout"
+            >
               Logout
             </li>
           </ul>
