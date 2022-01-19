@@ -44,6 +44,7 @@ class EditStyles extends React.Component {
   render() {
 
     const { shoeName, size, price, quantity } = this.state;
+    
     return (
       <div className="divBelowNavbar">
         <form onSubmit={this.handleSubmit}>
