@@ -191,7 +191,6 @@ footer {
   height: auto;
   width: 100vw;
   padding-top: 15px;
-  
 }
 
 .footer-content {
@@ -541,4 +540,8 @@ ul.Nav li:hover {
 ul.Nav li.active {
   background:rgba(0, 0, 0, 0.3);
   text-decoration-color: blanchedalmond;
+}
+
+.extendDiv {
+  height: 400px;
 }
