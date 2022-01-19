@@ -1,11 +1,10 @@
 const router = require('express').Router();
 const Sequelize = require('sequelize');
-const {
-  models: { Style },
-} = require('../db');
+const { models: { Style } } = require('../db');
+const { isUser, isAdmin } = require('./gatekeeping')
 module.exports = router;
 
-router.get('/', async (req, res, next) => {
+router.get('/', isUser, isAdmin, async (req, res, next) => {
   try {
     const styles = await Style.findAll();
     res.send(styles);
