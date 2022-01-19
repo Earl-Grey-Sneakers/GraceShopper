@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import userAccount, { fetchAllUsers } from "../store/userAccount";
-
+import { Link } from "react-router-dom";
 
 const UserPage = () => {
 
@@ -14,11 +14,12 @@ const UserPage = () => {
 
     return (
         <div className="divBelowNavbar">
-            <div className="Account Infor">
+            <div className="accountInfo">
                 <h1>Account Overview</h1>
                 <h3>Welcome to your Account Page, {username} </h3>
                 <h3>Email Address: {email}</h3>
             </div>
+            <Link>
             <div className="latestOrder">
                 <table>
                         Most Recent Order
@@ -53,7 +54,10 @@ const UserPage = () => {
                     </td>
                 </table>
             </div>
-           
+            <Link>
+            </Link>
+                View Order History
+            </Link>
         </div>
         
     )

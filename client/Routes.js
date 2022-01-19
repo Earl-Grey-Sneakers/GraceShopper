@@ -14,7 +14,7 @@ import AddStyle from './components/AddStyle';
 import AccountOverview from './components/UserPage';
 import HomePage from './components/HomePage';
 import AdminUser from './components/Admin';
-import CheckoutForm from './components/CheckoutPage';
+// import CheckoutForm from './components/CheckoutPage';
 import Confirmation from './components/Confirmation';
 
 class Routes extends Component {
@@ -38,7 +38,7 @@ class Routes extends Component {
           <Route path="/cart" component={Cart} />
           <Route exact path="/inventory" component={Inventory} />
           <Route exact path="/allusers" component={AllUsers} />
-          <Route exact path="/checkout" component={CheckoutForm} />
+          {/* <Route exact path="/checkout" component={CheckoutForm} /> */}
           <Route exact path="/confirmation" component={Confirmation} />
         </Switch>
       </div>
