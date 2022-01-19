@@ -20,7 +20,7 @@ const NavBar = () => {
       </Link>
       <ul>
         <li>
-          <Link to="styles">Shop</Link>
+          <Link to="/styles">Shop</Link>
         </li>
 
         <li>
@@ -43,17 +43,16 @@ const NavBar = () => {
 
         {id !== Infinity ? (
           <ul>
+            <li>
+              <Link to="/account">Account</Link>
+            </li>
             <li
               onClick={() => {
                 dispatch(logout());
                 dispatch(clearCart());
               }}
-              className="logout"
-            >
+              className="logout">
               Logout
-            </li>
-            <li>
-              <Link to="/account">Account</Link>
             </li>
           </ul>
         ) : (
