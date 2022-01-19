@@ -8,27 +8,22 @@ const Footer = () => {
           <p>The Best Sneakers in the market</p>
           <ul className="socials">
             <li>
-              <a href="#">
-                <i className="fa fa-facebook"></i>
+              <a href="https://github.com/smit-pate-l">
+                <i className="fa fa-github"></i>
               </a>
             </li>
             <li>
-              <a href="#">
-                <i className="fa fa-twitter"></i>
+              <a href="https://github.com/Sbrendon98">
+                <i className="fa fa-github"></i>
               </a>
             </li>
             <li>
-              <a href="#">
-                <i className="fa fa-google-plus"></i>
+              <a href="https://github.com/gulamcs">
+                <i className="fa fa-github"></i>
               </a>
             </li>
             <li>
-              <a href="#">
-                <i className="fa fa-linkedin-square"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#">
+              <a href="https://github.com/dannypacheco4">
                 <i className="fa fa-github"></i>
               </a>
             </li>

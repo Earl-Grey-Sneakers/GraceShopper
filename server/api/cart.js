@@ -42,7 +42,7 @@ router.post('/', async (req, res, next) => {
         UUID: req.body.UUID
       },
       
-    });console.log("Inside the cart", cart)
+    });
 
     const style = await Style.findByPk(req.body.itemId);
     const exists = await cart.hasStyle(style);

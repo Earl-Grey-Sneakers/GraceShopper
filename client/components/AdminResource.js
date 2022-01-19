@@ -19,7 +19,6 @@ export const ItemTable = () => {
       useSelector((state) => {
         return state.styles;
       }) || [];
-      console.log("The Inventory", inventory)
     const dispatch = useDispatch();
   
     useEffect(() => {
@@ -44,11 +43,14 @@ export const ItemTable = () => {
               <td>{item.size}</td>
               <td>{item.color}</td>
               <td>{item.quantity}</td>
-              <Link to={`/styles/edit/${item.id}`}>Edit</Link>
+              <Link to={`/styles/edit/${item.id}`}><button>Edit</button></Link>
               <button onClick={() => dispatch(deleteStyle(item.id))}>delete</button>
             </tr>
           </>
         ))}
+    <Link to="/add">
+        <button>Add Styles</button>
+    </Link>
       </>
     );
   };
@@ -56,7 +58,6 @@ export const ItemTable = () => {
   export const UsersTable = () => {
     const users =
       useSelector((state) => {
-        console.log("state ----------->", state);
         return state.userAccount;
       }) || [];
   
@@ -66,7 +67,6 @@ export const ItemTable = () => {
       dispatch(fetchAllUsers());
     }, []);
   
-    console.log(users);
     return (
       <>
         <tr>
