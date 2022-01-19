@@ -39,7 +39,6 @@ export const authenticate = (username, password, method) => async (dispatch) => 
     }
     dispatch(me());
     localStorage.removeItem('UUID');
-    localStorage.removeItem('loglevel:webpack-dev-server');
     history.push('/styles');
   } catch (authError) {
     return dispatch(setAuth({ error: authError }));
