@@ -4,84 +4,96 @@ import { fetchStyles } from '../store/styles';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
-    const styles =
+  const styles =
     useSelector((state) => {
       return state.styles;
     }) || [];
 
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(fetchStyles())
-    }, [])
+  useEffect(() => {
+    dispatch(fetchStyles());
+  }, []);
 
-    const randomStyles=[]
-    let style={}
-    if (styles.length>0) {
-        for(let i=0; i<4; i++){
-            let num = Math.floor(Math.random()*styles.length)
-            randomStyles.push(styles[num])
-            styles.splice(num,1)
-        }
-        let num = Math.floor(Math.random()*styles.length)
-        style= styles[num]
+  const randomStyles = [];
+  let style = {};
+  if (styles.length > 0) {
+    for (let i = 0; i < 4; i++) {
+      let num = Math.floor(Math.random() * styles.length);
+      randomStyles.push(styles[num]);
+      styles.splice(num, 1);
     }
+    let num = Math.floor(Math.random() * styles.length);
+    style = styles[num];
+  }
 
-    if(style.shoeName===undefined){
-        return (
-            <div>
-                <h1>Loading Please wait!</h1>
-            </div>
-        )
-    } else {
-        return (
-            <div>
-                <div className="featuredShoe">
-                    <h3 className="featured-shoe-text">Featured Shoe</h3>
-                    <Link to={`/styles/${style.shoeName}`} >
-                    <img id="featured-shoe" src={style.imageUrl}/>
-                    </Link>
-                    <hr />
-                </div>
-                <div className="brands">
-                    <Link to={{
-                        pathname: '/styles',
-                        state: {brand: 'Nike'}
-                    }}>
-                        <div className="circle">Nike</div>
-                    </Link>
-                    <Link to={{
-                        pathname: '/styles',
-                        state: {brand: 'Yeezy'}
-                    }}>
-                        <div className="circle">Yeezy</div>
-                    </Link>
-                    <Link to={{
-                        pathname: '/styles',
-                        state: {brand: 'New Balance'}
-                    }}>
-                        <div className="circle">New Balance</div>
-                    </Link>
-                </div>
-                <hr />
-                <div className="random-shoes">
-                    {randomStyles.map((style,idx) => (
-                        <Link key={idx} to={`/styles/${style.shoeName}`} >
-                        <img className="random-sneaker" src={style.imageUrl}/>
-                        </Link>
-                    ))}
-                </div>
-                <div className="onFeet">
-                    <Link to={`/styles/Breds`} >
-                        <img className="on-feet-pic" src='https://cms-cdn.thesolesupplier.co.uk/2020/12/bred5_w1160.jpg'/>
-                    </Link>
-                    <Link to={`/styles/UNC Dunk`} >
-                        <img className="on-feet-pic" src='https://www.allaboutanthony.com/wp-content/uploads/2019/08/Air-Jordan-1-Low-Koston-Nike-SB-WDYWT-On-Feet-Blue-Laces.jpg'/>
-                    </Link>
-                </div>
-            </div>
-        )
-    }
-}
+  if (style.shoeName === undefined) {
+    return (
+      <div>
+        <h1>Loading Please wait!</h1>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <div className="featuredShoe">
+          <h3 className="featured-shoe-text">Featured Shoe</h3>
+          <Link to={`/styles/${style.shoeName}`}>
+            <img id="featured-shoe" src={style.imageUrl} />
+          </Link>
+          <hr />
+        </div>
+        <div className="brands">
+          <Link
+            to={{
+              pathname: '/styles',
+              state: { brand: 'Nike' },
+            }}
+          >
+            <div className="circle">Nike</div>
+          </Link>
+          <Link
+            to={{
+              pathname: '/styles',
+              state: { brand: 'Yeezy' },
+            }}
+          >
+            <div className="circle">Yeezy</div>
+          </Link>
+          <Link
+            to={{
+              pathname: '/styles',
+              state: { brand: 'New Balance' },
+            }}
+          >
+            <div className="circle">New Balance</div>
+          </Link>
+        </div>
+        <hr />
+        <div className="random-shoes">
+          {randomStyles.map((style, idx) => (
+            <Link key={idx} to={`/styles/${style.shoeName}`}>
+              <img className="random-sneaker" src={style.imageUrl} />
+            </Link>
+          ))}
+        </div>
+        <div className="onFeet">
+          <Link to={`/styles/Breds`}>
+            <img
+              className="on-feet-pic"
+              src="https://cms-cdn.thesolesupplier.co.uk/2020/12/bred5_w1160.jpg"
+            />
+          </Link>
+          <Link to={`/styles/UNC Dunk`}>
+            <img
+              className="on-feet-pic"
+              src="https://www.allaboutanthony.com/wp-content/uploads/2019/08/Air-Jordan-1-Low-Koston-Nike-SB-WDYWT-On-Feet-Blue-Laces.jpg"
+            />
+          </Link>
+        </div>
+      </div>
+    );
+  }
+};
 
 export default HomePage;
