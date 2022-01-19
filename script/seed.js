@@ -5,7 +5,7 @@ const {db, models: {User, Style, Order} } = require('../server/db')
 const styles = [{
   brand: 'Nike',
   shoeName: 'Black Cement 3',
-  color: 'black',
+  color: 'Black',
   size: 8,
   imageUrl: 'https://images.stockx.com/images/Air-Jordan-3-Retro-Black-Cement-2018-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&q=90&dpr=2&trim=color&updated_at=1609356781',
   price: 160,
@@ -14,7 +14,7 @@ const styles = [{
 {
   brand: 'Nike',
   shoeName: 'Black Cement 3',
-  color: 'black',
+  color: 'Black',
   size: 10,
   imageUrl: 'https://images.stockx.com/images/Air-Jordan-3-Retro-Black-Cement-2018-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&q=90&dpr=2&trim=color&updated_at=1609356781',
   price: 160,
