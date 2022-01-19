@@ -20,7 +20,7 @@ const NavBar = () => {
       </Link>
       <ul>
         <li>
-          <Link to="styles">Shop</Link>
+          <Link to="/styles">Shop</Link>
         </li>
 
         <li>
