@@ -1,7 +1,6 @@
 const router = require('express').Router();
-const {
-  models: { User },
-} = require('../db');
+const { models: { User } } = require('../db');
+const { isUser } = require('./gatekeeping')
 module.exports = router;
 
 // router.get('/', async (req, res, next) => {
@@ -14,7 +13,7 @@ module.exports = router;
 //   }
 // });
 
-router.get('/', async (req, res, next) => {
+router.get('/', isUser,  async (req, res, next) => {
   try {
     const users = await User.findAll({
       attributes: ['id', 'username', 'email'],

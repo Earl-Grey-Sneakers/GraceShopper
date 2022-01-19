@@ -2,6 +2,7 @@ import axios from 'axios'
 
 //ACTION TYPE
 const GET_ALL_USERS = 'GET_ALL_USERS'
+const TOKEN = 'token'
 
 //ACTION CREATOR
 const gotAllUsers = (users) => {
@@ -17,7 +18,14 @@ const gotAllUsers = (users) => {
 export const fetchAllUsers = () => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get('/api/users')
+            const token = window.localStorage.getItem(TOKEN);
+              
+            //   console.log('fetch all users', res)
+            const { data } = await axios.get('/api/users',  {
+                headers: {
+                  authorization: token,
+                },
+              })
             console.log(data, 'data')
             dispatch(gotAllUsers(data))
         } catch (error) {
