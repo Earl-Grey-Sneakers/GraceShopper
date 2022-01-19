@@ -27,53 +27,61 @@ const HomePage = () => {
         style= styles[num]
     }
 
-    return (
-        <div className="divBelowNavbar">
-            <div className="featuredShoe">
-                <h3 className="featured-shoe-text">Featured Shoe</h3>
-                <Link to={`/styles/${style.shoeName}`} >
-                <img id="featured-shoe" src={style.imageUrl}/>
-                </Link>
-                <hr />
+    if(style.shoeName===undefined){
+        return (
+            <div>
+                <h1>Loading Please wait!</h1>
             </div>
-            <div className="brands">
-                <Link to={{
-                    pathname: '/styles',
-                    state: {brand: 'Nike'}
-                }}>
-                    <div className="circle">Nike</div>
-                </Link>
-                <Link to={{
-                    pathname: '/styles',
-                    state: {brand: 'Yeezy'}
-                }}>
-                    <div className="circle">Yeezy</div>
-                </Link>
-                <Link to={{
-                    pathname: '/styles',
-                    state: {brand: 'New Balance'}
-                }}>
-                    <div className="circle">New Balance</div>
-                </Link>
-            </div>
-            <hr />
-            <div className="random-shoes">
-                {randomStyles.map((style,idx) => (
-                    <Link key={idx} to={`/styles/${style.shoeName}`} >
-                    <img className="random-sneaker" src={style.imageUrl}/>
+        )
+    } else {
+        return (
+            <div>
+                <div className="featuredShoe">
+                    <h3 className="featured-shoe-text">Featured Shoe</h3>
+                    <Link to={`/styles/${style.shoeName}`} >
+                    <img id="featured-shoe" src={style.imageUrl}/>
                     </Link>
-                ))}
+                    <hr />
+                </div>
+                <div className="brands">
+                    <Link to={{
+                        pathname: '/styles',
+                        state: {brand: 'Nike'}
+                    }}>
+                        <div className="circle">Nike</div>
+                    </Link>
+                    <Link to={{
+                        pathname: '/styles',
+                        state: {brand: 'Yeezy'}
+                    }}>
+                        <div className="circle">Yeezy</div>
+                    </Link>
+                    <Link to={{
+                        pathname: '/styles',
+                        state: {brand: 'New Balance'}
+                    }}>
+                        <div className="circle">New Balance</div>
+                    </Link>
+                </div>
+                <hr />
+                <div className="random-shoes">
+                    {randomStyles.map((style,idx) => (
+                        <Link key={idx} to={`/styles/${style.shoeName}`} >
+                        <img className="random-sneaker" src={style.imageUrl}/>
+                        </Link>
+                    ))}
+                </div>
+                <div className="onFeet">
+                    <Link to={`/styles/Breds`} >
+                        <img className="on-feet-pic" src='https://cms-cdn.thesolesupplier.co.uk/2020/12/bred5_w1160.jpg'/>
+                    </Link>
+                    <Link to={`/styles/UNC Dunk`} >
+                        <img className="on-feet-pic" src='https://www.allaboutanthony.com/wp-content/uploads/2019/08/Air-Jordan-1-Low-Koston-Nike-SB-WDYWT-On-Feet-Blue-Laces.jpg'/>
+                    </Link>
+                </div>
             </div>
-            <div className="onFeet">
-                <Link to={`/styles/Breds`} >
-                    <img className="on-feet-pic" src='https://cms-cdn.thesolesupplier.co.uk/2020/12/bred5_w1160.jpg'/>
-                </Link>
-                <Link to={`/styles/UNC Dunk`} >
-                    <img className="on-feet-pic" src='https://www.allaboutanthony.com/wp-content/uploads/2019/08/Air-Jordan-1-Low-Koston-Nike-SB-WDYWT-On-Feet-Blue-Laces.jpg'/>
-                </Link>
-            </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default HomePage;

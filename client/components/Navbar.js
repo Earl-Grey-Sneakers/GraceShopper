@@ -20,7 +20,7 @@ const NavBar = () => {
       </Link>
       <ul>
         <li>
-          <Link to="styles">Shop</Link>
+          <Link to="/styles">Shop</Link>
         </li>
 
         <li>
@@ -48,11 +48,9 @@ const NavBar = () => {
                 dispatch(logout());
                 dispatch(clearCart());
               }}
-              className="logout"
-            >
+              className="logout">
               Logout
             </li>
-            
           </ul>
         ) : (
           <li>
