@@ -1,4 +1,3 @@
-
 const Sequelize = require('sequelize')
 const db = require('../db')
 const jwt = require('jsonwebtoken')
@@ -6,8 +5,6 @@ const bcrypt = require('bcrypt');
 
 const SALT_ROUNDS = 5;
 
-//TODO: HIDE SECRET KEYS IN EITHER A.env file OR secret.js file 
-// if nodeenv is not production require key from file
 const JWT="shhh" 
 
 const User = db.define('user', {
@@ -18,6 +15,7 @@ const User = db.define('user', {
   },
   password: {
     type: Sequelize.STRING,
+    allowNull: false
   },
   isAdmin: {
     type: Sequelize.BOOLEAN,

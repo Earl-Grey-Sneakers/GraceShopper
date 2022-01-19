@@ -5,26 +5,39 @@ const Order = require('./Order')
 const Style = db.define('style', {
   brand: {
     type: Sequelize.STRING,
+    allowNull: false
   },
   shoeName: {
     type: Sequelize.STRING,
+    allowNull: false
   },
   color: {
     type: Sequelize.STRING,
+    allowNull: false,
   },
   size: {
     type: Sequelize.INTEGER,
+    allowNull: false
   },
   imageUrl: {
     type: Sequelize.STRING,
   },
   price: {
     type: Sequelize.FLOAT,
+    allowNull: false
   },
   quantity: {
     type: Sequelize.INTEGER,
+    allowNull: false,
+    validate: {
+      min: 0
+    },
   },
 });
+
+Style.afterCreate(async (style) => {
+  await style.update({color:style.color.toLowerCase()})
+})
 
 Style.afterCreate(async (style) => {
   if (style.id == 5) {
