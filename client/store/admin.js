@@ -23,7 +23,7 @@ export const addStyle = (style, history) => {
     try {
       await axios.post('/api/admin', style);
       dispatch(fetchStyles());
-      history.push('/inventory');
+      history.push('/admin');
     } catch (error) {
       console.log('uh oh something went wrong adding products.', error);
     }
@@ -57,7 +57,7 @@ export const updateStyle = (item, history) => {
     try {
       await axios.put(`/api/admin/${item.id}`, item);
       dispatch(fetchStyle(item.id));
-      history.push('/inventory');
+      history.push('/admin');
     } catch (error) {
       console.log('Error occured in updating single style.', error);
     }

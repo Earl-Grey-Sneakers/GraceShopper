@@ -49,6 +49,9 @@ export const ItemTable = () => {
             </tr>
           </>
         ))}
+    <Link to="/add">
+        <button>Add Styles</button>
+    </Link>
       </>
     );
   };
