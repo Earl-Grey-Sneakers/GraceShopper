@@ -96,8 +96,9 @@ header.sticky .navLink:hover {
 }
 
 .shoe-img {
-  max-height: 150px;
-  max-width: 200;
+  max-height: 100px;
+  max-width: 100px;
+  padding:none;
 }
 
 .single-shoe img {
@@ -275,7 +276,8 @@ footer {
   right: 10px;
 }
 
-.logout:hover {
+.logout:hover,
+.bi {
   cursor: pointer;
 }
 
@@ -568,3 +570,32 @@ ul.Nav li.active {
 .extendDiv {
   height: 400px;
 }
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
+.cartItem {
+  border-bottom: 0.4px solid rgb(226, 226, 226);
+}
+
+.summary {
+  margin-left: 30px;
+}
+
+.item {
+  margin: 20px;
+}
+
+.total{
+  border-style:solid;
+  margin-top:10px;
+  
+  border-width:0.4px 0 ;
+  padding:5px 0;
+}
+
