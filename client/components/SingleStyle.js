@@ -8,7 +8,6 @@ const SingleStyle = (props) => {
   const name = props.match.params.name;
 
   const [itemId, setId] = useState(Infinity);
-  console.log(itemId)
 
   const { singleStyleReducer, auth, cart } = useSelector((state) => {
     return state;
