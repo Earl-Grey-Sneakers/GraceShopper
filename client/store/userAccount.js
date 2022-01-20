@@ -2,6 +2,7 @@ import axios from 'axios'
 
 //ACTION TYPE
 const GET_ALL_USERS = 'GET_ALL_USERS'
+const TOKEN = 'token'
 
 //ACTION CREATOR
 const gotAllUsers = (users) => {
@@ -17,8 +18,15 @@ const gotAllUsers = (users) => {
 export const fetchAllUsers = () => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get('/api/users')
+            const token = window.localStorage.getItem(TOKEN);
+            if(token){
+            const { data } = await axios.get('/api/users', {
+                headers: {
+                    authorization: token,
+                },
+                })
             dispatch(gotAllUsers(data))
+            }
         } catch (error) {
             console.error('unable to fetch user', error)
         }
@@ -35,4 +43,3 @@ export default (state = [], action) => {
             return state
     }
 }
-

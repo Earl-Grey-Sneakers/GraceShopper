@@ -66,6 +66,8 @@ export const ItemTable = () => {
     useEffect(() => {
       dispatch(fetchAllUsers());
     }, []);
+
+    console.log(users, 'users')
   
     return (
       <>

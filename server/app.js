@@ -2,6 +2,8 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
+const { isUser, isAdmin } = require('./api/gatekeeping')
+
 module.exports = app;
 
 // logging middleware
@@ -14,7 +16,10 @@ app.use(express.json());
 app.use('/auth', require('./auth'));
 app.use('/api', require('./api'));
 
+app.get('/admin', isUser, isAdmin, (req, res) => res.sendFile(path.join(__dirname, '..', 'public/index.html')))
+app.get('/account', isUser, (req, res) => res.sendFile(path.join(__dirname, '..', 'public/index.html')))
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '..', 'public/index.html')));
+
 
 // static file-serving middleware
 app.use(express.static(path.join(__dirname, '..', 'public')));

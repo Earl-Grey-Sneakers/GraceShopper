@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const Sequelize = require('sequelize');
-const {
-  models: { Style },
-} = require('../db');
+const { models: { Style } } = require('../db');
+const { isUser, isAdmin } = require('./gatekeeping')
 module.exports = router;
 
 router.get('/', async (req, res, next) => {
@@ -33,7 +32,7 @@ router.put('/:itemId', async (req, res, next) => {
   }
 });
 
-router.post('/', async (req, res, next) => {
+router.post('/', isUser, isAdmin, async (req, res, next) => {
   try {
     const style = await Style.create(req.body);
     res.send(style);
