@@ -8,6 +8,22 @@ body {
   min-height: 100%;
 }
 
+h1 {
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 13px;
+}
+
+h4 {
+  font-size: 11px;
+}
+
+h5 {
+  font-size: 10px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -96,8 +112,9 @@ header.sticky .navLink:hover {
 }
 
 .shoe-img {
-  max-height: 150px;
-  max-width: 200;
+  max-height: 100px;
+  max-width: 100px;
+  padding: none;
 }
 
 .single-shoe img {
@@ -275,56 +292,9 @@ footer {
   right: 10px;
 }
 
-.logout:hover {
+.logout:hover,
+.bi {
   cursor: pointer;
-}
-
-.button-30 {
-  align-items: center;
-  appearance: none;
-  background-color: #fcfcfd;
-  border-radius: 4px;
-  border-width: 0;
-  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px,
-    #d6d6e7 0 -3px 0 inset;
-  box-sizing: border-box;
-  color: #36395a;
-  cursor: pointer;
-  display: inline-flex;
-  font-family: 'JetBrains Mono', monospace;
-  height: 48px;
-  justify-content: center;
-  line-height: 1;
-  list-style: none;
-  overflow: hidden;
-  padding-left: 16px;
-  padding-right: 16px;
-  position: relative;
-  text-align: left;
-  text-decoration: none;
-  transition: box-shadow 0.15s, transform 0.15s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
-  will-change: box-shadow, transform;
-  font-size: 18px;
-}
-
-.button-30:focus {
-  box-shadow: #d6d6e7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
-    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
-}
-
-.button-30:hover {
-  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px,
-    #d6d6e7 0 -3px 0 inset;
-  transform: translateY(-2px);
-}
-
-.button-30:active {
-  box-shadow: #d6d6e7 0 3px 7px inset;
-  transform: translateY(2px);
 }
 
 .button-24 {
@@ -363,7 +333,7 @@ footer {
   opacity: 0.5;
 }
 
-#checkout-btn {
+/* #checkout-btn {
   position: relative;
   bottom: 0;
   left: 450px;
@@ -371,7 +341,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .single-style-wrapper {
   text-align: center;
@@ -380,47 +350,43 @@ footer {
 
 .shoe-sizes {
   display: inline-block;
-}
-
-.single-shoe-size {
-  margin: 3px;
-}
-
-.single-shoe-size:hover {
-  cursor: pointer;
-  background-color: #000;
-  color: #fff;
-}
-
-.single-shoe-size:focus {
-  background-color: #000;
-  color: #fff;
-}
-
-.single-shoe-size {
-  border-radius: 8px;
+  border-radius: 4px;
   border-width: 0;
-  color: #333333;
   cursor: pointer;
-  display: inline-block;
-  font-family: 'Haas Grot Text R Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 50;
+  font-size: 10px;
+
   line-height: 10px;
   list-style: none;
-  margin: 0;
-  padding: 7px 6px;
+  margin: 2px;
+  padding: 0px 15px;
   text-align: center;
-  transition: all 200ms;
   vertical-align: baseline;
   white-space: nowrap;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+  background-color: transparent;
+  border: 0.4px solid #d3d3d3;
+}
+
+.shoe-sizes:hover {
+  cursor: pointer;
+  border-color: #000;
+}
+
+.shoe-sizes:focus {
+  border-color: #000;
+}
+
+.single-shoe-size {
+  background-color: transparent;
+  border-style: none;
+  padding-top: 7.5px;
+  height: 25px;
+  cursor: pointer;
 }
 
 .brands {
   display: flex;
+  margin-top: 40px;
+  margin-bottom: 40px;
   align-items: flex-end;
   place-content: space-around;
 }
@@ -431,9 +397,10 @@ footer {
   line-height: 90px;
   font-size: 12px;
   border-radius: 50%;
-  color: #fff;
+  border: 0.3px solid #d3d3d3;
   text-align: center;
-  background: rgb(201, 87, 87);
+
+  object-fit: cover;
 }
 
 .featuredShoe {
@@ -446,8 +413,9 @@ footer {
 }
 
 #featured-shoe {
-  max-width: 600px;
-  max-height: 450px;
+  max-height: 750px;
+  max-width: 1000px;
+  overflow: hidden;
 }
 
 hr {
@@ -470,15 +438,8 @@ hr {
   max-height: 150px;
 }
 
-.onFeet {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
 .on-feet-pic {
-  max-height: 300px;
-  max-width: 375px;
+  object-fit: cover;
 }
 
 .overviewTable table {
@@ -567,4 +528,148 @@ ul.Nav li.active {
 
 .extendDiv {
   height: 400px;
+}
+
+.row {
+  display: flex;
+  margin: 8px;
+}
+
+.column {
+  flex: 50%;
+}
+
+.cartItem {
+  border-bottom: 0.4px solid rgb(226, 226, 226);
+  font-size: small;
+}
+
+.summary {
+  margin-left: 30px;
+
+  font-size: 13px;
+}
+
+.item {
+  margin: 20px;
+}
+
+.total {
+  border-style: solid;
+  margin-top: 10px;
+  font-weight: 1000;
+  border-width: 0.4px 0;
+  padding: 5px 0;
+}
+
+.qty-btn {
+  margin: 0px 3px;
+  border-width: 0.4px;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 3px;
+}
+
+.inc-btn {
+  background-color: #00ff00;
+}
+
+.dec-btn {
+  background-color: #ff4742;
+}
+
+.button-50 {
+  appearance: button;
+  background-color: #000;
+  background-image: none;
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-shadow: #fff 4px 4px 0 0, #000 4px 4px 0 1px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: ITCAvantGardeStd-Bk, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 40;
+  line-height: 10px;
+
+  /* padding: 12px 20px; */
+  text-align: center;
+  text-transform: none;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  /* vertical-align: middle; */
+  white-space: nowrap;
+}
+
+.button-50:focus {
+  text-decoration: none;
+}
+
+.button-50:hover {
+  text-decoration: none;
+}
+
+.button-50:active {
+  box-shadow: rgba(0, 0, 0, 0.125) 0 3px 5px inset;
+  outline: 0;
+}
+
+.button-50:not([disabled]):active {
+  box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .button-50 {
+    padding: 10px 25px;
+  }
+}
+
+.image-txt {
+  position: absolute;
+  left: 50px;
+  top: 560px;
+  font-family: 'Work Sans', sans-serif;
+  color: #fff;
+  font-size: 60px;
+}
+.image-txt-2 {
+  position: absolute;
+  left: 50px;
+  top: 610px;
+  font-family: 'Work Sans', sans-serif;
+  color: #fff;
+  font-size: 60px;
+}
+.image-btn {
+  position: absolute;
+  left: 50px;
+  top: 680px;
+}
+
+.button-2 {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #fff;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 2px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+}
+
+.button-2:active {
+  box-shadow: 0px 0px 0px 0px;
+}
+
+.home-page-shoe {
+  color: #000;
+  display: flex;
+  place-content: space-between;
 }

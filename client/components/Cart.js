@@ -23,76 +23,113 @@ const Cart = () => {
   }, [userId]);
 
   return (
-    <div className="divBelowNavbar">
-      <h1 className="my-cart-title">My Cart</h1>
+    <div>
       {cartItems.length != 0 ? (
         <div>
-          <h3>
-            Your Total: {'$'}
-            {cart.orderTotal}
-          </h3>
-          <div className="wrapper">
-            {cartItems.map((item) => (
-              <div key={item.id} className="card">
-                <div>
-                  <h3>{item['shoeName']}</h3>
-                  <h5>
-                    {'$'}
-                    {item['price']}
-                  </h5>
-                  <Link to={`/styles/${item.shoeName}`}>
-                    <img className="shoe-img" src={item['imageUrl']} />
-                  </Link>
-                  <h5>Size:{item.size}</h5>
-                </div>
-                <button
-                  className="button-24"
-                  onClick={() => dispatch(removeCartItem(cart.id, item.id, userId, UUID))}
-                >
-                  Remove item
-                </button>
-                <button
-                  onClick={() => {
-                    if (item.orderItems.quantity > 1) {
-                      dispatch(updateQuantities(cart.id, UUID, userId, item.id, 'dec'));
-                    } else {
-                      dispatch(removeCartItem(cart.id, item.id, userId, UUID));
-                    }
-                  }}
-                >
-                  -
-                </button>
-                <span>Qty: {item.orderItems.quantity}</span>
-                <button
-                  onClick={() => dispatch(updateQuantities(cart.id, UUID, userId, item.id, 'inc'))}
-                >
-                  +
-                </button>
-              </div>
-            ))}
+          <div className="row">
+            <h3>Bag</h3>
           </div>
-          {auth.id ? (
-              <button
-                className="button-30"
-                id="checkout-btn"
-                onClick={() => {
-                  if (userId !== 0) {
-                    dispatch(checkout(UUID));
-                  }
-                }}
-              >
-                Checkout
-              </button>
-          ) : (
-            <Link to='signup'>
-            <button
-                className="button-30"
-                id="checkout-btn"
-              >
-                Sign up
-              </button>
-            </Link>
-          )}
+          <div className="row item">
+            <div className="column left">
+              {cartItems.map((item) => (
+                <div key={item.id} className="row cartItem">
+                  <div className="column item-img">
+                    <Link to={`/styles/${item.shoeName}`}>
+                      <img className="shoe-img" src={item['imageUrl']} />
+                    </Link>
+                  </div>
+                  <div className="column heading">
+                    <div className="row">
+                      <div className="column">{item['shoeName']}</div>{' '}
+                      <div className="column">
+                        {'$'}
+                        {item['price']}
+                      </div>
+                    </div>
+                    <div className="row">
+                      <h5>Size:{item.size}</h5>
+                    </div>
+                    <div className="row">
+                      <div className="column">
+                        <button
+                          className="qty-btn dec-btn"
+                          onClick={() => {
+                            if (item.orderItems.quantity > 1) {
+                              dispatch(updateQuantities(cart.id, UUID, userId, item.id, 'dec'));
+                            } else {
+                              dispatch(removeCartItem(cart.id, item.id, userId, UUID));
+                            }
+                          }}
+                        >
+                          -
+                        </button>
+                        <span>Qty: {item.orderItems.quantity}</span>
+
+                        <button
+                          className="qty-btn inc-btn"
+                          onClick={() =>
+                            dispatch(updateQuantities(cart.id, UUID, userId, item.id, 'inc'))
+                          }
+                        >
+                          +
+                        </button>
+                      </div>
+                      <div className="column">
+                        <i
+                          className="bi bi-trash"
+                          onClick={() => dispatch(removeCartItem(cart.id, item.id, userId, UUID))}
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="column summary right">
+              <h1>Summary</h1>
+              <div className="row">
+                <div className="column">Subtotal </div>
+                <div className="column">
+                  {'$'} {cart.orderTotal}.00
+                </div>
+              </div>
+              <div className="row">
+                <div className="column">Estimated Shipping & Handling</div>
+                <div className="column">$1200.00</div>
+              </div>
+              <div className="row">
+                <div className="column">Estimated Tax</div>
+                <div className="column">10%</div>
+              </div>
+              <div className="row total">
+                <div className="column">Total</div>
+                <div className="column">
+                  {'$'} {cart.orderTotal + 1200 + (cart.orderTotal + 1200) * 0.1}.00
+                </div>
+              </div>
+
+              {auth.id ? (
+                <div className="row ">
+                  <button
+                    className="button-50"
+                    onClick={() => {
+                      if (userId !== 0) {
+                        dispatch(checkout(UUID));
+                      }
+                    }}
+                  >
+                    Checkout
+                  </button>
+                </div>
+              ) : (
+                <div className="row">
+                  <Link to="signup">
+                    <button className="button-50">Sign up</button>
+                  </Link>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       ) : (
         <div className="wrapper extendDiv">

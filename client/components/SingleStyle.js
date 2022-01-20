@@ -15,12 +15,12 @@ const SingleStyle = (props) => {
   const dispatch = useDispatch();
 
   const userId = auth.id || 0;
-  let UUID = cart.UUID || 'empty'
-  if (userId==0 && UUID=='empty' && localStorage.UUID!==undefined){
-    UUID = localStorage.getItem('UUID')
+  let UUID = cart.UUID || 'empty';
+  if (userId == 0 && UUID == 'empty' && localStorage.UUID !== undefined) {
+    UUID = localStorage.getItem('UUID');
   }
   const singleStyle = singleStyleReducer || [];
-  const { brand, shoeName, imageUrl } = singleStyle[0] || [];
+  const { brand, shoeName, imageUrl, price } = singleStyle[0] || [];
 
   useEffect(() => {
     dispatch(_fetchSingleStyle(name));
@@ -28,31 +28,52 @@ const SingleStyle = (props) => {
 
   return (
     <div className="divBelowNavbar">
-      <div className="single-style-wrapper">
-        <div className="single-shoe">
+      <div className="row ">
+        <div className="column single-shoe">
           <img src={imageUrl} />
         </div>
-        <h1>{shoeName}</h1>
-        <h2>{brand}</h2>
+        <div className="column">
+          <div className="row">
+            {' '}
+            <h1>{shoeName}</h1>{' '}
+          </div>
 
-        <h3>Size:</h3>
-        {singleStyle.map((element) => (
-          <div key={element.id} className="shoe-sizes">
-            <button onClick={() => setId(`${element.id}`)} className="single-shoe-size">
-              {element.size}
+          <div className="row">
+            {' '}
+            <h3>{brand}</h3>
+          </div>
+          <div className="row">
+            <h3>
+              {'$'}
+              {price}.00
+            </h3>
+          </div>
+          <div className="row">
+            <h5>Select size</h5>
+          </div>
+          <div className="row">
+            {singleStyle.map((element) => (
+              <button key={element.id} className="shoe-sizes">
+                <div className="single-shoe-size" onClick={() => setId(`${element.id}`)}>
+                  {element.size}
+                </div>
+              </button>
+            ))}
+          </div>
+          <div className="row">
+            <button
+              className="button-50"
+              onClick={() => {
+                if (itemId !== Infinity) {
+                  dispatch(findOrMakeCart(itemId, userId, UUID));
+                  setId(Infinity);
+                }
+              }}
+            >
+              Add To Cart
             </button>
           </div>
-        ))}
-        <span>
-          <button className="button-30" onClick={() => {
-            if(itemId!==Infinity){
-            dispatch(findOrMakeCart(itemId, userId, UUID))
-            setId(Infinity)
-            }
-          }}>
-            Add To Cart
-          </button>
-        </span>
+        </div>
       </div>
     </div>
   );
