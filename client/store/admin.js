@@ -4,7 +4,6 @@ import { fetchStyles } from './styles';
 const FETCH_STYLE = 'FETCH_STYLE';
 const GOT_STYLES = 'GOT_STYLES';
 const TOKEN = 'token'
-const testToken = window.localStorage.getItem('token')
 
 const fetchedStyle = (style) => {
   return {
@@ -41,15 +40,7 @@ export const addStyle = (style, history) => {
 export const fetchInventory = () => {
   return async (dispatch) => {
     try {
-      if(testToken){
-
-        const { data } = await axios.get('/api/admin', {
-          headers: {
-            authorization:token
-          }
-          }
-        );
-      }
+      const { data } = await axios.get('/api/admin');
       dispatch(fetchedInventory(data));
     } catch (error) {
       console.log('uh oh something went wrong fetching products.', error);
