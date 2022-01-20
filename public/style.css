@@ -413,8 +413,7 @@ footer {
 }
 
 #featured-shoe {
-  max-height: 750px;
-  max-width: 1000px;
+  object-fit: cover;
   overflow: hidden;
 }
 
@@ -438,8 +437,9 @@ hr {
   max-height: 150px;
 }
 
-.on-feet-pic {
-  object-fit: cover;
+.on-feet-pic-left {
+  max-width: 600px;
+  max-height: 450px;
 }
 
 .overviewTable table {

@@ -101,7 +101,7 @@ const HomePage = () => {
           <div className="column">
             <Link to={`/styles/Breds`}>
               <img
-                className="on-feet-pic"
+                className="on-feet-pic-left"
                 src="https://images.unsplash.com/photo-1588099768512-be311242916f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fHNuZWFrZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
               />
             </Link>
@@ -109,7 +109,7 @@ const HomePage = () => {
           <div className="column">
             <Link to={`/styles/UNC Dunk`}>
               <img
-                className="on-feet-pic column"
+                className="on-feet-pic-right"
                 src="https://images.unsplash.com/photo-1533228067526-c21a6e8eaad7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YWRpZGFzJTIwc25lYWtlcnN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
               />
             </Link>

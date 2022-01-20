@@ -53,10 +53,12 @@ const SingleStyle = (props) => {
           </div>
           <div className="row">
             {singleStyle.map((element) => (
-              <button key={element.id} className="shoe-sizes">
-                <div className="single-shoe-size" onClick={() => setId(`${element.id}`)}>
-                  {element.size}
-                </div>
+              <button
+                key={element.id}
+                className="shoe-sizes"
+                onClick={() => setId(`${element.id}`)}
+              >
+                <div className="single-shoe-size">{element.size}</div>
               </button>
             ))}
           </div>
