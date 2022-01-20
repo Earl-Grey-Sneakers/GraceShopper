@@ -18,7 +18,7 @@ const AuthForm = (props) => {
         <div className="textfield">
           <input name="password" type="password" placeholder="password" />
         </div>
-        <div>
+        <div className="login-form-btn">
           <button type="submit" className="button-1" id={name}>
             {displayName}
           </button>

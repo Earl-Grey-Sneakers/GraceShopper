@@ -169,10 +169,7 @@ header.sticky .navLink:hover {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   margin: 100px;
 }
 
@@ -675,4 +672,11 @@ ul.Nav li.active {
   color: #000;
   display: flex;
   place-content: space-between;
+}
+
+.login-form-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
