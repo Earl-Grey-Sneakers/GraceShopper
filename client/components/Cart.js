@@ -28,54 +28,62 @@ const Cart = () => {
         <div>
           <h3>Bag</h3>
           <div className="row item">
-            <div className="column">
+            <div className="column left">
               {cartItems.map((item) => (
                 <div key={item.id} className="row cartItem">
-                  <div className="column ">
+                  <div className="column item-img">
                     <Link to={`/styles/${item.shoeName}`}>
                       <img className="shoe-img" src={item['imageUrl']} />
                     </Link>
                   </div>
-                  <div className="column">
-                    <h3>{item['shoeName']}</h3>
-                    <h5>
-                      {'$'}
-                      {item['price']}
-                    </h5>
+                  <div className="column heading">
+                    <div className="row">
+                      <div className="column">{item['shoeName']}</div>{' '}
+                      <div className="column">
+                        {'$'}
+                        {item['price']}
+                      </div>
+                    </div>
+                    <div className="row">
+                      <h5>Size:{item.size}</h5>
+                    </div>
+                    <div className="row">
+                      <div className="column">
+                        <button
+                          className="qty-btn dec-btn"
+                          onClick={() => {
+                            if (item.orderItems.quantity > 1) {
+                              dispatch(updateQuantities(cart.id, UUID, userId, item.id, 'dec'));
+                            } else {
+                              dispatch(removeCartItem(cart.id, item.id, userId, UUID));
+                            }
+                          }}
+                        >
+                          -
+                        </button>
+                        <span>Qty: {item.orderItems.quantity}</span>
 
-                    <h5>Size:{item.size}</h5>
-
-                    <button
-                      onClick={() => {
-                        if (item.orderItems.quantity > 1) {
-                          dispatch(updateQuantities(cart.id, UUID, userId, item.id, 'dec'));
-                        } else {
-                          dispatch(removeCartItem(cart.id, item.id, userId, UUID));
-                        }
-                      }}
-                    >
-                      -
-                    </button>
-                    <span>Qty: {item.orderItems.quantity}</span>
-
-                    <button
-                      onClick={() =>
-                        dispatch(updateQuantities(cart.id, UUID, userId, item.id, 'inc'))
-                      }
-                    >
-                      +
-                    </button>
-                    <div>
-                      <i
-                        className="bi bi-trash"
-                        onClick={() => dispatch(removeCartItem(cart.id, item.id, userId, UUID))}
-                      ></i>
+                        <button
+                          className="qty-btn inc-btn"
+                          onClick={() =>
+                            dispatch(updateQuantities(cart.id, UUID, userId, item.id, 'inc'))
+                          }
+                        >
+                          +
+                        </button>
+                      </div>
+                      <div className="column">
+                        <i
+                          className="bi bi-trash"
+                          onClick={() => dispatch(removeCartItem(cart.id, item.id, userId, UUID))}
+                        ></i>
+                      </div>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
-            <div className="column summary">
+            <div className="column summary right">
               <h3>Summary</h3>
               <div className="row">
                 <div className="column">Subtotal </div>
@@ -97,26 +105,31 @@ const Cart = () => {
                   {'$'} {cart.orderTotal + 1200 + (cart.orderTotal + 1200) * 0.1}.00
                 </div>
               </div>
+
+              {auth.id ? (
+                <div className="row">
+                  <button
+                    className="button-50"
+                    id="checkout-btn"
+                    onClick={() => {
+                      if (userId !== 0) {
+                        dispatch(checkout(UUID));
+                      }
+                    }}
+                  >
+                    Checkout
+                  </button>
+                </div>
+              ) : (
+                <div className="row">
+                  <Link to="signup">
+                    <button className="button-50" id="checkout-btn">
+                      Sign up
+                    </button>
+                  </Link>
+                </div>
+              )}
             </div>
-            {auth.id ? (
-              <button
-                className="button-30"
-                id="checkout-btn"
-                onClick={() => {
-                  if (userId !== 0) {
-                    dispatch(checkout(UUID));
-                  }
-                }}
-              >
-                Checkout
-              </button>
-            ) : (
-              <Link to="signup">
-                <button className="button-30" id="checkout-btn">
-                  Sign up
-                </button>
-              </Link>
-            )}
           </div>
         </div>
       ) : (
