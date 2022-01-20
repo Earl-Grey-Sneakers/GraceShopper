@@ -15,7 +15,7 @@ const isUser = async (req, res, next) => {
 
 const isAdmin = async (req, res, next) => {
     if(!req.user.isAdmin){
-        return res.status(403).send('Nope!')
+        return res.status(403).send('Nice try, hackermans!')
     } else {
         next()
     }

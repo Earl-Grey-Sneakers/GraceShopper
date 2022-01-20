@@ -6,13 +6,11 @@ import { Link } from "react-router-dom";
 import { deleteStyle } from "../store/admin";
 export const OrderTable = () => {
     return (
-      <table>
         <tr>
             <td>User</td>
             <td>Email Address</td>
             <td>Order History</td>
         </tr>
-      </table>
     )
 }
 
@@ -27,7 +25,7 @@ export const ItemTable = () => {
       dispatch(fetchInventory());
     }, [inventory.length]);
     return (
-      <table>
+      <>
         <tr>
           <td>Brand</td>  
           <td>Name</td>
@@ -37,8 +35,8 @@ export const ItemTable = () => {
           <td>Quantity</td>
         </tr>
         {inventory.map((item, idx) => (
-          <tbody key={idx}>
-            <tr >
+          <>
+            <tr key={idx}>
               <td>{item.brand}</td>
               <td>{item.shoeName}</td>
               <td>{item.price}</td>
@@ -48,12 +46,12 @@ export const ItemTable = () => {
               <Link to={`/styles/edit/${item.id}`}><button>Edit</button></Link>
               <button onClick={() => dispatch(deleteStyle(item.id))}>delete</button>
             </tr>
-          </tbody>
+          </>
         ))}
     <Link to="/add">
         <button>Add Styles</button>
     </Link>
-      </table>
+      </>
     );
   };
   
@@ -72,7 +70,7 @@ export const ItemTable = () => {
     console.log(users, 'users')
   
     return (
-      <table>
+      <>
         <tr>
           <td>User</td>
           <td>Email Address</td>
@@ -80,15 +78,15 @@ export const ItemTable = () => {
         </tr>
         {users.map((user) => {
           return (
-            <tbody key={user.id}>
-              <tr >
+            <>
+              <tr key={user.id}>
                 <td>{user.username}</td>
                 <td>{user.email}</td>
                 <td>{user.id}</td>
               </tr>
-            </tbody>
+            </>
           );
         })}
-      </table>
+      </>
     );
   }
