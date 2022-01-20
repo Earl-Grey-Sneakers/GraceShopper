@@ -385,6 +385,8 @@ footer {
 
 .brands {
   display: flex;
+  margin-top: 40px;
+  margin-bottom: 40px;
   align-items: flex-end;
   place-content: space-around;
 }
@@ -395,9 +397,10 @@ footer {
   line-height: 90px;
   font-size: 12px;
   border-radius: 50%;
-  color: #fff;
+  border: 0.3px solid #d3d3d3;
   text-align: center;
-  background: rgb(201, 87, 87);
+
+  object-fit: cover;
 }
 
 .featuredShoe {
@@ -410,8 +413,9 @@ footer {
 }
 
 #featured-shoe {
-  max-width: 600px;
-  max-height: 450px;
+  max-height: 750px;
+  max-width: 1000px;
+  overflow: hidden;
 }
 
 hr {
@@ -434,15 +438,8 @@ hr {
   max-height: 150px;
 }
 
-.onFeet {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
 .on-feet-pic {
-  max-height: 300px;
-  max-width: 375px;
+  object-fit: cover;
 }
 
 .overviewTable table {
@@ -629,4 +626,50 @@ ul.Nav li.active {
   .button-50 {
     padding: 10px 25px;
   }
+}
+
+.image-txt {
+  position: absolute;
+  left: 50px;
+  top: 560px;
+  font-family: 'Work Sans', sans-serif;
+  color: #fff;
+  font-size: 60px;
+}
+.image-txt-2 {
+  position: absolute;
+  left: 50px;
+  top: 610px;
+  font-family: 'Work Sans', sans-serif;
+  color: #fff;
+  font-size: 60px;
+}
+.image-btn {
+  position: absolute;
+  left: 50px;
+  top: 680px;
+}
+
+.button-2 {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #fff;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 2px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+}
+
+.button-2:active {
+  box-shadow: 0px 0px 0px 0px;
+}
+
+.home-page-shoe {
+  color: #000;
+  display: flex;
+  place-content: space-between;
 }
