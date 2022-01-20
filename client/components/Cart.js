@@ -26,7 +26,9 @@ const Cart = () => {
     <div>
       {cartItems.length != 0 ? (
         <div>
-          <h3>Bag</h3>
+          <div className="row">
+            <h3>Bag</h3>
+          </div>
           <div className="row item">
             <div className="column left">
               {cartItems.map((item) => (
@@ -84,7 +86,7 @@ const Cart = () => {
               ))}
             </div>
             <div className="column summary right">
-              <h3>Summary</h3>
+              <h1>Summary</h1>
               <div className="row">
                 <div className="column">Subtotal </div>
                 <div className="column">
@@ -107,10 +109,9 @@ const Cart = () => {
               </div>
 
               {auth.id ? (
-                <div className="row">
+                <div className="row ">
                   <button
                     className="button-50"
-                    id="checkout-btn"
                     onClick={() => {
                       if (userId !== 0) {
                         dispatch(checkout(UUID));
@@ -123,9 +124,7 @@ const Cart = () => {
               ) : (
                 <div className="row">
                   <Link to="signup">
-                    <button className="button-50" id="checkout-btn">
-                      Sign up
-                    </button>
+                    <button className="button-50">Sign up</button>
                   </Link>
                 </div>
               )}

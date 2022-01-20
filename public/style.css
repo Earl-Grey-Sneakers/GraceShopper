@@ -8,6 +8,22 @@ body {
   min-height: 100%;
 }
 
+h1 {
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 13px;
+}
+
+h4 {
+  font-size: 11px;
+}
+
+h5 {
+  font-size: 10px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -334,43 +350,37 @@ footer {
 
 .shoe-sizes {
   display: inline-block;
-}
-
-.single-shoe-size {
-  margin: 3px;
-}
-
-.single-shoe-size:hover {
-  cursor: pointer;
-  background-color: #000;
-  color: #fff;
-}
-
-.single-shoe-size:focus {
-  background-color: #000;
-  color: #fff;
-}
-
-.single-shoe-size {
-  border-radius: 8px;
+  border-radius: 4px;
   border-width: 0;
-  color: #333333;
   cursor: pointer;
-  display: inline-block;
-  font-family: 'Haas Grot Text R Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 50;
+  font-size: 10px;
+
   line-height: 10px;
   list-style: none;
-  margin: 0;
-  padding: 7px 6px;
+  margin: 2px;
+  padding: 0px 15px;
   text-align: center;
-  transition: all 200ms;
   vertical-align: baseline;
   white-space: nowrap;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+  background-color: transparent;
+  border: 0.4px solid #d3d3d3;
+}
+
+.shoe-sizes:hover {
+  cursor: pointer;
+  border-color: #000;
+}
+
+.shoe-sizes:focus {
+  border-color: #000;
+}
+
+.single-shoe-size {
+  background-color: transparent;
+  border-style: none;
+  padding-top: 7.5px;
+  height: 25px;
+  cursor: pointer;
 }
 
 .brands {
@@ -550,7 +560,7 @@ ul.Nav li.active {
 .total {
   border-style: solid;
   margin-top: 10px;
-
+  font-weight: 1000;
   border-width: 0.4px 0;
   padding: 5px 0;
 }
@@ -619,8 +629,4 @@ ul.Nav li.active {
   .button-50 {
     padding: 10px 25px;
   }
-}
-
-.row .checkout-btn {
-  align-items: center;
 }
