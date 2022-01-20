@@ -22,7 +22,7 @@ class Routes extends Component {
     return (
       <div>
         <Switch>
-          <Route exact path="/home" component={HomePage} />
+          <Route exact path="/" component={HomePage} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route exact path="/admin" component={AdminUser} />

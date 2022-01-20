@@ -28,7 +28,7 @@ const NavBar = () => {
   const dispatch = useDispatch();
   return (
     <header className="">
-      <Link to="/home">
+      <Link to="/">
         <h2 className="logo">EGSH</h2>
       </Link>
       <ul>

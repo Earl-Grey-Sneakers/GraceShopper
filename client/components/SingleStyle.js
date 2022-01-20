@@ -8,6 +8,7 @@ const SingleStyle = (props) => {
   const name = props.match.params.name;
 
   const [itemId, setId] = useState(Infinity);
+  console.log(itemId)
 
   const { singleStyleReducer, auth, cart } = useSelector((state) => {
     return state;
@@ -53,8 +54,10 @@ const SingleStyle = (props) => {
           </div>
           <div className="row">
             {singleStyle.map((element) => (
-              <button key={element.id} className="shoe-sizes">
-                <div className="single-shoe-size" onClick={() => setId(`${element.id}`)}>
+              <button key={element.id} className="shoe-sizes" onClick={() => {
+                setId(`${element.id}`)
+              }}>
+                <div className="single-shoe-size">
                   {element.size}
                 </div>
               </button>
